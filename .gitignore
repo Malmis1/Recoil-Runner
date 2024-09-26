@@ -1,4 +1,5 @@
 .vscode/
+.vsconfig/
 .vs/
 .DS_Store
 
