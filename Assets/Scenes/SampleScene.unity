@@ -903,6 +903,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f3edf64b5c993444bb89aa5ef5aae6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parallaxSpeed: 0
 --- !u!1 &1712822646
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,7 +1402,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
