@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     [Tooltip("The layer to check for ground")]
     public LayerMask groundLayer;
+    [Tooltip("The gun object the player character will hold")]
+    public GameObject gun;
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -33,5 +35,14 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);  // Apply jump force
         }
+
+        LookAtPoint(Input.mousePosition);
+    }
+
+    private void LookAtPoint(Vector3 point)
+    {
+        // Rotate the gun to look at the mouse.
+        Vector2 lookDirection = Camera.main.ScreenToWorldPoint(point) - transform.position;
+        gun.transform.up = lookDirection;
     }
 }
