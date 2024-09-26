@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float moveSpeed = 5f;     // Movement speed
-    public float jumpForce = 7f;     // Force applied when jumping
-    public Transform groundCheck;    // Position to check if the player is grounded
-    public LayerMask groundLayer;    // Layer to check for ground
+    [Tooltip("The movement speed")]
+    public float moveSpeed = 5f;
+    [Tooltip("The force applied when jumping")]
+    public float jumpForce = 7f;
+    [Tooltip("The position to check if the player is grounded")]
+    public Transform groundCheck;
+    [Tooltip("The layer to check for ground")]
+    public LayerMask groundLayer;
 
     private Rigidbody2D rb;
     private bool isGrounded;
