@@ -310,13 +310,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720d625a04390044d99d6bf9bf2cdc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 40
   jumpForce: 400
   movementSmoothing: 0.05
-  airControl: 1
   whatIsGround:
     serializedVersion: 2
     m_Bits: 119
   groundCheck: {fileID: 552297862}
+  airControl: 1
   OnLandEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -333,7 +334,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 438958615}
-  moveSpeed: 40
 --- !u!114 &438958623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1627527133}
+  recoilForce: 20
 --- !u!1 &484203098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5251167963582078972, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.092
+      value: -0.0846
       objectReference: {fileID: 0}
     - target: {fileID: 6835383334689820296, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Layer

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GunScript : MonoBehaviour {
     [Tooltip("The movement controller for the weapon")]
@@ -11,5 +12,8 @@ public class GunScript : MonoBehaviour {
 
         controller.LookAtPoint(mouseDirecton);
 
+        if (Input.GetButtonDown("Fire1")) {
+            controller.ApplyRecoil();
+        }
     }
 }

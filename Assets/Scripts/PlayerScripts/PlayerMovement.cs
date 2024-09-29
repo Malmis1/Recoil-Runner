@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
@@ -8,18 +5,21 @@ public class PlayerMovement : MonoBehaviour {
     public PlayerController controller;
 
     float horizontalMove = 0f;
-
     bool jump = false;
-    
+
     void Update() { // Get input
         horizontalMove = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
+
+        if (Input.GetButtonDown("Fire1")) { // Disable air control when firing
+            controller.DisableAirControl();
+        }
     }
 
-    void FixedUpdate() { // FixedUpdate good for constant updating of movement. It is independent of framerate in contrast to Update
+    void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
     }
