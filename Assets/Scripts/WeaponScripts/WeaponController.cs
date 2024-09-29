@@ -9,7 +9,7 @@ public class WeaponController : MonoBehaviour
     public GameObject gun;
 
     [Tooltip("The force/recoil which should be applied to player when weapon is fired")]
-    public float recoilForce = 20f;
+    public float recoilForce = 15f;
 
     private Rigidbody2D rb;
 
