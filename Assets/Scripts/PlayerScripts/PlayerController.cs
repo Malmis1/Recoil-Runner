@@ -5,16 +5,18 @@ public class PlayerController : MonoBehaviour
 {
     [Tooltip("The force applied when jumping")]
     [SerializeField] private float jumpForce = 400f;
+
     [Tooltip("The amount to smooth out movement")]
     [Range(0, .3f)][SerializeField] private float movementSmoothing = .05f;
+
     [Tooltip("Enable/disable air control")]
     [SerializeField] private bool airControl = true; // Removed the option to disable air control, set it as true by default
+
     [Tooltip("The layer to check for ground")]
     [SerializeField] private LayerMask whatIsGround;
+
     [Tooltip("The position to check if the player is grounded")]
     [SerializeField] private Transform groundCheck;
-    [Tooltip("The gun object the player character will hold")]
-    public GameObject gun;
 
     private const float groundedRadius = .2f;
     private bool isGrounded;
@@ -58,10 +60,5 @@ public class PlayerController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
-    }
-
-    public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
-        Vector2 lookDirection = Camera.main.ScreenToWorldPoint(point) - transform.position;
-        gun.transform.up = lookDirection;
     }
 }

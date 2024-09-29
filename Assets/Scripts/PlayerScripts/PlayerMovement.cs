@@ -16,9 +16,6 @@ public class PlayerMovement : MonoBehaviour {
     
     void Update() { // Get input
         horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        Vector3 mouseDirecton = Input.mousePosition;
-
-        controller.LookAtPoint(mouseDirecton);
 
         if (Input.GetButtonDown("Jump")) {
             jump = true;
