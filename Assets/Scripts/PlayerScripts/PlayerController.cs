@@ -10,16 +10,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce = 400f;
 
     [Tooltip("The amount to smooth out movement")]
-    [Range(0, .3f)][SerializeField] private float movementSmoothing = .05f;
+    [Range(0, .5f)][SerializeField] private float movementSmoothing = .05f;
 
     [Tooltip("The layer to check for ground")]
     [SerializeField] private LayerMask whatIsGround;
 
     [Tooltip("The position to check if the player is grounded")]
     [SerializeField] private Transform groundCheck;
-
-    [Tooltip("Enable/disable air control")]
-    [SerializeField] private bool airControl = true;
 
     private const float groundedRadius = .2f;
     private bool isGrounded;
@@ -29,11 +26,15 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent OnLandEvent;
 
-    private void Awake() { // Awake instead of "Start" because it initializes components before starting the game
+    private float defaultMovementSmoothing;
+
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         OnLandEvent ??= new UnityEvent();
 
         OnLandEvent.AddListener(EnableAirControl);
+
+        defaultMovementSmoothing = movementSmoothing;
     }
 
     private void FixedUpdate() {
@@ -48,10 +49,9 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float move, bool jump) {
         // Run
-        if (isGrounded || airControl) {
-            Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
-        }
+        Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+        
 
         // Flip sprite
         if (move > 0 && !facingRight) {
@@ -69,11 +69,11 @@ public class PlayerController : MonoBehaviour
     }
 
     public void DisableAirControl() {
-        airControl = false;
+        movementSmoothing = 0.5f; // Increase smoothing
     }
 
     private void EnableAirControl() {
-        airControl = true;
+        movementSmoothing = defaultMovementSmoothing; // Reset to default
     }
 
     private void Flip() {
