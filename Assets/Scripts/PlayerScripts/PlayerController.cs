@@ -1,16 +1,15 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
+    [Tooltip("The movement speed")]
+    public float moveSpeed = 40f;
+
     [Tooltip("The force applied when jumping")]
     [SerializeField] private float jumpForce = 400f;
 
     [Tooltip("The amount to smooth out movement")]
     [Range(0, .3f)][SerializeField] private float movementSmoothing = .05f;
-
-    [Tooltip("Enable/disable air control")]
-    [SerializeField] private bool airControl = true; // Removed the option to disable air control, set it as true by default
 
     [Tooltip("The layer to check for ground")]
     [SerializeField] private LayerMask whatIsGround;
@@ -41,14 +40,19 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Move(float move, bool jump) {
-        if (isGrounded || airControl) {
-            Vector3 targetVelocity = new Vector2(move * 10f, rb.velocity.y);
-            rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+        // Run
+        Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
+        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-            if (move > 0 && !facingRight) Flip();
-            else if (move < 0 && facingRight) Flip();
+        // Flip sprite
+        if (move > 0 && !facingRight) {
+            Flip();
+        }
+        else if (move < 0 && facingRight) { 
+            Flip(); 
         }
 
+        // Jump
         if (isGrounded && jump) { // Maybe make holding space jump higher
             isGrounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));

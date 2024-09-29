@@ -9,13 +9,10 @@ public class PlayerMovement : MonoBehaviour {
 
     float horizontalMove = 0f;
 
-    [Tooltip("The movement speed")]
-    public float moveSpeed = 40f;
-
     bool jump = false;
     
     void Update() { // Get input
-        horizontalMove = Input.GetAxisRaw("Horizontal") * moveSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal");
 
         if (Input.GetButtonDown("Jump")) {
             jump = true;
