@@ -10,6 +10,9 @@ public class GunScript : MonoBehaviour {
     [Tooltip("The time between shots (in seconds)")]
     public float fireRate = 1.0f;
 
+    [Tooltip("Muzzleflash for the gun")]
+    public ParticleSystem muzzleFlash;
+
     private float nextFireTime = 0f;
 
     void Update() {
@@ -19,8 +22,8 @@ public class GunScript : MonoBehaviour {
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) { // Can also change the GetButtonDown to GetButton for auto fire
             controller.ApplyRecoil();
             nextFireTime = Time.time + fireRate;
-            
-            Debug.Log("Fire");
+
+            muzzleFlash.Play();
         }
     }
 }
