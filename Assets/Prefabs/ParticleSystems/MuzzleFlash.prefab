@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3411604680473194105}
   - component: {fileID: 1954924559458891211}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: MuzzleFlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

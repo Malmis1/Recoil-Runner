@@ -536,6 +536,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gun: {fileID: 1627527133}
   recoilForce: 15
+  hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
+  maxDistance: 100
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 119
 --- !u!1 &484203098
 GameObject:
   m_ObjectHideFlags: 0

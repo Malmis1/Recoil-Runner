@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GunScript : MonoBehaviour {
     [Tooltip("The controller for the weapon")]
@@ -16,14 +13,16 @@ public class GunScript : MonoBehaviour {
     private float nextFireTime = 0f;
 
     void Update() {
-        Vector3 mouseDirecton = Input.mousePosition;
-        controller.LookAtPoint(mouseDirecton);
+        Vector3 mouseDirection = Input.mousePosition;
+        controller.LookAtPoint(mouseDirection);
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) { // Can also change the GetButtonDown to GetButton for auto fire
+        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
             controller.ApplyRecoil();
             nextFireTime = Time.time + fireRate;
 
             muzzleFlash.Play();
+
+            controller.sendRayCastAndPlayHitEffect();
         }
     }
 }
