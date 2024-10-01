@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void reduceAirControl() {
+    public void ReduceAirControl() {
         movementSmoothing = 0.5f; // Increase smoothing
     }
 

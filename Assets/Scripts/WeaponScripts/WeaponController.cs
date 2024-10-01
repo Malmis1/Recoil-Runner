@@ -31,7 +31,13 @@ public class WeaponController : MonoBehaviour
         gun.transform.up = lookDirection;
     }
 
+    private void ResetVelocity() {
+        rb.velocity = Vector2.zero;
+    }
+
     public void ApplyRecoil() {
+        ResetVelocity(); // Reset the velocity first so the recoil is consistent
+
         Vector2 recoilDirection = -gun.transform.up;
 
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);

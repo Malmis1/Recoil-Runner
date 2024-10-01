@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
         }
 
         if (Input.GetButtonDown("Fire1")) { // Disable air control when firing
-            controller.reduceAirControl();
+            controller.ReduceAirControl();
         }
     }
 
