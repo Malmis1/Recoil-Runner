@@ -41,11 +41,14 @@ public class PlayerController : MonoBehaviour
     }
 
     private void FixedUpdate() {
+        CheckIfGrounded();
+    }
+
+    private void CheckIfGrounded() {
         bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
-        if (isGrounded && !wasGrounded)
-        {
+        if (isGrounded && !wasGrounded) {
             OnLandEvent.Invoke();
         }
     }

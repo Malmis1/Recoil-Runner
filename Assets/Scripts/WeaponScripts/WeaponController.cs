@@ -51,7 +51,6 @@ public class WeaponController : MonoBehaviour
 
         if (hit.collider != null) {
             Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
-            Debug.Log("Hit: " + hit.point);
         }
     }
 }
