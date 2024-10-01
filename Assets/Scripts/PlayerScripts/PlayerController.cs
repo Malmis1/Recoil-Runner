@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private bool facingRight = true;
     private Vector3 velocity = Vector3.zero;
+    private SpriteRenderer spriteRenderer;
 
     public UnityEvent OnLandEvent;
 
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         OnLandEvent ??= new UnityEvent();
 
         OnLandEvent.AddListener(EnableAirControl);
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
         defaultMovementSmoothing = movementSmoothing;
     }
@@ -68,7 +71,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DisableAirControl() {
+    public void reduceAirControl() {
         movementSmoothing = 0.5f; // Increase smoothing
     }
 
@@ -78,8 +81,6 @@ public class PlayerController : MonoBehaviour
 
     private void Flip() {
         facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 }
