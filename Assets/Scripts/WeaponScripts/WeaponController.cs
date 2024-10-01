@@ -50,9 +50,7 @@ public class WeaponController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, hitLayers);
 
         if (hit.collider != null) {
-            Quaternion rot = Quaternion.FromToRotation(Vector3.up, hit.normal); // To make the particle effect align with the surface
-            Instantiate(hitEffectPrefab, hit.point, rot);
-
+            Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
             Debug.Log("Hit: " + hit.point);
         }
     }
