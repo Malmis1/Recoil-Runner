@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ReduceAirControl() {
-        movementSmoothing = 0.5f;
+        movementSmoothing = 0.75f;
         StartCoroutine(CheckGroundedAfterDelay(groundCheckDelay));
     }
 
