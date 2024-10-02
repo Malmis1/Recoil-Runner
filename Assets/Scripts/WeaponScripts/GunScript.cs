@@ -10,8 +10,14 @@ public class GunScript : MonoBehaviour {
     [Tooltip("The sprite renderer for the gun")]
     public SpriteRenderer gunSpriteRenderer;
 
+    [Tooltip("The force/recoil which should be applied to player when weapon is fired")]
+    public float recoilForce = 15f;
+
     [Tooltip("The time between shots (in seconds)")]
     public float fireRate = 1.0f;
+
+    [Tooltip("If the weapon is automatic or not")]
+    public bool isAutomatic = false;
 
     private float nextFireTime = 0f;
 
@@ -21,14 +27,21 @@ public class GunScript : MonoBehaviour {
 
         FlipGunSprite();
 
-        if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
-            controller.ApplyRecoil();
-            nextFireTime = Time.time + fireRate;
-
-            muzzleFlash.Play();
-
-            controller.sendRayCastAndPlayHitEffect();
+        if (Input.GetButton("Fire1") && Time.time >= nextFireTime && isAutomatic) { // GetButton for automatic firing
+            Fire();
+        } 
+        else if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && !isAutomatic) {
+            Fire();
         }
+    }
+
+    private void Fire() {
+        controller.ApplyRecoil(recoilForce);
+        nextFireTime = Time.time + fireRate;
+
+        muzzleFlash.Play();
+
+        controller.sendRayCastAndPlayHitEffect();
     }
 
     private void FlipGunSprite() {
