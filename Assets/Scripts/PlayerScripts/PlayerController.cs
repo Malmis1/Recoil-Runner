@@ -18,6 +18,9 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("The position to check if the player is grounded")]
     [SerializeField] private Transform groundCheck;
+    
+    [Tooltip("The player's eyes")]
+    [SerializeField] private Transform eyes;
 
     [Tooltip("The amount of seconds the ground check is delayed after shooting")]
     [SerializeField] public float groundCheckDelay = 0.5f;
@@ -95,7 +98,18 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Flip() {
-        facingRight = !facingRight;
-        spriteRenderer.flipX = !spriteRenderer.flipX;
+    facingRight = !facingRight;
+    spriteRenderer.flipX = !spriteRenderer.flipX;
+
+    if (eyes != null) {
+        Vector3 eyesPosition = eyes.localPosition;
+        if (facingRight) {
+            eyesPosition.x = Mathf.Abs(eyesPosition.x); 
+        } else {
+            eyesPosition.x = -Mathf.Abs(eyesPosition.x); 
+        }
+        eyes.localPosition = eyesPosition;
     }
+}
+
 }
