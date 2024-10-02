@@ -725,7 +725,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1627527133}
-  recoilForce: 15
   hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
   maxDistance: 100
   hitLayers:
@@ -1312,7 +1311,9 @@ MonoBehaviour:
   controller: {fileID: 438958623}
   muzzleFlash: {fileID: 1384129186}
   gunSpriteRenderer: {fileID: 1808122260}
+  recoilForce: 15
   fireRate: 0.5
+  isAutomatic: 0
 --- !u!212 &1808122260 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}

@@ -8,9 +8,6 @@ public class WeaponController : MonoBehaviour
     [Tooltip("The gun object the player character will hold")]
     public GameObject gun;
 
-    [Tooltip("The force/recoil which should be applied to player when weapon is fired")]
-    public float recoilForce = 15f;
-
     [Tooltip("Particle effect to play at the hit point")]
     public GameObject hitEffectPrefab;
 
@@ -35,7 +32,7 @@ public class WeaponController : MonoBehaviour
         rb.velocity = Vector2.zero;
     }
 
-    public void ApplyRecoil() {
+    public void ApplyRecoil(float recoilForce) {
         ResetVelocity(); // Reset the velocity first so the recoil is consistent
 
         Vector2 recoilDirection = -gun.transform.up;
