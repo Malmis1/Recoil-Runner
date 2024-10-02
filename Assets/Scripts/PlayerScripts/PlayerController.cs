@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The position to check if the player is grounded")]
     [SerializeField] private Transform groundCheck;
 
+    [Tooltip("The amount of seconds the ground check is delayed after shooting")]
+    [SerializeField] public float groundCheckDelay = 0.5f;
+
     private const float groundedRadius = .2f;
     private bool isGrounded;
     private Rigidbody2D rb;
@@ -33,7 +37,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         OnLandEvent ??= new UnityEvent();
 
-        OnLandEvent.AddListener(EnableAirControl);
+        OnLandEvent.AddListener(IncreaseAirControl);
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -49,7 +53,7 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
         if (isGrounded && !wasGrounded) {
-            OnLandEvent.Invoke();
+            OnLandEvent.Invoke(); // Player landed
         }
     }
 
@@ -57,7 +61,6 @@ public class PlayerController : MonoBehaviour
         // Run
         Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
-        
 
         // Flip sprite
         if (move > 0 && !facingRight) {
@@ -75,10 +78,19 @@ public class PlayerController : MonoBehaviour
     }
 
     public void ReduceAirControl() {
-        movementSmoothing = 0.5f; // Increase smoothing
+        movementSmoothing = 0.5f;
+        StartCoroutine(CheckGroundedAfterDelay(groundCheckDelay));
     }
 
-    private void EnableAirControl() {
+    private IEnumerator CheckGroundedAfterDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+
+        if (isGrounded) {
+            IncreaseAirControl();
+        }
+    }
+
+    private void IncreaseAirControl() {
         movementSmoothing = defaultMovementSmoothing; // Reset to default
     }
 
