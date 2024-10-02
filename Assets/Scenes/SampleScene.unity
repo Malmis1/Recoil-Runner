@@ -631,7 +631,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 455b51b0db9f3834fa1dfa1ce0796d53, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1310,8 +1310,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 438958623}
-  fireRate: 0.5
   muzzleFlash: {fileID: 1384129186}
+  gunSpriteRenderer: {fileID: 1808122260}
+  fireRate: 0.5
+--- !u!212 &1808122260 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+  m_PrefabInstance: {fileID: 6079604428312761367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1838209470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2357,10 @@ PrefabInstance:
     - target: {fileID: 5251167963582078972, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.0846
+      objectReference: {fileID: 0}
+    - target: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6835383334689820296, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Layer
