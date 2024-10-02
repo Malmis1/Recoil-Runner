@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate() {
         CheckIfGrounded();
+        RotateTowardsCursor(); 
     }
 
     private void CheckIfGrounded() {
@@ -65,18 +66,41 @@ public class PlayerController : MonoBehaviour
         Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-        // Flip sprite
-        if (move > 0 && !facingRight) {
-            Flip();
-        }
-        else if (move < 0 && facingRight) {
-            Flip();
-        }
-
         // Jump
         if (isGrounded && jump) {
             isGrounded = false;
             rb.AddForce(new Vector2(0f, jumpForce));
+        }
+    }
+
+    private void RotateTowardsCursor() {
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePosition.z = 0f; 
+
+        Vector3 direction = mousePosition - transform.position;
+
+        // Flip based on the direction of the mouse
+        if (direction.x < 0 && facingRight) {
+            Flip();
+        }
+        else if (direction.x > 0 && !facingRight) {
+            Flip();
+        }
+    }
+
+    private void Flip() {
+        // Flip the character
+        facingRight = !facingRight;
+        spriteRenderer.flipX = !spriteRenderer.flipX;
+
+        if (eyes != null) {
+            Vector3 eyesPosition = eyes.localPosition;
+            if (facingRight) {
+                eyesPosition.x = Mathf.Abs(eyesPosition.x);
+            } else {
+                eyesPosition.x = -Mathf.Abs(eyesPosition.x);
+            }
+            eyes.localPosition = eyesPosition;
         }
     }
 
@@ -96,20 +120,4 @@ public class PlayerController : MonoBehaviour
     private void IncreaseAirControl() {
         movementSmoothing = defaultMovementSmoothing; // Reset to default
     }
-
-    private void Flip() {
-    facingRight = !facingRight;
-    spriteRenderer.flipX = !spriteRenderer.flipX;
-
-    if (eyes != null) {
-        Vector3 eyesPosition = eyes.localPosition;
-        if (facingRight) {
-            eyesPosition.x = Mathf.Abs(eyesPosition.x); 
-        } else {
-            eyesPosition.x = -Mathf.Abs(eyesPosition.x); 
-        }
-        eyes.localPosition = eyesPosition;
-    }
-}
-
 }
