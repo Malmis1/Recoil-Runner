@@ -1311,9 +1311,9 @@ MonoBehaviour:
   controller: {fileID: 438958623}
   muzzleFlash: {fileID: 1384129186}
   gunSpriteRenderer: {fileID: 1808122260}
-  recoilForce: 15
-  fireRate: 0.5
-  isAutomatic: 0
+  recoilForce: 7
+  fireRate: 0.2
+  isAutomatic: 1
 --- !u!212 &1808122260 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}

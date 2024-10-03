@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     private float defaultMovementSmoothing;
 
+    private Coroutine airControlCoroutine;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         OnLandEvent ??= new UnityEvent();
@@ -106,7 +108,12 @@ public class PlayerController : MonoBehaviour
 
     public void ReduceAirControl() {
         movementSmoothing = 0.75f;
-        StartCoroutine(CheckGroundedAfterDelay(groundCheckDelay));
+
+        if (airControlCoroutine != null) {
+            StopCoroutine(airControlCoroutine);
+        }
+
+        airControlCoroutine = StartCoroutine(CheckGroundedAfterDelay(groundCheckDelay));
     }
 
     private IEnumerator CheckGroundedAfterDelay(float delay) {
@@ -118,6 +125,9 @@ public class PlayerController : MonoBehaviour
     }
 
     private void IncreaseAirControl() {
-        movementSmoothing = defaultMovementSmoothing; // Reset to default
+        if (!Input.GetButton("Fire1")) {
+            movementSmoothing = defaultMovementSmoothing;
+            airControlCoroutine = null;
+        }
     }
 }
