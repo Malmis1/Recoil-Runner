@@ -35,7 +35,7 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    private void Fire() {
+    private void Fire() { // Everything that should happen when player fires
         controller.ApplyRecoil(recoilForce);
         nextFireTime = Time.time + fireRate;
 
