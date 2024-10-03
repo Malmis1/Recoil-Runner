@@ -21,17 +21,24 @@ public class GunScript : MonoBehaviour {
 
     private float nextFireTime = 0f;
 
+    private bool isFlipped;
+
+    private bool muzzleFlashIsMoved = false;
+
     void Update() {
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
 
         FlipGunSprite();
 
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime && isAutomatic) { // GetButton for automatic firing
-            Fire();
-        } 
-        else if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && !isAutomatic) {
-            Fire();
+        if (isAutomatic) {
+            if (Input.GetButton("Fire1") && Time.time >= nextFireTime) {
+                Fire();
+            }
+        } else {
+            if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
+                Fire();
+            }
         }
     }
 
@@ -49,10 +56,23 @@ public class GunScript : MonoBehaviour {
 
         bool shouldFlip = mouseWorldPosition.x < controller.transform.position.x;
 
+        if (shouldFlip != isFlipped) {
+            // MoveMuzzleFlash();
+            Debug.Log("Move muzzle flash");
+        }
+
         gunSpriteRenderer.flipY = shouldFlip;
+
+        isFlipped = shouldFlip;
     }
 
-    public void FlipSpriteY(SpriteRenderer spriteRenderer) {
-        spriteRenderer.flipY = !spriteRenderer.flipY;
+    public void MoveMuzzleFlash() {
+        if (!muzzleFlashIsMoved) {
+            muzzleFlash.transform.position += new Vector3(0.15f, 0, 0);
+            muzzleFlashIsMoved = true;
+        } else {
+            muzzleFlash.transform.position += new Vector3(-0.15f, 0, 0);
+            muzzleFlashIsMoved = false;
+        }
     }
 }
