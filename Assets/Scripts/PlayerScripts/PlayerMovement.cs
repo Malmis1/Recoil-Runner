@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour {
             jump = true;
         }
 
-        if (Input.GetButtonDown("Fire1")) { // Disable air control when firing
+        if (Input.GetButton("Fire1")) { // Disable air control when firing
             controller.ReduceAirControl();
         }
     }

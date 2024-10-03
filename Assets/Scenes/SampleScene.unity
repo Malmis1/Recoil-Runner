@@ -1311,9 +1311,9 @@ MonoBehaviour:
   controller: {fileID: 438958623}
   muzzleFlash: {fileID: 1384129186}
   gunSpriteRenderer: {fileID: 1808122260}
-  recoilForce: 15
-  fireRate: 0.5
-  isAutomatic: 0
+  recoilForce: 7
+  fireRate: 0.2
+  isAutomatic: 1
 --- !u!212 &1808122260 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -2372,6 +2372,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8290240849225334467, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8290240849225334467, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 5e42a8607766f6247a94a7660de4cf5a, type: 2}
@@ -2386,19 +2390,19 @@ PrefabInstance:
       addedObject: {fileID: 1384129187}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 438958614}
     - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 438958615}
     - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      insertIndex: -1
+      insertIndex: 4
       addedObject: {fileID: 438958619}
     - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 438958623}
     - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      insertIndex: -1
+      insertIndex: 6
       addedObject: {fileID: 438958627}
     - targetCorrespondingSourceObject: {fileID: 1987310977281509233, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       insertIndex: -1
