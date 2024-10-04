@@ -63,6 +63,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Gets whether or not the player is grounded.
+    /// </summary>
+    /// <returns><b>true</b> if the player is grounded.</returns>
+    public bool GetIsGrounded() {
+        return isGrounded;
+    }
+
     public void Move(float move, bool jump) {
         // Run
         Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);

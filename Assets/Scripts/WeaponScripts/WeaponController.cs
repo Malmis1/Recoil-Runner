@@ -18,10 +18,22 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
 
+    [Tooltip("The angle in which the recoil will be added to the velocity instead of resetting it")]
+    public float additiveRecoilAngleThreshold = 250f;
+
     private Rigidbody2D rb;
+    private bool initialRecoil = true;
+    private PlayerController playerController;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        playerController = GetComponent<PlayerController>();
+    }
+    
+    private void Update() {
+        if (!initialRecoil && playerController.GetIsGrounded()) {
+            initialRecoil = true;
+        }
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
@@ -36,11 +48,18 @@ public class WeaponController : MonoBehaviour
     }
 
     public void ApplyRecoil(float recoilForce) {
-        ResetVelocity(); // Reset the velocity first so the recoil is consistent
-
         Vector2 recoilDirection = -gun.transform.up;
-
-        rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
+        if (initialRecoil) {
+            ResetVelocity(); // Reset the velocity first so the recoil is consistent
+            initialRecoil = false;
+        }
+        float angle = Vector2.Angle(recoilDirection, rb.velocity);
+        if (angle < additiveRecoilAngleThreshold / 2) {
+            rb.velocity += recoilDirection * recoilForce;
+        } else {
+            ResetVelocity();
+            rb.velocity = recoilDirection * recoilForce;
+        }
     }
 
     public void sendRayCastAndPlayHitEffect() {
