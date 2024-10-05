@@ -134,6 +134,8 @@ GameObject:
   - component: {fileID: 358245387}
   - component: {fileID: 358245386}
   - component: {fileID: 358245385}
+  - component: {fileID: 358245389}
+  - component: {fileID: 358245388}
   m_Layer: 5
   m_Name: Spacebar Canvas
   m_TagString: Untagged
@@ -224,6 +226,34 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &358245388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358245383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5882bbee0b4ee804f8be35422b260ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 591517184}
+  canvasGroup: {fileID: 358245389}
+  triggerDistance: 8
+  fadeSpeed: 2
+--- !u!225 &358245389
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358245383}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &453599762
 GameObject:
   m_ObjectHideFlags: 0
@@ -5650,7 +5680,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 79273368863278957, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: -9.4
       objectReference: {fileID: 0}
     - target: {fileID: 79273368863278957, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -8424,6 +8454,8 @@ GameObject:
   - component: {fileID: 1720854848}
   - component: {fileID: 1720854847}
   - component: {fileID: 1720854846}
+  - component: {fileID: 1720854851}
+  - component: {fileID: 1720854852}
   m_Layer: 5
   m_Name: WASD Canvas
   m_TagString: Untagged
@@ -8514,6 +8546,34 @@ RectTransform:
   m_AnchoredPosition: {x: -8.4, y: -3.18}
   m_SizeDelta: {x: 8, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &1720854851
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720854845}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &1720854852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720854845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5882bbee0b4ee804f8be35422b260ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 591517184}
+  canvasGroup: {fileID: 1720854851}
+  triggerDistance: 8
+  fadeSpeed: 1
 --- !u!1 &1913443421 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2110764391603572472, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -8532,7 +8592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 591517184}
-  minX: -2
+  minX: -3
   maxX: 1000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
