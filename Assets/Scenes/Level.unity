@@ -184,6 +184,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 1987310977281509233, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3417845322749527782, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0229
@@ -192,6 +196,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.0266
       objectReference: {fileID: 0}
+    - target: {fileID: 4763287202418187126, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b87dcc660236dbfadb8801bf7416ddf5, type: 3}
     - target: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_FlipX
       value: 0
@@ -214,10 +222,11 @@ PrefabInstance:
       objectReference: {fileID: 150250016}
     - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: recoilForce
-      value: 12
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2046112089177576639, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3889628313939299448, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       insertIndex: -1
@@ -2331,7 +2340,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1676797071237562351, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.049
+      value: 0.011
       objectReference: {fileID: 0}
     - target: {fileID: 1676797071237562351, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
       propertyPath: m_LocalPosition.z

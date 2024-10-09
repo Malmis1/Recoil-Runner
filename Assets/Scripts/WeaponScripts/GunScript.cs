@@ -23,8 +23,6 @@ public class GunScript : MonoBehaviour {
 
     private bool isFlipped;
 
-    private bool muzzleFlashIsMoved = false;
-
     void Update() {
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
@@ -56,23 +54,8 @@ public class GunScript : MonoBehaviour {
 
         bool shouldFlip = mouseWorldPosition.x < controller.transform.position.x;
 
-        if (shouldFlip != isFlipped) {
-            // MoveMuzzleFlash();
-            Debug.Log("Move muzzle flash");
-        }
-
         gunSpriteRenderer.flipY = shouldFlip;
 
         isFlipped = shouldFlip;
-    }
-
-    public void MoveMuzzleFlash() {
-        if (!muzzleFlashIsMoved) {
-            muzzleFlash.transform.position += new Vector3(0.15f, 0, 0);
-            muzzleFlashIsMoved = true;
-        } else {
-            muzzleFlash.transform.position += new Vector3(-0.15f, 0, 0);
-            muzzleFlashIsMoved = false;
-        }
     }
 }
