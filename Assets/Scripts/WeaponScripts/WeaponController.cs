@@ -53,4 +53,24 @@ public class WeaponController : MonoBehaviour
             Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
         }
     }
+
+    public void changeToWeaponSprite1(SpriteRenderer spriteRenderer) {
+        Sprite changedSprite = Resources.Load<Sprite>("Art/Weapons/Weapon1");
+
+        if (changedSprite != null) {
+            spriteRenderer.sprite = changedSprite;
+        } else {
+            Debug.LogError("Sprite not found at the specified path.");
+        }
+    }
+
+    public void changeToWeaponSprite2(SpriteRenderer spriteRenderer) {
+        Sprite changedSprite = Resources.Load<Sprite>("Art/Weapons/SimpleWeapon");
+
+        if (changedSprite != null) {
+            spriteRenderer.sprite = changedSprite;
+        } else {
+            Debug.LogError("Sprite not found at the specified path.");
+        }
+    }
 }
