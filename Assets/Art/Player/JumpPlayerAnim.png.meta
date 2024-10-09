@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a21bd77f8648f24e91cde16311dbbd5
+guid: c31dd2bc1dbca4e48b6fd76eedc427d5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,11 +110,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkPlayerAnim_0
+      name: Jump_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 9
+        x: 5
+        y: 6
         width: 14
         height: 18
       alignment: 0
@@ -124,18 +124,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e3772232245140498fc2d4462f38c83
-      internalID: 1686362267
+      spriteID: 437a0c799fab8e1488328fd9d3b2bcd1
+      internalID: -1246788800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkPlayerAnim_1
+      name: Jump_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 9
+        x: 24
+        y: 6
         width: 14
         height: 18
       alignment: 0
@@ -145,18 +145,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef44b27ce77903a48a2f8c0bbad03b63
-      internalID: 1791051387
+      spriteID: 31024e95cbbce574380f9ed9448cdb1a
+      internalID: 329340312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: WalkPlayerAnim_2
+      name: Jump_2
       rect:
         serializedVersion: 2
-        x: 45
-        y: 9
+        x: 43
+        y: 6
         width: 14
         height: 18
       alignment: 0
@@ -166,29 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab8d80bcebbb87e4fa4ed9840b4543e2
-      internalID: 1301997415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkPlayerAnim_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 9
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 79a5bbd1ba8c0714cbb8bac902f75d9a
-      internalID: 63128647
+      spriteID: 71c2a4da2d28ef64393c331d42c6c225
+      internalID: -2107346278
       vertices: []
       indices: 
       edges: []
@@ -204,10 +183,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WalkPlayerAnim_0: 1686362267
-      WalkPlayerAnim_1: 1791051387
-      WalkPlayerAnim_2: 1301997415
-      WalkPlayerAnim_3: 63128647
+      Jump_0: -1246788800
+      Jump_1: 329340312
+      Jump_2: -2107346278
+      Jump_3: -972424501
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
