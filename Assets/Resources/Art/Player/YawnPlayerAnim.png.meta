@@ -113,12 +113,12 @@ TextureImporter:
       name: YawnPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 7
         y: 7
-        width: 11
+        width: 12
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: YawnPlayerAnim_1
       rect:
         serializedVersion: 2
-        x: 27
+        x: 26
         y: 7
-        width: 11
+        width: 12
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: YawnPlayerAnim_2
       rect:
         serializedVersion: 2
-        x: 46
+        x: 45
         y: 7
-        width: 11
+        width: 12
         height: 18
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
