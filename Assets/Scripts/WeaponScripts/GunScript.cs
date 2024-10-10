@@ -1,15 +1,19 @@
 using UnityEngine;
 
 public class GunScript : MonoBehaviour {
+    [Header("Controller")]
     [Tooltip("The controller for the weapon")]
     public WeaponController controller;
 
+    [Header("Particle system")]
     [Tooltip("Muzzleflash for the gun")]
     public ParticleSystem muzzleFlash;
 
+    [Header("Sprite renderer")]
     [Tooltip("The sprite renderer for the gun")]
     public SpriteRenderer gunSpriteRenderer;
 
+    [Header("Gun settings")]
     [Tooltip("The force/recoil which should be applied to player when weapon is fired")]
     public float recoilForce = 15f;
 
@@ -37,6 +41,22 @@ public class GunScript : MonoBehaviour {
             if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
                 Fire();
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            controller.changeToWeaponSprite1(gunSpriteRenderer);
+
+            recoilForce = 15f;
+            fireRate = 0.5f;
+            isAutomatic = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            controller.changeToWeaponSprite2(gunSpriteRenderer);
+
+            recoilForce = 5f;
+            fireRate = 0.2f;
+            isAutomatic = true;
         }
     }
 

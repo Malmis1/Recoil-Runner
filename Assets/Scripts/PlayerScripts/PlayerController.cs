@@ -37,6 +37,19 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Maximum vertical speed")]
     public float maxVerticalSpeed = 20f;
+    public enum PlayerState
+    {
+        Idle,
+        Walk,
+        Jump,
+        Fall,
+        Dead
+    }
+
+    // The player's current state (walking, idle, jumping, or falling)
+    public PlayerState state = PlayerState.Idle;
+
+    private bool isJumping;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -47,6 +60,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate() {
         CheckIfGrounded();
         RotateTowardsCursor();
+        DetermineState();
 
         // Limit the player's velocity
         LimitVelocity();
@@ -94,6 +108,7 @@ public class PlayerController : MonoBehaviour
         // Jump
         if (isGrounded && jump) {
             isGrounded = false;
+            isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
         }
     }
@@ -179,6 +194,45 @@ public class PlayerController : MonoBehaviour
         {
             StopCoroutine(airControlCoroutine);
             airControlCoroutine = null;
+        }
+    }
+
+    private void SetState(PlayerState newState)
+    {
+        state = newState;
+    }
+
+    private void DetermineState()
+    {
+        if (isGrounded)
+        {
+            if (Mathf.Abs(rb.velocity.x) > 0.01f)
+            {
+                SetState(PlayerState.Walk);
+            }
+            else
+            {
+                SetState(PlayerState.Idle);
+            }
+        }
+        else
+        {
+            if (isJumping)
+            {
+                if (rb.velocity.y <= 0)
+                {
+                    isJumping = false; 
+                    SetState(PlayerState.Fall);
+                }
+                else
+                {
+                    SetState(PlayerState.Jump);
+                }
+            }
+            else
+            {
+                SetState(PlayerState.Fall);
+            }
         }
     }
 }

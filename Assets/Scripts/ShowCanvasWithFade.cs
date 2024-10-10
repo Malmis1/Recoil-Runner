@@ -14,9 +14,6 @@ public class ShowCanvasWithFade : MonoBehaviour
     [Tooltip("The speed at which the canvas fades in and out.")]
     [SerializeField] private float fadeSpeed = 2f;  // Speed of fade effect.
 
-    private bool isFadingIn = false;  // Check if the canvas is currently fading in.
-    private bool isFadingOut = false; // Check if the canvas is currently fading out.
-
     void Start()
     {
         // Ensure the canvas is initially invisible.
