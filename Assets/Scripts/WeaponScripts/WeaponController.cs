@@ -66,7 +66,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath) {
+    public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath, int xPositionOfMuzzleFlash) {
         if (currentMuzzleFlashInstance != null) {
             Destroy(currentMuzzleFlashInstance);
         }
@@ -76,9 +76,17 @@ public class WeaponController : MonoBehaviour
         if (newMuzzleFlashPrefab != null) {
             currentMuzzleFlashInstance = Instantiate(newMuzzleFlashPrefab, muzzleFlashParent.transform);
 
-            currentMuzzleFlashInstance.transform.localPosition = Vector3.zero;
             currentMuzzleFlashInstance.transform.localRotation = Quaternion.identity;
             currentMuzzleFlashInstance.transform.localScale = Vector3.one;
+
+            // Adjustments of the muzzle flash position
+            Vector3 currentPosition = currentMuzzleFlashInstance.transform.localPosition;
+
+            currentPosition.x = xPositionOfMuzzleFlash;
+            currentPosition.y = 0f;
+
+            currentMuzzleFlashInstance.transform.localPosition = currentPosition;
+
         }
         else {
             Debug.LogError("Failed to load muzzle flash prefab from path: " + muzzleFlashPath);
@@ -87,12 +95,12 @@ public class WeaponController : MonoBehaviour
 
     public void ChangeToWeaponVisuals1(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
         ChangeWeaponSprite(spriteRenderer, "Art/Weapons/Weapon1");
-        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashRailgun");
+        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashRailgun", 0);
     }
 
     public void ChangeToWeaponVisuals2(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
         ChangeWeaponSprite(spriteRenderer, "Art/Weapons/SimpleWeapon");
-        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashSimpleWeapon");
+        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashSimpleWeapon", -3);
     }
 
     public void PlayMuzzleFlashEffect() {
