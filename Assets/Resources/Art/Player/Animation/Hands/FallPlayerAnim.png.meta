@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8c3a98e1972f154b8da8a625b5e2bf8
+guid: 7125fe08a1c464942abaa7e7b15f336a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BoredPlayerAnim_0
+      name: FallPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 7
-        width: 12
-        height: 18
+        x: 5
+        y: 5
+        width: 14
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a340437c8027ccd4486057710e2e056a
-      internalID: 841441630
+      spriteID: 26e31c803ca695d4bb1d58dd198efb8d
+      internalID: 1686022871
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoredPlayerAnim_1
+      name: FallPlayerAnim_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 7
-        width: 12
-        height: 18
+        x: 24
+        y: 5
+        width: 14
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 589419fe67e0dbe459125a192fe26a53
-      internalID: -1200257612
+      spriteID: 16a1bd3841eb3a54bbbd57c91efc6473
+      internalID: 714524519
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoredPlayerAnim_2
+      name: FallPlayerAnim_2
       rect:
         serializedVersion: 2
-        x: 57
-        y: 7
-        width: 12
-        height: 18
+        x: 43
+        y: 5
+        width: 14
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b415171af93877341b507d1a47b5449d
-      internalID: -58059943
+      spriteID: bef052c9ae77aab44a3bb6aa014952f6
+      internalID: 991576113
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: BoredPlayerAnim_3
+      name: FallPlayerAnim_3
       rect:
         serializedVersion: 2
-        x: 82
-        y: 7
-        width: 12
-        height: 18
+        x: 62
+        y: 5
+        width: 14
+        height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,29 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eead138f091775f4a9ab893edf28d692
-      internalID: -1918776391
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: BoredPlayerAnim_4
-      rect:
-        serializedVersion: 2
-        x: 107
-        y: 7
-        width: 12
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f86294d92511b6142af03a3887bcf368
-      internalID: -288565621
+      spriteID: 56d9edc61dc13a443844969dbc80da40
+      internalID: -688130596
       vertices: []
       indices: 
       edges: []
@@ -225,11 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      BoredPlayerAnim_0: 841441630
-      BoredPlayerAnim_1: -1200257612
-      BoredPlayerAnim_2: -58059943
-      BoredPlayerAnim_3: -1918776391
-      BoredPlayerAnim_4: -288565621
+      FallPlayerAnim_0: 1686022871
+      FallPlayerAnim_1: 714524519
+      FallPlayerAnim_2: 991576113
+      FallPlayerAnim_3: -688130596
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

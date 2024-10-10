@@ -5724,12 +5724,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1987310977281509233, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4305651202667229019, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6306036465959286071, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: e2f9a127337def6cca8b13be07931754, type: 3}
+    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: muzzleFlashParent
+      value: 
+      objectReference: {fileID: 1967311339}
+    - target: {fileID: 7748444702979475681, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8571,6 +8583,11 @@ MonoBehaviour:
   canvasGroup: {fileID: 1720854851}
   triggerDistance: 6
   fadeSpeed: 3
+--- !u!1 &1967311339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5228038174342465386, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+  m_PrefabInstance: {fileID: 650432226}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

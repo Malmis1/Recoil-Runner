@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 071551593586ad74ea3e7ccda643c80a
+guid: e54293905a7222443aa99bc8a3a9ff50
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,64 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: YawnPlayerAnim_0
+      name: FallPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 7
-        y: 7
+        x: 6
+        y: 5
         width: 12
-        height: 18
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f555be3c2e1bd99438dda780b2b81a9b
-      internalID: -618224435
+      spriteID: fe3969f064930ce48b345d56435c654c
+      internalID: 698259569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YawnPlayerAnim_1
+      name: FallPlayerAnim_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 7
+        x: 25
+        y: 5
         width: 12
-        height: 18
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef0f15116fcbd3c45b0c0da994511fa2
-      internalID: 1592292584
+      spriteID: d7675be6d40c270479832c2c76fed9fb
+      internalID: -1104047600
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: YawnPlayerAnim_2
+      name: FallPlayerAnim_2
       rect:
         serializedVersion: 2
-        x: 45
-        y: 7
+        x: 44
+        y: 5
         width: 12
-        height: 18
+        height: 20
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f594587b00ad6bd4c8ef1babb5e8d516
-      internalID: 1821331748
+      spriteID: 65d3696aa049268469596b7c655793c1
+      internalID: -673720324
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FallPlayerAnim_3
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 5
+        width: 12
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f96f676f05953a4297fd894ed8c856c
+      internalID: 802135472
       vertices: []
       indices: 
       edges: []
@@ -183,9 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      YawnPlayerAnim_0: -618224435
-      YawnPlayerAnim_1: 1592292584
-      YawnPlayerAnim_2: 1821331748
+      FallPlayerAnim_0: 698259569
+      FallPlayerAnim_1: -1104047600
+      FallPlayerAnim_2: -673720324
+      FallPlayerAnim_3: 802135472
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
