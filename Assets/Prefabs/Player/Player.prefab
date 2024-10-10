@@ -428,7 +428,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 4243565302050763436}
   muzzleFlash: {fileID: 0}
-  muzzleFlashParent: {fileID: 0}
+  muzzleFlashParent: {fileID: 5228038174342465386}
   gunSpriteRenderer: {fileID: 6306036465959286071}
   recoilForce: 7
   fireRate: 0.2
