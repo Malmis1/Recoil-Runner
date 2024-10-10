@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
-using System;
 
 public class WeaponController : MonoBehaviour
 {
@@ -44,7 +40,6 @@ public class WeaponController : MonoBehaviour
     private void ResetVelocity() {
         // rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(rb.velocity.x * 0, rb.velocity.y * 0); // can individually change the velocity for the axes
-
     }
 
     public void ApplyRecoil(float recoilForce) {

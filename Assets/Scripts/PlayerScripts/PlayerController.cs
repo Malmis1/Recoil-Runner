@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
 
 public class PlayerController : MonoBehaviour
@@ -22,9 +21,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The player's eyes")]
     [SerializeField] private Transform eyes;
 
-    [Tooltip("The amount of seconds the ground check is delayed after shooting")]
-    [SerializeField] public float groundCheckDelay = 0.5f;
-
     private const float groundedRadius = .2f;
     private bool isGrounded;
     private Rigidbody2D rb;
@@ -32,26 +28,44 @@ public class PlayerController : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     private SpriteRenderer spriteRenderer;
 
-    public UnityEvent OnLandEvent;
-
     private float defaultMovementSmoothing;
 
     private Coroutine airControlCoroutine;
 
+    [Tooltip("Maximum horizontal speed")]
+    public float maxHorizontalSpeed = 10f;
+
+    [Tooltip("Maximum vertical speed")]
+    public float maxVerticalSpeed = 20f;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        OnLandEvent ??= new UnityEvent();
-
-        OnLandEvent.AddListener(IncreaseAirControl);
-
         spriteRenderer = GetComponent<SpriteRenderer>();
-
         defaultMovementSmoothing = movementSmoothing;
     }
 
     private void FixedUpdate() {
         CheckIfGrounded();
-        RotateTowardsCursor(); 
+        RotateTowardsCursor();
+
+        // Limit the player's velocity
+        LimitVelocity();
+    }
+
+    private void LimitVelocity() {
+        Vector2 clampedVelocity = rb.velocity;
+
+        // Limit horizontal speed
+        if (Mathf.Abs(clampedVelocity.x) > maxHorizontalSpeed) {
+            clampedVelocity.x = Mathf.Sign(clampedVelocity.x) * maxHorizontalSpeed;
+        }
+
+        // Limit vertical speed
+        if (Mathf.Abs(clampedVelocity.y) > maxVerticalSpeed) {
+            clampedVelocity.y = Mathf.Sign(clampedVelocity.y) * maxVerticalSpeed;
+        }
+
+        rb.velocity = clampedVelocity;
     }
 
     private void CheckIfGrounded() {
@@ -59,7 +73,8 @@ public class PlayerController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
 
         if (isGrounded && !wasGrounded) {
-            OnLandEvent.Invoke(); // Player landed
+            // Player has just landed
+            RestoreFullAirControl();
         }
     }
 
@@ -114,27 +129,55 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void ReduceAirControl() {
-        movementSmoothing = 0.75f;
+    public void AdjustAirControl(float recoilForce)
+    {
+        movementSmoothing = 0.5f;
 
-        if (airControlCoroutine != null) {
+        if (airControlCoroutine != null)
+        {
+            StopCoroutine(airControlCoroutine);
+            airControlCoroutine = null;
+        }
+    }
+
+    public void StartRestoreAirControl(float recoilForce)
+    {
+        if (airControlCoroutine != null)
+        {
             StopCoroutine(airControlCoroutine);
         }
-
-        airControlCoroutine = StartCoroutine(CheckGroundedAfterDelay(groundCheckDelay));
+        airControlCoroutine = StartCoroutine(RestoreAirControl(recoilForce));
     }
 
-    private IEnumerator CheckGroundedAfterDelay(float delay) {
-        yield return new WaitForSeconds(delay);
+    private IEnumerator RestoreAirControl(float recoilForce)
+    {
+        float duration = recoilForce / 4f; // How fast you get air control back (PS: Less value means longer)
+        float elapsedTime = 0f;
 
-        if (isGrounded) {
-            IncreaseAirControl();
+        while (elapsedTime < duration)
+        {
+            if (isGrounded)
+            {
+                RestoreFullAirControl();
+                yield break;
+            }
+
+            movementSmoothing = Mathf.Lerp(0.5f, defaultMovementSmoothing, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+
+        movementSmoothing = defaultMovementSmoothing;
+        airControlCoroutine = null;
     }
 
-    private void IncreaseAirControl() {
-        if (!Input.GetButton("Fire1")) {
-            movementSmoothing = defaultMovementSmoothing;
+    private void RestoreFullAirControl()
+    {
+        movementSmoothing = defaultMovementSmoothing;
+
+        if (airControlCoroutine != null)
+        {
+            StopCoroutine(airControlCoroutine);
             airControlCoroutine = null;
         }
     }

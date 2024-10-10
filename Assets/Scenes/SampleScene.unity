@@ -2050,17 +2050,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: additiveRecoilAngleThreshold
-      value: 250
+    - target: {fileID: 1987310977281509233, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: fireRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: recoilForce
-      value: 15
+    - target: {fileID: 4763287202418187126, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b87dcc660236dbfadb8801bf7416ddf5, type: 3}
+    - target: {fileID: 6931894726740868116, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.013
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

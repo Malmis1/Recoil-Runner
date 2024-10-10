@@ -21,17 +21,22 @@ public class GunScript : MonoBehaviour {
 
     private float nextFireTime = 0f;
 
+    private bool isFlipped;
+
     void Update() {
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
 
         FlipGunSprite();
 
-        if (Input.GetButton("Fire1") && Time.time >= nextFireTime && isAutomatic) { // GetButton for automatic firing
-            Fire();
-        } 
-        else if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime && !isAutomatic) {
-            Fire();
+        if (isAutomatic) {
+            if (Input.GetButton("Fire1") && Time.time >= nextFireTime) {
+                Fire();
+            }
+        } else {
+            if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
+                Fire();
+            }
         }
     }
 
@@ -50,9 +55,7 @@ public class GunScript : MonoBehaviour {
         bool shouldFlip = mouseWorldPosition.x < controller.transform.position.x;
 
         gunSpriteRenderer.flipY = shouldFlip;
-    }
 
-    public void FlipSpriteY(SpriteRenderer spriteRenderer) {
-        spriteRenderer.flipY = !spriteRenderer.flipY;
+        isFlipped = shouldFlip;
     }
 }

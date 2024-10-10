@@ -4,8 +4,18 @@ public class PlayerMovement : MonoBehaviour {
     [Tooltip("The movement controller for the player")]
     public PlayerController controller;
 
+    private GunScript gunScript;
+
     float horizontalMove = 0f;
     bool jump = false;
+
+    private void Awake()
+    {
+        if (gunScript == null)
+        {
+            gunScript = GetComponentInChildren<GunScript>();
+        }
+    }
 
     void Update() { // Get input
         horizontalMove = Input.GetAxisRaw("Horizontal");
@@ -14,8 +24,14 @@ public class PlayerMovement : MonoBehaviour {
             jump = true;
         }
 
-        if (Input.GetButton("Fire1")) { // Disable air control when firing
-            controller.ReduceAirControl();
+        // Detect when the player starts firing
+        if (Input.GetButtonDown("Fire1")) {
+            controller.AdjustAirControl(gunScript.recoilForce);
+        }
+
+        // Detect when the player stops firing
+        if (Input.GetButtonUp("Fire1")) {
+            controller.StartRestoreAirControl(gunScript.recoilForce);
         }
     }
 
