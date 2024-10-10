@@ -5,9 +5,12 @@ public class GunScript : MonoBehaviour {
     [Tooltip("The controller for the weapon")]
     public WeaponController controller;
 
-    [Header("Particle system")]
+    [Header("Muzzle flash")]
     [Tooltip("Muzzleflash for the gun")]
     public ParticleSystem muzzleFlash;
+
+    [Tooltip("Reference to the MuzzleFlash game object")]
+    public GameObject muzzleFlashParent;
 
     [Header("Sprite renderer")]
     [Tooltip("The sprite renderer for the gun")]
