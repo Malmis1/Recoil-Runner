@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7125fe08a1c464942abaa7e7b15f336a
+guid: 412810d8931eac54eb75ca9487f633af
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,12 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FallPlayerAnim_0
+      name: JumpPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 5
+        x: 7
         y: 5
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -124,19 +124,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26e31c803ca695d4bb1d58dd198efb8d
-      internalID: 1686022871
+      spriteID: 12ff591a81f6f4a419b958472f6823b1
+      internalID: -1780063534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FallPlayerAnim_1
+      name: JumpPlayerAnim_1
       rect:
         serializedVersion: 2
-        x: 24
+        x: 28
         y: 5
-        width: 14
+        width: 12
         height: 20
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -145,50 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16a1bd3841eb3a54bbbd57c91efc6473
-      internalID: 714524519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallPlayerAnim_2
-      rect:
-        serializedVersion: 2
-        x: 43
-        y: 5
-        width: 14
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bef052c9ae77aab44a3bb6aa014952f6
-      internalID: 991576113
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallPlayerAnim_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 5
-        width: 14
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56d9edc61dc13a443844969dbc80da40
-      internalID: -688130596
+      spriteID: 8a56c99e3cbe53c469562044d88bf4c1
+      internalID: -1984156920
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FallPlayerAnim_0: 1686022871
-      FallPlayerAnim_1: 714524519
-      FallPlayerAnim_2: 991576113
-      FallPlayerAnim_3: -688130596
+      JumpPlayerAnim_0: -1780063534
+      JumpPlayerAnim_1: -1984156920
+      JumpPlayerAnim_2: 1367848071
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -18,10 +18,60 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
 
+    [Header("Animator")]
+    [Tooltip("Animator component on the player")]
+    public Animator playerAnimator;
+
+    [Tooltip("Animator controller with hands")]
+    public RuntimeAnimatorController handsController;
+
+    [Tooltip("Animator controller without hands")]
+    public RuntimeAnimatorController noHandsController;
+
     private Rigidbody2D rb;
+
+    [Header("Sprite Renderer")]
+    public SpriteRenderer gunSpriteRenderer;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            ShowWeapon(false); 
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            ShowWeapon(true); 
+            ChangeWeaponProperties(15f, 0.5f, false); 
+            changeToWeaponSprite1(gunSpriteRenderer);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            ShowWeapon(true); 
+            ChangeWeaponProperties(5f, 0.2f, true); 
+            changeToWeaponSprite2(gunSpriteRenderer);
+        }
+    }
+
+    public void ShowWeapon(bool show) {
+        gun.SetActive(show); 
+
+        if (show) {
+            playerAnimator.runtimeAnimatorController = noHandsController; 
+        } else {
+            playerAnimator.runtimeAnimatorController = handsController; 
+        }
+    }
+
+    public void ChangeWeaponProperties(float recoil, float fireRate, bool isAutomatic) {
+        GunScript gunScript = gun.GetComponent<GunScript>();
+        if (gunScript != null) {
+            gunScript.recoilForce = recoil;
+            gunScript.fireRate = fireRate;
+            gunScript.isAutomatic = isAutomatic;
+        }
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
@@ -53,7 +103,7 @@ public class WeaponController : MonoBehaviour
             Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
         }
     }
-
+    
     public void changeToWeaponSprite1(SpriteRenderer spriteRenderer) {
         Sprite changedSprite = Resources.Load<Sprite>("Art/Weapons/Weapon1");
 

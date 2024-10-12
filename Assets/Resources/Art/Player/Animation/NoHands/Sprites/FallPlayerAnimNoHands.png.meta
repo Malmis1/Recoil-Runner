@@ -113,12 +113,12 @@ TextureImporter:
       name: FallPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 6
+        x: 5
         y: 5
         width: 12
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -139,7 +139,7 @@ TextureImporter:
         width: 12
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: FallPlayerAnim_2
       rect:
         serializedVersion: 2
-        x: 44
+        x: 45
         y: 5
         width: 12
         height: 20
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,27 +168,6 @@ TextureImporter:
       bones: []
       spriteID: 65d3696aa049268469596b7c655793c1
       internalID: -673720324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallPlayerAnim_3
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 5
-        width: 12
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7f96f676f05953a4297fd894ed8c856c
-      internalID: 802135472
       vertices: []
       indices: 
       edges: []

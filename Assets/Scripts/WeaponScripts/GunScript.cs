@@ -45,22 +45,6 @@ public class GunScript : MonoBehaviour {
                 Fire();
             }
         }
-
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            controller.changeToWeaponSprite1(gunSpriteRenderer);
-
-            recoilForce = 15f;
-            fireRate = 0.5f;
-            isAutomatic = false;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            controller.changeToWeaponSprite2(gunSpriteRenderer);
-
-            recoilForce = 5f;
-            fireRate = 0.2f;
-            isAutomatic = true;
-        }
     }
 
     private void Fire() { // Everything that should happen when player fires
