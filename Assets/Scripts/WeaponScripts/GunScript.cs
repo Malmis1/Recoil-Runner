@@ -5,9 +5,12 @@ public class GunScript : MonoBehaviour {
     [Tooltip("The controller for the weapon")]
     public WeaponController controller;
 
-    [Header("Particle system")]
+    [Header("Muzzle flash")]
     [Tooltip("Muzzleflash for the gun")]
     public ParticleSystem muzzleFlash;
+
+    [Tooltip("Reference to the MuzzleFlash game object")]
+    public GameObject muzzleFlashParent;
 
     [Header("Sprite renderer")]
     [Tooltip("The sprite renderer for the gun")]
@@ -27,6 +30,10 @@ public class GunScript : MonoBehaviour {
 
     private bool isFlipped;
 
+    void Start() {
+        ChangeToWeapon1();
+    }
+
     void Update() {
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
@@ -44,19 +51,11 @@ public class GunScript : MonoBehaviour {
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            controller.changeToWeaponSprite1(gunSpriteRenderer);
-
-            recoilForce = 15f;
-            fireRate = 0.5f;
-            isAutomatic = false;
+            ChangeToWeapon1();
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            controller.changeToWeaponSprite2(gunSpriteRenderer);
-
-            recoilForce = 5f;
-            fireRate = 0.2f;
-            isAutomatic = true;
+            ChangeToWeapon2();
         }
     }
 
@@ -64,9 +63,9 @@ public class GunScript : MonoBehaviour {
         controller.ApplyRecoil(recoilForce);
         nextFireTime = Time.time + fireRate;
 
-        muzzleFlash.Play();
+        controller.PlayMuzzleFlashEffect();
 
-        controller.sendRayCastAndPlayHitEffect();
+        controller.SendRayCastAndPlayHitEffect();
     }
 
     private void FlipGunSprite() {
@@ -78,4 +77,21 @@ public class GunScript : MonoBehaviour {
 
         isFlipped = shouldFlip;
     }
+
+    private void ChangeToWeapon1() {
+        controller.ChangeToWeaponVisuals1(gunSpriteRenderer, muzzleFlashParent);
+
+        recoilForce = 15f;
+        fireRate = 0.5f;
+        isAutomatic = false;
+    }
+
+    private void ChangeToWeapon2() {
+        controller.ChangeToWeaponVisuals2(gunSpriteRenderer, muzzleFlashParent);
+
+        recoilForce = 5f;
+        fireRate = 0.2f;
+        isAutomatic = true;
+    }
+
 }

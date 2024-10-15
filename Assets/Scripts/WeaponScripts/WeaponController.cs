@@ -21,6 +21,8 @@ public class WeaponController : MonoBehaviour
     private bool initialRecoil = true;
     private PlayerController playerController;
 
+    private GameObject currentMuzzleFlashInstance;
+
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
@@ -57,7 +59,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void sendRayCastAndPlayHitEffect() {
+    public void SendRayCastAndPlayHitEffect() {
         Vector2 origin = gun.transform.position;
         Vector2 direction = gun.transform.up;
 
@@ -68,8 +70,8 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void changeToWeaponSprite1(SpriteRenderer spriteRenderer) {
-        Sprite changedSprite = Resources.Load<Sprite>("Art/Weapons/Weapon1");
+    public void ChangeWeaponSprite(SpriteRenderer spriteRenderer, string weaponSpritePath) {
+        Sprite changedSprite = Resources.Load<Sprite>(weaponSpritePath);
 
         if (changedSprite != null) {
             spriteRenderer.sprite = changedSprite;
@@ -78,13 +80,56 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void changeToWeaponSprite2(SpriteRenderer spriteRenderer) {
-        Sprite changedSprite = Resources.Load<Sprite>("Art/Weapons/SimpleWeapon");
+    public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath, int xPositionOfMuzzleFlash) {
+        if (currentMuzzleFlashInstance != null) {
+            Destroy(currentMuzzleFlashInstance);
+        }
 
-        if (changedSprite != null) {
-            spriteRenderer.sprite = changedSprite;
-        } else {
-            Debug.LogError("Sprite not found at the specified path.");
+        GameObject newMuzzleFlashPrefab = Resources.Load<GameObject>(muzzleFlashPath);
+
+        if (newMuzzleFlashPrefab != null) {
+            currentMuzzleFlashInstance = Instantiate(newMuzzleFlashPrefab, muzzleFlashParent.transform);
+
+            currentMuzzleFlashInstance.transform.localRotation = Quaternion.identity;
+            currentMuzzleFlashInstance.transform.localScale = Vector3.one;
+
+            // Adjustments of the muzzle flash position
+            Vector3 currentPosition = currentMuzzleFlashInstance.transform.localPosition;
+
+            currentPosition.x = xPositionOfMuzzleFlash;
+            currentPosition.y = 0f;
+
+            currentMuzzleFlashInstance.transform.localPosition = currentPosition;
+
+        }
+        else {
+            Debug.LogError("Failed to load muzzle flash prefab from path: " + muzzleFlashPath);
         }
     }
+
+    public void ChangeToWeaponVisuals1(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
+        ChangeWeaponSprite(spriteRenderer, "Art/Weapons/Weapon1");
+        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashRailgun", 0);
+    }
+
+    public void ChangeToWeaponVisuals2(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
+        ChangeWeaponSprite(spriteRenderer, "Art/Weapons/SimpleWeapon");
+        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashSimpleWeapon", -3);
+    }
+
+    public void PlayMuzzleFlashEffect() {
+    if (currentMuzzleFlashInstance != null) {
+        ParticleSystem particleSystem = currentMuzzleFlashInstance.GetComponent<ParticleSystem>();
+        if (particleSystem != null) {
+            particleSystem.Play();
+        }
+        else {
+            Debug.LogError("No ParticleSystem found on the current muzzle flash instance.");
+        }
+    }
+    else {
+        Debug.LogError("No current muzzle flash instance to play.");
+    }
+}
+
 }
