@@ -42,9 +42,9 @@ public class WeaponController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x * 0, rb.velocity.y * 0); // can individually change the velocity for the axes
     }
 
-    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold) {
+    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold, bool initialRecoilResetsVelocity) {
         Vector2 recoilDirection = -gun.transform.up;
-        if (initialRecoil) {
+        if (initialRecoilResetsVelocity && initialRecoil) {
             ResetVelocity(); // Reset the velocity first so the recoil is consistent
             initialRecoil = false;
         }

@@ -25,6 +25,8 @@ public class GunScript : MonoBehaviour {
 
     [Tooltip("The angle in which the recoil will be added to the velocity instead of resetting it")]
     public float additiveRecoilAngleThreshold = 250f;
+    [Tooltip("Determines if the initial recoil applied after being grounded resets the player's velocity")]
+    public bool initialRecoilResetsVelocity = true;
 
     [Tooltip("If the weapon is automatic or not")]
     public bool isAutomatic = false;
@@ -63,7 +65,7 @@ public class GunScript : MonoBehaviour {
     }
 
     private void Fire() { // Everything that should happen when player fires
-        controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold);
+        controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
         nextFireTime = Time.time + fireRate;
 
         controller.PlayMuzzleFlashEffect();
@@ -87,6 +89,7 @@ public class GunScript : MonoBehaviour {
         recoilForce = 15f;
         fireRate = 0.5f;
         additiveRecoilAngleThreshold = 250;
+        initialRecoilResetsVelocity = true;
         isAutomatic = false;
     }
 
@@ -96,6 +99,7 @@ public class GunScript : MonoBehaviour {
         recoilForce = 5f;
         fireRate = 0.2f;
         additiveRecoilAngleThreshold = 360;
+        initialRecoilResetsVelocity = false;
         isAutomatic = true;
     }
 
