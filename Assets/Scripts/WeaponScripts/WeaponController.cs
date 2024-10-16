@@ -14,8 +14,6 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
 
-    [Tooltip("The angle in which the recoil will be added to the velocity instead of resetting it")]
-    public float additiveRecoilAngleThreshold = 250f;
 
     private Rigidbody2D rb;
     private bool initialRecoil = true;
@@ -44,7 +42,7 @@ public class WeaponController : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x * 0, rb.velocity.y * 0); // can individually change the velocity for the axes
     }
 
-    public void ApplyRecoil(float recoilForce) {
+    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold) {
         Vector2 recoilDirection = -gun.transform.up;
         if (initialRecoil) {
             ResetVelocity(); // Reset the velocity first so the recoil is consistent
