@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
         Walk,
         Jump,
         Fall,
-        Dead
+        Dead,
     }
 
     // The player's current state (walking, idle, jumping, or falling)

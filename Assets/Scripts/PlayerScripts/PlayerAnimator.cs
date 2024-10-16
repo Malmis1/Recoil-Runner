@@ -13,6 +13,7 @@ public class PlayerAnimator : MonoBehaviour
     public PlayerController playerController;
     [Tooltip("The animator component that controls the player's animations")]
     public Animator animator;
+    private Rigidbody2D rb;
 
     /// <summary>
     /// Description:
@@ -24,6 +25,7 @@ public class PlayerAnimator : MonoBehaviour
     /// </summary>
     void Start()
     {
+        rb = playerController.GetComponent<Rigidbody2D>();
         ReadPlayerStateAndAnimate();
     }
 
@@ -54,49 +56,82 @@ public class PlayerAnimator : MonoBehaviour
         {
             return;
         }
-        if (playerController.state == PlayerController.PlayerState.Idle)
+
+        ResetAnimations();
+
+        // Shooting direction
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 shootingDirection = (mousePosition - transform.position).normalized;
+
+         // Check movement states
+        bool isMovingRight = rb.velocity.x > 0;
+        bool isMovingLeft = rb.velocity.x < 0;
+
+        // Calculate the angle in degrees
+        float angle = Vector2.SignedAngle(Vector2.right, shootingDirection); // Use Vector2.right for rightward direction
+
+        // Shooting animations
+        if (Input.GetButton("Fire1"))
         {
-            animator.SetBool("isIdle", true);
+            // Determine shooting direction based on angle
+            if (angle >= 45 && angle < 135)
+            {
+                // Shooting upwards
+                UpdateMovementAnimation();
+            }
+            else if (angle < -45 && angle > -135)
+            {
+                // Shooting downwards
+                animator.SetBool("isShootingDown", true);
+            }
+            else if (angle >= -45 && angle < 45)
+            {
+                // Shooting right
+                animator.SetBool("isShootingHorizontal", true); 
+            }
+            else if (angle < -135 || angle >= 135)
+            {
+                // Shooting left
+                animator.SetBool("isShootingHorizontal", true); 
+            }
         }
         else
         {
-            animator.SetBool("isIdle", false);
+            // If not shooting, determine state based on player's movement
+            UpdateMovementAnimation();
         }
 
-        if (playerController.state == PlayerController.PlayerState.Jump)
-        {
-            animator.SetBool("isJumping", true);
-        }
-        else
-        {
-            animator.SetBool("isJumping", false);
-        }
+        // Uncomment when adding the dead state
+        // animator.SetBool("isDead", playerController.state == PlayerController.PlayerState.Dead);
+    }
 
-        if (playerController.state == PlayerController.PlayerState.Fall)
-        {
-            animator.SetBool("isFalling", true);
-        }
-        else
-        {
-            animator.SetBool("isFalling", false);
-        }
+    private void ResetAnimations() 
+    {
+        animator.SetBool("isIdle", false);
+        animator.SetBool("isJumping", false);
+        animator.SetBool("isFalling", false);
+        animator.SetBool("isWalking", false);
+        animator.SetBool("isShootingHorizontal", false);
+        animator.SetBool("isShootingDown", false);
+    }
 
-        if (playerController.state == PlayerController.PlayerState.Walk)
+    private void UpdateMovementAnimation()
+    {
+        // Determine state based on player's movement
+        switch (playerController.state)
         {
-            animator.SetBool("isWalking", true);
+            case PlayerController.PlayerState.Idle:
+                animator.SetBool("isIdle", true);
+                break;
+            case PlayerController.PlayerState.Jump:
+                animator.SetBool("isJumping", true);
+                break;
+            case PlayerController.PlayerState.Fall:
+                animator.SetBool("isFalling", true);
+                break;
+            case PlayerController.PlayerState.Walk:
+                animator.SetBool("isWalking", true);
+                break;
         }
-        else
-        {
-            animator.SetBool("isWalking", false);
-        }
-
-        // if (playerController.state == PlayerController.PlayerState.Dead)
-        // {
-        //    animator.SetBool("isDead", true);
-        //}
-        //else
-        //{
-        //    animator.SetBool("isDead", false);
-        //}
     }
 }
