@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6a21bd77f8648f24e91cde16311dbbd5
+guid: 071551593586ad74ea3e7ccda643c80a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,75 +110,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WalkPlayerAnim_0
+      name: YawnPlayerAnim_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 9
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e3772232245140498fc2d4462f38c83
-      internalID: 1686362267
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkPlayerAnim_1
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 9
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ef44b27ce77903a48a2f8c0bbad03b63
-      internalID: 1791051387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkPlayerAnim_2
-      rect:
-        serializedVersion: 2
-        x: 45
-        y: 9
-        width: 14
-        height: 18
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ab8d80bcebbb87e4fa4ed9840b4543e2
-      internalID: 1301997415
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: WalkPlayerAnim_3
-      rect:
-        serializedVersion: 2
-        x: 62
-        y: 9
-        width: 14
+        x: 7
+        y: 7
+        width: 12
         height: 18
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -187,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79a5bbd1ba8c0714cbb8bac902f75d9a
-      internalID: 63128647
+      spriteID: 1f84165307f56fd4c857b168be449c9c
+      internalID: 176837194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YawnPlayerAnim_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 7
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9fb9dc352da00c4b8f146b8ca43d220
+      internalID: -2008043280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: YawnPlayerAnim_2
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 7
+        width: 12
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 742506d584684794199012f5466127f4
+      internalID: 720923530
       vertices: []
       indices: 
       edges: []
@@ -204,10 +183,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      WalkPlayerAnim_0: 1686362267
-      WalkPlayerAnim_1: 1791051387
-      WalkPlayerAnim_2: 1301997415
-      WalkPlayerAnim_3: 63128647
+      YawnPlayerAnim_0: 176837194
+      YawnPlayerAnim_1: -2008043280
+      YawnPlayerAnim_2: 720923530
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

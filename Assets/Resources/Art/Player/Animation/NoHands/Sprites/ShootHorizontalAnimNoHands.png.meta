@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7125fe08a1c464942abaa7e7b15f336a
+guid: 746bddeceb11a0047828bd6c8ce02b99
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,85 +110,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: FallPlayerAnim_0
+      name: ShootHorizontalAnim_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 7
-        width: 12
+        x: 7
+        y: 6
+        width: 14
         height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 733afacf3781ece45a2a945db966befb
-      internalID: -1633374398
+      spriteID: 0689d86948473b144932944f8270bb8b
+      internalID: -157036120
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: FallPlayerAnim_1
+      name: ShootHorizontalAnim_1
       rect:
         serializedVersion: 2
         x: 25
-        y: 7
-        width: 12
+        y: 6
+        width: 14
         height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9fcad61c33ec464d83d2a3dffc15d25
-      internalID: 751724521
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallPlayerAnim_2
-      rect:
-        serializedVersion: 2
-        x: 44
-        y: 7
-        width: 12
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ddcab9407363d424bb6eea9436d6678b
-      internalID: -1105701430
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: FallPlayerAnim_3
-      rect:
-        serializedVersion: 2
-        x: 63
-        y: 7
-        width: 12
-        height: 18
-      alignment: 9
-      pivot: {x: 0.5, y: 0.45}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 66ff6c62f3132c7478565042c7a57839
-      internalID: -1500479634
+      spriteID: 847e03dd9d854874a97a1d75a116c78f
+      internalID: -432100895
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      FallPlayerAnim_0: -1633374398
-      FallPlayerAnim_1: 751724521
-      FallPlayerAnim_2: -1105701430
-      FallPlayerAnim_3: -1500479634
+      FallLeftNoHandsAnim_2: -190878723
+      ShootHorizontalAnim_0: -157036120
+      ShootHorizontalAnim_1: -432100895
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

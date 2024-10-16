@@ -180,6 +180,10 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 119
+  playerAnimator: {fileID: 7748444702979475681}
+  handsController: {fileID: 9100000, guid: f334e493ae61fba48bfcf497a4e46608, type: 2}
+  noHandsController: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
+  gunSpriteRenderer: {fileID: 6306036465959286071}
 --- !u!114 &1720813195847083947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3417845322749527782
 Transform:
   m_ObjectHideFlags: 0
@@ -677,7 +681,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cdb76a0fc283aec4facefcde635ea4ae, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e2f9a127337def6cca8b13be07931754, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
