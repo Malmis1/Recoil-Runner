@@ -8,7 +8,10 @@ public class PauseScript : MonoBehaviour {
 
     private bool isPaused;
 
-    
+    void Start() {
+        UnPauseGame();
+    }
+
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (!isPaused) {
