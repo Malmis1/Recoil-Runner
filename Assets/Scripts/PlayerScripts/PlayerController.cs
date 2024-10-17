@@ -6,6 +6,10 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The movement speed")]
     public float moveSpeed = 40f;
 
+    [Tooltip("Leniency for jumping after not being grounded anymore")]
+    public float jumpGraceTime = 0.1f;
+    private float timeToStopJumpGrace = 0;
+
     [Tooltip("The force applied when jumping")]
     [SerializeField] private float jumpForce = 400f;
 
@@ -106,7 +110,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
 
         // Jump
-        if (isGrounded && jump) {
+        if (jump && (isGrounded || Time.time < timeToStopJumpGrace)) {
             isGrounded = false;
             isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
@@ -206,6 +210,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isGrounded)
         {
+            timeToStopJumpGrace = Time.time + jumpGraceTime;
             if (Mathf.Abs(rb.velocity.x) > 0.01f)
             {
                 SetState(PlayerState.Walk);
