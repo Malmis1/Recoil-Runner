@@ -113,7 +113,6 @@ public class PlayerController : MonoBehaviour
         Vector2 targetVelocity = new Vector2(move * moveSpeed * 10, 0);
 
         float maxDecel = move != 0 ? maxControlledDecel : maxDefaultDecel;
-        // The deceleration when the player moves in the opposite direction
 
         Vector2 deltaV = targetVelocity - rb.velocity;
         Vector2 accel = deltaV / Time.deltaTime;
