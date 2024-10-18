@@ -49,12 +49,10 @@ public class WeaponController : MonoBehaviour
             initialRecoil = false;
         }
         float angle = Vector2.Angle(recoilDirection, rb.velocity);
-        if (angle < additiveRecoilAngleThreshold / 2) {
-            rb.velocity += recoilDirection * recoilForce;
-        } else {
+        if (angle >= additiveRecoilAngleThreshold / 2) {
             ResetVelocity();
-            rb.velocity = recoilDirection * recoilForce;
         }
+        rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
     }
 
     public void SendRayCastAndPlayHitEffect() {

@@ -13,9 +13,6 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The force applied when jumping")]
     [SerializeField] private float jumpForce = 400f;
 
-    [Tooltip("The amount to smooth out movement")]
-    [Range(0, .5f)][SerializeField] private float movementSmoothing = .05f;
-
     [Tooltip("The layer to check for ground")]
     [SerializeField] private LayerMask whatIsGround;
 
@@ -29,18 +26,21 @@ public class PlayerController : MonoBehaviour
     private bool isGrounded;
     private Rigidbody2D rb;
     private bool facingRight = true;
-    private Vector3 velocity = Vector3.zero;
     private SpriteRenderer spriteRenderer;
-
-    private float defaultMovementSmoothing;
-
-    private Coroutine airControlCoroutine;
 
     [Tooltip("Maximum horizontal speed")]
     public float maxHorizontalSpeed = 10f;
 
     [Tooltip("Maximum vertical speed")]
     public float maxVerticalSpeed = 20f;
+
+    [Tooltip("Maximum acceleration of the player")]
+    public float maxAccel = 35f;
+    [Tooltip("The deceleration when the player moves")]
+    public float maxControlledDecel = 35f;
+    [Tooltip("The deceleration while the player is not moving")]
+    // Higher values will result in air drag which causes the player to slow down in the air
+    public float maxDefaultDecel = 5f;
     public enum PlayerState
     {
         Idle,
@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        defaultMovementSmoothing = movementSmoothing;
     }
 
     private void FixedUpdate() {
@@ -67,7 +66,7 @@ public class PlayerController : MonoBehaviour
         DetermineState();
 
         // Limit the player's velocity
-        LimitVelocity();
+        //LimitVelocity();
     }
 
     private void LimitVelocity() {
@@ -87,13 +86,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void CheckIfGrounded() {
-        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-
-        if (isGrounded && !wasGrounded) {
-            // Player has just landed
-            RestoreFullAirControl();
-        }
     }
 
     /// <summary>
@@ -106,8 +99,7 @@ public class PlayerController : MonoBehaviour
 
     public void Move(float move, bool jump) {
         // Run
-        Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
-        rb.velocity = Vector3.SmoothDamp(rb.velocity, targetVelocity, ref velocity, movementSmoothing);
+        MoveH(move);
 
         // Jump
         if (jump && (isGrounded || Time.time < timeToStopJumpGrace)) {
@@ -115,6 +107,20 @@ public class PlayerController : MonoBehaviour
             isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
         }
+    }
+
+    private void MoveH(float move) {
+        Vector2 targetVelocity = new Vector2(move * moveSpeed * 10, 0);
+
+        float maxDecel = move != 0 ? maxControlledDecel : maxDefaultDecel;
+        // The deceleration when the player moves in the opposite direction
+
+        Vector2 deltaV = targetVelocity - rb.velocity;
+        Vector2 accel = deltaV / Time.deltaTime;
+        float limit = Vector2.Dot(deltaV, rb.velocity) > 0f ? maxAccel : maxDecel;
+        Vector2 force = rb.mass * Vector2.ClampMagnitude(accel, limit);
+
+        rb.AddForce(new Vector2(force.x, 0), ForceMode2D.Force);
     }
 
     private void RotateTowardsCursor() {
@@ -145,59 +151,6 @@ public class PlayerController : MonoBehaviour
                 eyesPosition.x = -Mathf.Abs(eyesPosition.x);
             }
             eyes.localPosition = eyesPosition;
-        }
-    }
-
-    public void AdjustAirControl(float recoilForce)
-    {
-        movementSmoothing = 0.5f;
-
-        if (airControlCoroutine != null)
-        {
-            StopCoroutine(airControlCoroutine);
-            airControlCoroutine = null;
-        }
-    }
-
-    public void StartRestoreAirControl(float recoilForce)
-    {
-        if (airControlCoroutine != null)
-        {
-            StopCoroutine(airControlCoroutine);
-        }
-        airControlCoroutine = StartCoroutine(RestoreAirControl(recoilForce));
-    }
-
-    private IEnumerator RestoreAirControl(float recoilForce)
-    {
-        float duration = recoilForce / 4f; // How fast you get air control back (PS: Less value means longer)
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
-        {
-            if (isGrounded)
-            {
-                RestoreFullAirControl();
-                yield break;
-            }
-
-            movementSmoothing = Mathf.Lerp(0.5f, defaultMovementSmoothing, elapsedTime / duration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        movementSmoothing = defaultMovementSmoothing;
-        airControlCoroutine = null;
-    }
-
-    private void RestoreFullAirControl()
-    {
-        movementSmoothing = defaultMovementSmoothing;
-
-        if (airControlCoroutine != null)
-        {
-            StopCoroutine(airControlCoroutine);
-            airControlCoroutine = null;
         }
     }
 

@@ -90,7 +90,7 @@ public class GunScript : MonoBehaviour {
         fireRate = 0.5f;
         additiveRecoilAngleThreshold = 250;
         initialRecoilResetsVelocity = true;
-        isAutomatic = false;
+        isAutomatic = true;
     }
 
     private void ChangeToWeapon2() {

@@ -23,16 +23,6 @@ public class PlayerMovement : MonoBehaviour {
         if (Input.GetButtonDown("Jump")) {
             jump = true;
         }
-
-        // Detect when the player starts firing
-        if (Input.GetButtonDown("Fire1")) {
-            controller.AdjustAirControl(gunScript.recoilForce);
-        }
-
-        // Detect when the player stops firing
-        if (Input.GetButtonUp("Fire1")) {
-            controller.StartRestoreAirControl(gunScript.recoilForce);
-        }
     }
 
     void FixedUpdate() {
