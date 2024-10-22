@@ -854,7 +854,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 209293607}
-  - component: {fileID: 209293608}
   m_Layer: 5
   m_Name: AboutPage
   m_TagString: Untagged
@@ -884,18 +883,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &209293608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 209293606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &274749269
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,7 +1323,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 367781371}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &371346141
@@ -1883,7 +1870,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704705490}
-  - component: {fileID: 704705491}
   m_Layer: 5
   m_Name: TutorialQuestionPage
   m_TagString: Untagged
@@ -1913,18 +1899,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &704705491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704705489}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &730007395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2995,7 +2969,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1313397092}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &1313397094
@@ -3390,7 +3364,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1684307073}
-  - component: {fileID: 1684307074}
   m_Layer: 5
   m_Name: LevelSelectMenu
   m_TagString: Untagged
@@ -3418,18 +3391,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1684307074
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1684307072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1719768095
 GameObject:
   m_ObjectHideFlags: 0
@@ -3781,7 +3742,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1971133924}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 364b80eb7d24d4549a1e32f83c14f4cb, type: 3}
+  m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1973877433
