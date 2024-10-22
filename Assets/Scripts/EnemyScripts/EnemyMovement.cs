@@ -4,15 +4,16 @@ public class EnemyMovement : MonoBehaviour {
     [Tooltip("The movement controller for the enemy")]
     public EnemyController controller;
 
-    float horizontalMove = 0f;
+    float horizontalMove = 0.2f;
     bool jump = false;
 
     void Update() {
-        horizontalMove = 0.2f;
 
         if (!controller.IsMoving()) {
             SwitchDirection();
         }
+
+        RandomJump();
     }
 
     void FixedUpdate() {
@@ -22,5 +23,13 @@ public class EnemyMovement : MonoBehaviour {
 
     void SwitchDirection() {
         horizontalMove = horizontalMove * (-1.0f);
+    }
+
+    void RandomJump() {
+        int random = Random.Range(0, 50);
+        
+        if (random == 0) {
+            jump = true;
+        }
     }
 }
