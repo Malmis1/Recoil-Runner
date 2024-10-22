@@ -1657,6 +1657,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!20 &475554899 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+  m_PrefabInstance: {fileID: 6079604428312761367}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &548476268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -1707,11 +1712,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1061, y: 0.1759}
   m_EdgeRadius: 0.02
---- !u!20 &475554899 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-  m_PrefabInstance: {fileID: 6079604428312761367}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &697343968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2265,10 @@ PrefabInstance:
     - target: {fileID: 3417845322749527782, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0229
+      objectReference: {fileID: 0}
+    - target: {fileID: 3897454843417932996, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: minX
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 4763287202418187126, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Sprite
