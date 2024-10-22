@@ -88,7 +88,7 @@ public class GunScript : MonoBehaviour {
 
         recoilForce = 15f;
         fireRate = 0.5f;
-        additiveRecoilAngleThreshold = 250;
+        additiveRecoilAngleThreshold = 225;
         initialRecoilResetsVelocity = true;
         isAutomatic = true;
     }
