@@ -9,10 +9,18 @@ public class EnemyMovement : MonoBehaviour {
 
     void Update() {
         horizontalMove = 0.2f;
+
+        if (!controller.IsMoving()) {
+            SwitchDirection();
+        }
     }
 
     void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
+    }
+
+    void SwitchDirection() {
+        horizontalMove = horizontalMove * (-1.0f);
     }
 }

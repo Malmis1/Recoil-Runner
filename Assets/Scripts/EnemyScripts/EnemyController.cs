@@ -92,7 +92,7 @@ public class EnemyController : MonoBehaviour
         float xVel = rb.velocity.x;
         bool isMoving = false;
 
-        if (xVel < -0.001 || xVel > 0) {
+        if (Mathf.Abs(xVel) < 0.01f) {
             isMoving = true;
         }
 
