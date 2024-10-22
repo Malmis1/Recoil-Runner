@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7748444702979475681}
   - component: {fileID: 1465226290443700137}
   - component: {fileID: 8367137877836100255}
+  - component: {fileID: 8286010816812031077}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -137,17 +138,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
+  jumpGraceTime: 0.1
   jumpForce: 500
-  movementSmoothing: 0.05
   whatIsGround:
     serializedVersion: 2
     m_Bits: 119
   groundCheck: {fileID: 5251167963582078972}
   eyes: {fileID: 9188469316448821321}
-  groundCheckDelay: 0.5
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  maxHorizontalSpeed: 10
+  maxVerticalSpeed: 20
+  maxAccel: 35
+  maxControlledDecel: 35
+  maxDefaultDecel: 5
   state: 0
 --- !u!114 &4305651202667229019
 MonoBehaviour:
@@ -180,10 +182,6 @@ MonoBehaviour:
   hitLayers:
     serializedVersion: 2
     m_Bits: 119
-  playerAnimator: {fileID: 7748444702979475681}
-  handsController: {fileID: 9100000, guid: f334e493ae61fba48bfcf497a4e46608, type: 2}
-  noHandsController: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
-  gunSpriteRenderer: {fileID: 6306036465959286071}
 --- !u!114 &1720813195847083947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +250,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 853108847956066348}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5e42a8607766f6247a94a7660de4cf5a, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -300,7 +298,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c22289ff0ea5004a8ff60ce5dbeddf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificTag: Portal
+  portalTag: Portal
+--- !u!114 &8286010816812031077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853108847956066348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ef8cfbc7ac8601a88849760f210d0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1 &1388137580178813562
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,6 +447,8 @@ MonoBehaviour:
   gunSpriteRenderer: {fileID: 6306036465959286071}
   recoilForce: 7
   fireRate: 0.2
+  additiveRecoilAngleThreshold: 250
+  initialRecoilResetsVelocity: 1
   isAutomatic: 1
 --- !u!1 &2110764391603572472
 GameObject:
@@ -481,7 +494,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.007843138, g: 0.08235294, b: 0.10980392, a: 0}
+  m_BackGroundColor: {r: 0.21176471, g: 0.3254902, b: 0.31764707, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
