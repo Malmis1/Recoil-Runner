@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using UnityEngine;
-using System;
 
 public class WeaponController : MonoBehaviour
 {
@@ -18,12 +14,22 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
 
+
     private Rigidbody2D rb;
+    private bool initialRecoil = true;
+    private PlayerController playerController;
 
     private GameObject currentMuzzleFlashInstance;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        playerController = GetComponent<PlayerController>();
+    }
+    
+    private void Update() {
+        if (!initialRecoil && playerController.GetIsGrounded()) {
+            initialRecoil = true;
+        }
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
@@ -34,14 +40,18 @@ public class WeaponController : MonoBehaviour
     private void ResetVelocity() {
         // rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(rb.velocity.x * 0, rb.velocity.y * 0); // can individually change the velocity for the axes
-
     }
 
-    public void ApplyRecoil(float recoilForce) {
-        ResetVelocity(); // Reset the velocity first so the recoil is consistent
-
+    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold, bool initialRecoilResetsVelocity) {
         Vector2 recoilDirection = -gun.transform.up;
-
+        if (initialRecoilResetsVelocity && initialRecoil) {
+            ResetVelocity(); // Reset the velocity first so the recoil is consistent
+            initialRecoil = false;
+        }
+        float angle = Vector2.Angle(recoilDirection, rb.velocity);
+        if (angle >= additiveRecoilAngleThreshold / 2) {
+            ResetVelocity();
+        }
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
     }
 
