@@ -1662,8 +1662,6 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
   m_PrefabInstance: {fileID: 6079604428312761367}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-=======
 --- !u!1 &548476268 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -1714,7 +1712,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.1061, y: 0.1759}
   m_EdgeRadius: 0.02
->>>>>>> 143343ce4f5e944850740f8b333b41d504d250fa
 --- !u!1 &697343968
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,8 +2234,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-=======
     - target: {fileID: 1465226290443700137, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_Size.x
       value: 0.1
@@ -2299,11 +2294,13 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 2
       objectReference: {fileID: 0}
->>>>>>> 143343ce4f5e944850740f8b333b41d504d250fa
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 548476280}
   m_SourcePrefab: {fileID: 100100000, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
