@@ -6,14 +6,18 @@ public class EnemyMovement : MonoBehaviour {
 
     float horizontalMove = 0.2f;
     bool jump = false;
+    private float jumpTimer = 0.0f;
 
     void Update() {
+        jumpTimer -= Time.deltaTime;
+
+        if (jumpTimer <= 0f) {
+            RandomJump();
+        }
 
         if (!controller.IsMoving()) {
             SwitchDirection();
         }
-
-        RandomJump();
     }
 
     void FixedUpdate() {
@@ -26,10 +30,7 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void RandomJump() {
-        int random = Random.Range(0, 50);
-        
-        if (random == 0) {
-            jump = true;
-        }
+        jumpTimer = Random.Range(2f, 5f);
+        jump = true;
     }
 }

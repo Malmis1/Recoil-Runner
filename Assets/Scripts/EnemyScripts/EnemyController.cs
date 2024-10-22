@@ -15,9 +15,6 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The position to check if the enemy is grounded")]
     [SerializeField] private Transform groundCheck;
-
-    [Tooltip("The amount of seconds the ground check is delayed after shooting")]
-    [SerializeField] public float groundCheckDelay = 0.5f;
     
     private const float groundedRadius = .2f;
     private bool isGrounded;
@@ -44,12 +41,7 @@ public class EnemyController : MonoBehaviour
     }
 
     private void CheckIfGrounded() {
-        bool wasGrounded = isGrounded;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
-
-        if (isGrounded && !wasGrounded) {
-            OnLandEvent.Invoke(); // Enemy landed
-        }
     }
 
     public void Move(float move, bool jump) {
@@ -62,8 +54,6 @@ public class EnemyController : MonoBehaviour
             isGrounded = false;
             isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
-
-            Debug.Log("Jump");
         }
     }
 
