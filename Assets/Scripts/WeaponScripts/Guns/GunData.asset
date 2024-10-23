@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f269d829379aa4ca40d14429c119db, type: 3}
+  m_Name: GunData
+  m_EditorClassIdentifier: 
+  gunSprite: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 0}
+  recoilForce: 15
+  fireRate: 1
+  additiveRecoilAngleThreshold: 250
+  initialRecoilResetsVelocity: 1
+  isAutomatic: 0
