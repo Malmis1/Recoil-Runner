@@ -7,15 +7,24 @@ public class EnemyMovement : MonoBehaviour {
     float horizontalMove = 0.2f;
     bool jump = false;
     private float jumpTimer = 0.0f;
+    private float walkTimer = 0.0f;
+    private bool isWalking = true;
 
     void Update() {
-        jumpTimer -= Time.deltaTime;
+        if (horizontalMove > 0f) {
+            jumpTimer -= Time.deltaTime;
+        }
+        walkTimer -= Time.deltaTime;
 
         if (jumpTimer <= 0f) {
             RandomJump();
         }
 
-        if (!controller.IsMoving()) {
+        if (walkTimer <= 0f) {
+            RandomWalk();
+        }
+
+        if (!controller.IsMoving() && isWalking) {
             SwitchDirection();
         }
     }
@@ -30,7 +39,19 @@ public class EnemyMovement : MonoBehaviour {
     }
 
     void RandomJump() {
-        jumpTimer = Random.Range(2f, 5f);
+        jumpTimer = Random.Range(2f, 6f);
         jump = true;
+    }
+
+    void RandomWalk() {
+        walkTimer = Random.Range(4f, 8f);
+
+        if (horizontalMove > 0f) {
+            horizontalMove = 0.0f;
+            isWalking = false;
+        } else {
+            horizontalMove = 0.2f;
+            isWalking = true;
+        }
     }
 }
