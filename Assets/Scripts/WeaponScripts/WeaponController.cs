@@ -5,6 +5,9 @@ public class WeaponController : MonoBehaviour
     [Tooltip("The gun object the player character will hold")]
     public GameObject gun;
 
+    [Tooltip("List of GunData configurations")]
+    public GunData[] gunDataList;
+
     [Tooltip("Particle effect to play at the hit point")]
     public GameObject hitEffectPrefab;
 
@@ -14,22 +17,86 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
 
-
+    private int currentGunIndex = -1;
+    private GunScript gunScript;
     private Rigidbody2D rb;
     private bool initialRecoil = true;
     private PlayerController playerController;
-
     private GameObject currentMuzzleFlashInstance;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
+
+        if (gun != null) {
+            gunScript = gun.GetComponent<GunScript>();
+
+            Transform weaponTransform = gun.transform.Find("Weapon");
+            if (weaponTransform != null) {
+            } else {
+                Debug.LogError("Weapon child object not found on gun.");
+            }
+
+            // Find the MuzzleFlash in the "Weapon" child object
+            Transform muzzleFlashTransform = weaponTransform?.Find("MuzzleFlash");
+            if (muzzleFlashTransform != null) {
+                gunScript.muzzleFlashParent = muzzleFlashTransform.gameObject;
+            } else {
+                Debug.LogError("MuzzleFlash child object not found under Weapon.");
+            }
+        } else {
+            Debug.LogError("Gun object is not assigned in WeaponController.");
+        }
+
+        ChangeGun(0);
     }
     
     private void Update() {
+        HandleWeaponSwitching();
+
         if (!initialRecoil && playerController.GetIsGrounded()) {
             initialRecoil = true;
         }
+    }
+
+    public void ChangeGun(int gunIndex)
+    {
+        if (gunIndex >= 0 && gunIndex < gunDataList.Length)
+        {
+            gun.SetActive(true);  // Show the gun
+            currentGunIndex = gunIndex;
+
+            // Apply the GunData to the GunScript
+            gunScript.ApplyGunData(gunDataList[gunIndex]);
+        }
+        else
+        {
+            Debug.LogError("Invalid gun index");
+        }
+    }
+
+     private void HandleWeaponSwitching()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            DeactivateGun();  // No gun equipped
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ChangeGun(0);  // Gun configuration 1
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ChangeGun(1);  // Gun configuration 2
+        }
+    }
+
+    private void DeactivateGun()
+    {
+        gun.SetActive(false);  // Hide the gun
+        currentGunIndex = -1;
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
@@ -66,15 +133,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void ChangeWeaponSprite(SpriteRenderer spriteRenderer, string weaponSpritePath) {
-        Sprite changedSprite = Resources.Load<Sprite>(weaponSpritePath);
-
-        if (changedSprite != null) {
-            spriteRenderer.sprite = changedSprite;
-        } else {
-            Debug.LogError("Sprite not found at the specified path.");
-        }
-    }
+    
 
     public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath, int xPositionOfMuzzleFlash) {
         if (currentMuzzleFlashInstance != null) {
@@ -101,16 +160,6 @@ public class WeaponController : MonoBehaviour
         else {
             Debug.LogError("Failed to load muzzle flash prefab from path: " + muzzleFlashPath);
         }
-    }
-
-    public void ChangeToWeaponVisuals1(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
-        ChangeWeaponSprite(spriteRenderer, "Art/Weapons/Weapon1");
-        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashRailgun", 0);
-    }
-
-    public void ChangeToWeaponVisuals2(SpriteRenderer spriteRenderer, GameObject muzzleFlashParent) {
-        ChangeWeaponSprite(spriteRenderer, "Art/Weapons/SimpleWeapon");
-        ChangeMuzzleFlash(muzzleFlashParent, "ParticleSystems/MuzzleFlash/MuzzleFlashSimpleWeapon", -3);
     }
 
     public void PlayMuzzleFlashEffect() {

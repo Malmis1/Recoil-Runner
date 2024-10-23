@@ -5,40 +5,33 @@ public class GunScript : MonoBehaviour {
     [Tooltip("The controller for the weapon")]
     public WeaponController controller;
 
-    [Header("Muzzle flash")]
-    [Tooltip("Muzzleflash for the gun")]
-    public ParticleSystem muzzleFlash;
-
     [Tooltip("Reference to the MuzzleFlash game object")]
     public GameObject muzzleFlashParent;
 
-    [Header("Sprite renderer")]
-    [Tooltip("The sprite renderer for the gun")]
-    public SpriteRenderer gunSpriteRenderer;
-
-    [Header("Gun settings")]
-    [Tooltip("The force/recoil which should be applied to player when weapon is fired")]
-    public float recoilForce = 15f;
-
-    [Tooltip("The time between shots (in seconds)")]
-    public float fireRate = 1.0f;
-
-    [Tooltip("The angle in which the recoil will be added to the velocity instead of resetting it")]
-    public float additiveRecoilAngleThreshold = 250f;
-    [Tooltip("Determines if the initial recoil applied after being grounded resets the player's velocity")]
-    public bool initialRecoilResetsVelocity = true;
-
-    [Tooltip("If the weapon is automatic or not")]
-    public bool isAutomatic = false;
-
+    private  SpriteRenderer gunSpriteRenderer;
+    private ParticleSystem muzzleFlash;
+    private float recoilForce;
+    private float fireRate;
+    private float additiveRecoilAngleThreshold;
+    private bool initialRecoilResetsVelocity;
+    private bool isAutomatic;
+    
     private float nextFireTime = 0f;
 
     private bool isFlipped;
 
-    void Start() {
-        ChangeToWeapon1();
+    private void Awake() {
+        Transform weaponTransform = transform.Find("Weapon");
+        if (weaponTransform != null) {
+            gunSpriteRenderer = weaponTransform.GetComponent<SpriteRenderer>();
+            if (gunSpriteRenderer == null) {
+                Debug.LogError("No SpriteRenderer found on Weapon child object.");
+            }
+        } else {
+            Debug.LogError("Weapon child object not found.");
+        }
     }
-
+    
     void Update() {
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
@@ -54,25 +47,45 @@ public class GunScript : MonoBehaviour {
                 Fire();
             }
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            ChangeToWeapon1();
+    public void ApplyGunData(GunData gunData) {
+        // Set stats
+        recoilForce = gunData.recoilForce;
+        fireRate = gunData.fireRate;
+        additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
+        initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
+        isAutomatic = gunData.isAutomatic;
+
+        // Set sprite
+        if (gunSpriteRenderer != null) {
+            gunSpriteRenderer.sprite = gunData.gunSprite;
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            ChangeToWeapon2();
+        // Instantiate the muzzle flash prefab
+        if (gunData.muzzleFlashPrefab != null) {
+            ChangeMuzzleFlash(gunData.muzzleFlashPrefab, gunData.muzzleFlashOffset);
         }
     }
 
-    private void Fire() { // Everything that should happen when player fires
-        controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
-        nextFireTime = Time.time + fireRate;
+    private void ChangeMuzzleFlash(GameObject newMuzzleFlashPrefab, Vector3 muzzleFlashOffset) {
+        if (muzzleFlash != null)
+        {
+            Destroy(muzzleFlash.gameObject); 
+        }
 
-        controller.PlayMuzzleFlashEffect();
-
-        controller.SendRayCastAndPlayHitEffect();
+        if (newMuzzleFlashPrefab != null)
+        {
+            GameObject newMuzzleFlashInstance = Instantiate(newMuzzleFlashPrefab, muzzleFlashParent.transform);
+        
+            newMuzzleFlashInstance.transform.localPosition = muzzleFlashOffset;
+            muzzleFlash = newMuzzleFlashInstance.GetComponent<ParticleSystem>();
+        }
+        else
+        {
+            Debug.LogError("Muzzle flash prefab is null.");
+        }
     }
-
     private void FlipGunSprite() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -83,24 +96,21 @@ public class GunScript : MonoBehaviour {
         isFlipped = shouldFlip;
     }
 
-    private void ChangeToWeapon1() {
-        controller.ChangeToWeaponVisuals1(gunSpriteRenderer, muzzleFlashParent);
+    private void Fire() { // Everything that should happen when player fires
+        controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
+        nextFireTime = Time.time + fireRate;
 
-        recoilForce = 15f;
-        fireRate = 0.5f;
-        additiveRecoilAngleThreshold = 225;
-        initialRecoilResetsVelocity = true;
-        isAutomatic = true;
+        PlayMuzzleFlashEffect();
+
+        controller.SendRayCastAndPlayHitEffect();
     }
 
-    private void ChangeToWeapon2() {
-        controller.ChangeToWeaponVisuals2(gunSpriteRenderer, muzzleFlashParent);
-
-        recoilForce = 5f;
-        fireRate = 0.2f;
-        additiveRecoilAngleThreshold = 360;
-        initialRecoilResetsVelocity = false;
-        isAutomatic = true;
+    public void PlayMuzzleFlashEffect() {
+        if (muzzleFlash != null) {
+            muzzleFlash.Play();
+        }
+        else {
+            Debug.LogError("No ParticleSystem found on the current gun's muzzle flash.");
+        }
     }
-
 }

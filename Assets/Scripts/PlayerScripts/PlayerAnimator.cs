@@ -11,8 +11,19 @@ public class PlayerAnimator : MonoBehaviour
     [Header("Settings")]
     [Tooltip("The player controller script to read state information from")]
     public PlayerController playerController;
+    
     [Tooltip("The animator component that controls the player's animations")]
     public Animator animator;
+
+    [Tooltip("The animator controller for when the player is holding a gun")]
+    public RuntimeAnimatorController playerControllerNoHands;
+    
+    [Tooltip("The animator controller for when the player is not holding a gun")]
+    public RuntimeAnimatorController playerControllerHands;
+
+    [Tooltip("The gun GameObject")]
+    public GameObject gunObject;
+
     private Rigidbody2D rb;
 
     /// <summary>
@@ -39,6 +50,21 @@ public class PlayerAnimator : MonoBehaviour
     /// </summary>
     void Update()
     {
+        // Check if the gun is active or not
+        if (gunObject != null)
+        {
+            if (gunObject.activeSelf)
+            {
+                // Gun is active, switch to the no-hands animator controller
+                animator.runtimeAnimatorController = playerControllerNoHands;
+            }
+            else
+            {
+                // Gun is not active, switch to the hands animator controller
+                animator.runtimeAnimatorController = playerControllerHands;
+            }
+        }
+
         ReadPlayerStateAndAnimate();
     }
 
