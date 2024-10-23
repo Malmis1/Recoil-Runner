@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RailgunData
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 21300000, guid: cdb76a0fc283aec4facefcde635ea4ae, type: 3}
-  muzzleFlashPrefab: {fileID: 7715624459591391044, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
+  muzzleFlashPrefab: {fileID: 4341762118795184373, guid: a0ed573821a6b2a4e88c118e4e095b46, type: 3}
   muzzleFlashOffset: {x: 0, y: 0, z: 0}
   recoilForce: 5
   fireRate: 0.2
