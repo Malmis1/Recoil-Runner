@@ -137,17 +137,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 40
+  jumpGraceTime: 0.1
   jumpForce: 500
-  movementSmoothing: 0.05
   whatIsGround:
     serializedVersion: 2
     m_Bits: 119
   groundCheck: {fileID: 5251167963582078972}
   eyes: {fileID: 9188469316448821321}
-  groundCheckDelay: 0.5
-  OnLandEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  maxHorizontalSpeed: 10
+  maxVerticalSpeed: 20
+  maxAccel: 35
+  maxControlledDecel: 35
+  maxDefaultDecel: 5
   state: 0
 --- !u!114 &4305651202667229019
 MonoBehaviour:
@@ -175,15 +176,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gun: {fileID: 1987310977281509233}
+  gunDataList:
+  - {fileID: 11400000, guid: d9ff58475c693fe43b6d26a0e68a8d45, type: 2}
+  - {fileID: 11400000, guid: d8b382d93b825764f9a65ad34f09f740, type: 2}
   hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
   maxDistance: 100
   hitLayers:
     serializedVersion: 2
     m_Bits: 119
-  playerAnimator: {fileID: 7748444702979475681}
-  handsController: {fileID: 9100000, guid: f334e493ae61fba48bfcf497a4e46608, type: 2}
-  noHandsController: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
-  gunSpriteRenderer: {fileID: 6306036465959286071}
 --- !u!114 &1720813195847083947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -222,6 +222,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 3808477281788753630}
   animator: {fileID: 7748444702979475681}
+  playerControllerNoHands: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
+  playerControllerHands: {fileID: 9100000, guid: f334e493ae61fba48bfcf497a4e46608, type: 2}
+  gunObject: {fileID: 1987310977281509233}
 --- !u!95 &7748444702979475681
 Animator:
   serializedVersion: 5
@@ -300,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c22289ff0ea5004a8ff60ce5dbeddf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specificTag: Portal
+  portalTag: Portal
 --- !u!1 &1388137580178813562
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3417845322749527782
 Transform:
   m_ObjectHideFlags: 0
@@ -434,9 +437,6 @@ MonoBehaviour:
   muzzleFlash: {fileID: 0}
   muzzleFlashParent: {fileID: 5228038174342465386}
   gunSpriteRenderer: {fileID: 6306036465959286071}
-  recoilForce: 7
-  fireRate: 0.2
-  isAutomatic: 1
 --- !u!1 &2110764391603572472
 GameObject:
   m_ObjectHideFlags: 0
