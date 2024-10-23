@@ -255,7 +255,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 853108847956066348}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 5e42a8607766f6247a94a7660de4cf5a, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -434,9 +434,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 4243565302050763436}
-  muzzleFlash: {fileID: 0}
   muzzleFlashParent: {fileID: 5228038174342465386}
-  gunSpriteRenderer: {fileID: 6306036465959286071}
 --- !u!1 &2110764391603572472
 GameObject:
   m_ObjectHideFlags: 0
