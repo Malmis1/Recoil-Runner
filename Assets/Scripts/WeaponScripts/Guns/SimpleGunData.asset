@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SimpleGunData
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 21300000, guid: e2f9a127337def6cca8b13be07931754, type: 3}
-  muzzleFlashPrefab: {fileID: 4341762118795184373, guid: a0ed573821a6b2a4e88c118e4e095b46, type: 3}
+  muzzleFlashPrefab: {fileID: 7715624459591391044, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
   muzzleFlashOffset: {x: -3, y: -2, z: 0}
   recoilForce: 15
   fireRate: 1
