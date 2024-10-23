@@ -48,7 +48,7 @@ public class WeaponController : MonoBehaviour
             Debug.LogError("Gun object is not assigned in WeaponController.");
         }
 
-        ChangeGun(0);
+        DeactivateGun();
     }
     
     private void Update() {
@@ -132,8 +132,6 @@ public class WeaponController : MonoBehaviour
             Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
         }
     }
-
-    
 
     public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath, int xPositionOfMuzzleFlash) {
         if (currentMuzzleFlashInstance != null) {
