@@ -33,6 +33,10 @@ public class GunScript : MonoBehaviour {
     }
     
     void Update() {
+        if (Time.timeScale == 0) {
+            return;
+        }
+
         Vector3 mouseDirection = Input.mousePosition;
         controller.LookAtPoint(mouseDirection);
 

@@ -1919,6 +1919,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy1
       objectReference: {fileID: 0}
+    - target: {fileID: 6395149710171822823, guid: 86587624df076f240b78a28dcf82a5d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2069,6 +2073,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 688890934}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2082,5 +2090,5 @@ SceneRoots:
   - {fileID: 1460646600}
   - {fileID: 2295844139871520315}
   - {fileID: 2586419943973358913}
-  - {fileID: 272938141}
   - {fileID: 67778499604883030}
+  - {fileID: 272938141}
