@@ -14,61 +14,44 @@ public class WeaponPickup : MonoBehaviour
 
     [Tooltip("Glow object behind the weapon pickup")]
     public SpriteRenderer glowSpriteRenderer;  
-
-    [Tooltip("Glow pulse speed (how fast it fades in and out)")]
-    public float glowPulseSpeed = 2f;
+    [Tooltip("Rotation speed for the glow effect")]
+    public float glowRotationSpeed = 100f;  
+    [Tooltip("Scale speed for the glow effect")]
+    public float glowScaleSpeed = 2f;  
+    [Tooltip("Minimum and maximum scale for the glow effect")]
+    public float minGlowScale = 0.08f;
+    public float maxGlowScale = 0.15f;
 
     private Vector3 initialPosition;
+    private Vector3 initialScale;
     private WeaponController weaponController;
-    private Color originalGlowColor;
 
     private void Start()
     {
-        // Get the WeaponController component from the player
         weaponController = player.GetComponent<WeaponController>();
-
-        if (weaponController == null)
-        {
-            Debug.LogError("WeaponController component not found on the player object!");
-        }
-
-        // Store the initial position for hovering
         initialPosition = transform.position;
-
-        // Store the initial color of the glow object
-        if (glowSpriteRenderer != null)
-        {
-            originalGlowColor = glowSpriteRenderer.color;
-        }
+        initialScale = glowSpriteRenderer.transform.localScale;
     }
 
     private void Update()
     {
-        // Apply hovering effect by modifying the Y position using a sine wave
         float newY = initialPosition.y + Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
         transform.position = new Vector3(initialPosition.x, newY, initialPosition.z);
 
-        // Apply the pulsing glow effect
-        if (glowSpriteRenderer != null)
+       if (glowSpriteRenderer != null)
         {
-            // PingPong oscillates between 0 and 1 over time, creating a smooth fade effect
-            float glowAlpha = Mathf.PingPong(Time.time * glowPulseSpeed, 1f);
-            Color glowColor = originalGlowColor;
-            glowColor.a = glowAlpha;  // Change only the alpha (transparency) channel
+            glowSpriteRenderer.transform.Rotate(Vector3.forward, glowRotationSpeed * Time.deltaTime);
 
-            glowSpriteRenderer.color = glowColor;
+            float scale = Mathf.Lerp(minGlowScale, maxGlowScale, (Mathf.Sin(Time.time * glowScaleSpeed) + 1) / 2);
+            glowSpriteRenderer.transform.localScale = new Vector3(scale, scale, 1);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the player is colliding with the weapon pickup
         if (other.CompareTag("Player"))
         {
-            // Equip the new weapon by calling ChangeGun on the WeaponController
             weaponController.ChangeGun(gunIndex);
-
-            // Optionally, destroy the weapon pickup object after it's collected
             Destroy(gameObject);
         }
     }
