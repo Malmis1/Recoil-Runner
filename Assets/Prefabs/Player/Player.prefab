@@ -304,6 +304,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalTag: Portal
+  winScript: {fileID: 0}
 --- !u!1 &1388137580178813562
 GameObject:
   m_ObjectHideFlags: 0
