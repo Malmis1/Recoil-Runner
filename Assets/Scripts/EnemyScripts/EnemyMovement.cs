@@ -4,34 +4,46 @@ public class EnemyMovement : MonoBehaviour {
     [Tooltip("The movement controller for the enemy")]
     public EnemyController controller;
 
-    float horizontalMove = 0.2f;
-    bool jump = false;
+    private float horizontalMove = 0.2f;
+    private bool jump = false;
     private float jumpTimer = 0.0f;
     private float walkTimer = 0.0f;
     private bool isWalking = true;
 
     void Update() {
-        if (horizontalMove > 0f) {
-            jumpTimer -= Time.deltaTime;
-        }
-        walkTimer -= Time.deltaTime;
+        controller.DetectPlayer();
 
-        if (jumpTimer <= 0f) {
-            RandomJump();
-        }
+        if (controller.getPlayerTransform() != null) { // Player is detected 
+            MoveTowardsPlayer();
+        } else { // Player is not detected (wander)
+            if (horizontalMove > 0f) {
+                jumpTimer -= Time.deltaTime;
+            }
+            walkTimer -= Time.deltaTime;
 
-        if (walkTimer <= 0f) {
-            RandomWalk();
-        }
+            if (jumpTimer <= 0f) {
+                RandomJump();
+            }
 
-        if (!controller.IsMoving() && isWalking) {
-            SwitchDirection();
+            if (walkTimer <= 0f) {
+                RandomWalk();
+            }
+
+            if (!controller.IsMoving() && isWalking) {
+                SwitchDirection();
+            }
         }
     }
 
     void FixedUpdate() {
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
+    }
+
+    void MoveTowardsPlayer() {
+        Transform newPlayerTransform = controller.getPlayerTransform();
+        float direction = newPlayerTransform.position.x - transform.position.x;
+        horizontalMove = Mathf.Sign(direction) * 0.2f; // Right positive. Left negative.
     }
 
     void SwitchDirection() {

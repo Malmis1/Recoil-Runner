@@ -15,12 +15,25 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The position to check if the enemy is grounded")]
     [SerializeField] private Transform groundCheck;
+
+    [Tooltip("The horizontal range where enemy can detect player")]
+    public float horizontalDetectionRange = 5f;
+
+    [Tooltip("The vertical range where enemy can detect player")]
+    public float verticalDetectionRange = 2f;
+
+    [Tooltip("Player layer")]
+    public LayerMask playerLayer;
+
+    [Tooltip("Obstacles layers")]
+    public LayerMask obstacleLayer;
     
     private const float groundedRadius = .2f;
     private bool isGrounded;
     private Rigidbody2D rb;
     private bool facingRight = true;
     private SpriteRenderer spriteRenderer;
+    private Transform playerTransform;
 
     public EnemyState state = EnemyState.Idle;
     public UnityEvent OnLandEvent;
@@ -82,6 +95,37 @@ public class EnemyController : MonoBehaviour
         }
 
         return isMoving;
+    }
+
+    public void DetectPlayer() {
+        GameObject player = GameObject.FindWithTag("Player");
+        if (player != null) {
+            Vector2 directionToPlayer = player.transform.position - transform.position;
+
+            if (Mathf.Abs(directionToPlayer.x) <= horizontalDetectionRange && Mathf.Abs(directionToPlayer.y) <= verticalDetectionRange) {
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer.normalized, horizontalDetectionRange, obstacleLayer | playerLayer);
+
+                if (hit.collider != null && hit.collider.CompareTag("Player")) {
+                    playerTransform = player.transform;
+
+                    Debug.Log("Detected player");
+
+                    return;
+                }
+            }
+        }
+
+        playerTransform = null;
+    }
+
+    private void OnDrawGizmosSelected() { // Test method for visualizing the detection zone
+        Gizmos.color = Color.red;
+        Vector3 boxSize = new Vector3(horizontalDetectionRange * 2, verticalDetectionRange * 2, 0);
+        Gizmos.DrawWireCube(transform.position, boxSize);
+    }
+
+    public Transform getPlayerTransform() {
+        return playerTransform;
     }
 
     public enum EnemyState
