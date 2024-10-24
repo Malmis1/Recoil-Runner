@@ -1,53 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class InfiniteScrollBackground : MonoBehaviour
 {
-    [Header("Background Settings")]
-    public float scrollSpeed = 1f;          // The speed at which the background scrolls
-    public float resetPositionX = -10f;     // The X position at which the layer will reset
-    public float startPositionX = 10f;      // The starting X position after reset
+    public float scrollSpeed = 0.02f; 
+    private Material[] materials; 
+    private float[] backSpeeds;
 
-    private Transform[] backgroundLayers;   // Array to store background layers
-    private float[] zOffsets;               // Array to store the initial Z offsets
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        // Initialize background layers array and store child layers
-        backgroundLayers = new Transform[transform.childCount];
-        zOffsets = new float[transform.childCount];
+        int childCount = transform.childCount;
+        materials = new Material[childCount];
+        backSpeeds = new float[childCount];
 
-        for (int i = 0; i < transform.childCount; i++)
+        for (int i = 0; i < childCount; i++)
         {
-            backgroundLayers[i] = transform.GetChild(i);
-            zOffsets[i] = backgroundLayers[i].position.z;  // Store initial Z positions
+            Renderer renderer = transform.GetChild(i).GetComponent<Renderer>();
+            materials[i] = renderer.material;
+
+            float zPosition = transform.GetChild(i).position.z;
+            backSpeeds[i] = 1 - (zPosition / 10f); 
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        ScrollBackground();
-    }
-
-    private void ScrollBackground()
-    {
-        // Loop through each background layer
-        for (int i = 0; i < backgroundLayers.Length; i++)
+        for (int i = 0; i < materials.Length; i++)
         {
-            // Move the layer left based on scroll speed and layer's Z offset
-            float scrollModifier = 1 / (1 + Mathf.Abs(zOffsets[i])); // Slow down layers further away
-            backgroundLayers[i].Translate(Vector3.left * scrollSpeed * scrollModifier * Time.deltaTime);
-
-            // If the layer moves past the reset position, reset its X position
-            if (backgroundLayers[i].position.x <= resetPositionX)
-            {
-                Vector3 newPos = backgroundLayers[i].position;
-                newPos.x = startPositionX;
-                backgroundLayers[i].position = newPos;
-            }
+            float offsetX = Time.time * scrollSpeed * backSpeeds[i]; 
+            materials[i].SetTextureOffset("_MainTex", new Vector2(offsetX, 0)); 
         }
     }
 }

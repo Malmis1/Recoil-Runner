@@ -14893,14 +14893,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
-    - target: {fileID: 2787076206603415345, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2787076206603415345, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -714049993
-      objectReference: {fileID: 0}
     - target: {fileID: 5982209544911350297, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -14949,14 +14941,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
-    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingLayerID
-      value: -714049993
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
