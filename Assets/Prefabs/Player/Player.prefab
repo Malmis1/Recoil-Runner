@@ -149,6 +149,7 @@ MonoBehaviour:
   maxAccel: 35
   maxControlledDecel: 35
   maxDefaultDecel: 5
+  xControlMultiplierFactor: 0.1
   state: 0
 --- !u!114 &4305651202667229019
 MonoBehaviour:
@@ -235,7 +236,7 @@ Animator:
   m_GameObject: {fileID: 853108847956066348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f334e493ae61fba48bfcf497a4e46608, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4fcf276df119e3b4f96e7849ab3e21a1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -26,6 +26,8 @@ public class PlayerAnimator : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private GunScript gunScript;
+
     /// <summary>
     /// Description:
     /// Standard Unity function called once before the first update
@@ -37,6 +39,7 @@ public class PlayerAnimator : MonoBehaviour
     void Start()
     {
         rb = playerController.GetComponent<Rigidbody2D>();
+        gunScript = gunObject.GetComponent<GunScript>();
         ReadPlayerStateAndAnimate();
     }
 
@@ -64,7 +67,7 @@ public class PlayerAnimator : MonoBehaviour
                 animator.runtimeAnimatorController = playerControllerHands;
             }
         }
-
+        
         ReadPlayerStateAndAnimate();
     }
 
@@ -78,7 +81,7 @@ public class PlayerAnimator : MonoBehaviour
     /// </summary>
     void ReadPlayerStateAndAnimate()
     {
-        if (animator == null)
+        if (animator == null || gunScript == null)
         {
             return;
         }
@@ -97,8 +100,9 @@ public class PlayerAnimator : MonoBehaviour
         float angle = Vector2.SignedAngle(Vector2.right, shootingDirection); // Use Vector2.right for rightward direction
 
         // Shooting animations
-        if (Input.GetButton("Fire1"))
+        if (gunScript.IsFiring())
         {
+            animator.SetBool("isShooting", true);
             // Determine shooting direction based on angle
             if (angle >= 45 && angle < 135)
             {
@@ -124,6 +128,7 @@ public class PlayerAnimator : MonoBehaviour
         else
         {
             // If not shooting, determine state based on player's movement
+            animator.SetBool("isShooting", false);
             UpdateMovementAnimation();
         }
 

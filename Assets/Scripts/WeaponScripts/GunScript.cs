@@ -19,6 +19,7 @@ public class GunScript : MonoBehaviour {
     private float nextFireTime = 0f;
 
     private bool isFlipped;
+    private bool isFiring;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -42,13 +43,17 @@ public class GunScript : MonoBehaviour {
 
         FlipGunSprite();
 
+        isFiring = false;
+
         if (isAutomatic) {
             if (Input.GetButton("Fire1") && Time.time >= nextFireTime) {
                 Fire();
+                isFiring = true;
             }
         } else {
             if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
                 Fire();
+                isFiring = true;
             }
         }
     }
@@ -99,7 +104,7 @@ public class GunScript : MonoBehaviour {
 
         isFlipped = shouldFlip;
     }
-
+    
     private void Fire() { // Everything that should happen when player fires
         controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
         nextFireTime = Time.time + fireRate;
@@ -107,6 +112,12 @@ public class GunScript : MonoBehaviour {
         PlayMuzzleFlashEffect();
 
         controller.SendRayCastAndPlayHitEffect();
+
+                isFiring = true;
+    }
+
+    public bool IsFiring() {
+        return isFiring;  
     }
 
     public void PlayMuzzleFlashEffect() {
