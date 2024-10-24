@@ -17,6 +17,7 @@ public class GunScript : MonoBehaviour {
     private bool initialRecoilResetsVelocity;
     private bool isAutomatic;
     private GameObject bulletTrailPrefab;
+    private GameObject hitEffectPrefab;
     private float bulletTrailFadeDuration;
     private float nextFireTime = 0f;
 
@@ -68,10 +69,11 @@ public class GunScript : MonoBehaviour {
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
         isAutomatic = gunData.isAutomatic;
 
-
         bulletTrailPrefab = gunData.bulletTrailPrefab;
         bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
-        
+
+        hitEffectPrefab = gunData.hitEffectPrefab;
+
         // Set sprite
         if (gunSpriteRenderer != null) {
             gunSpriteRenderer.sprite = gunData.gunSprite;
@@ -117,7 +119,7 @@ public class GunScript : MonoBehaviour {
 
         PlayMuzzleFlashEffect();
 
-        SendRayCastAndPlayHitEffect();
+        FireAndShowEffects();
 
         isFiring = true;
     }
@@ -135,7 +137,7 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    private void SendRayCastAndPlayHitEffect() {
+    private void FireAndShowEffects() {
         Vector2 origin = transform.position;
         Vector2 direction = transform.up;
 
@@ -144,7 +146,7 @@ public class GunScript : MonoBehaviour {
         Vector2 hitPoint;
         if (hit.collider != null) {
             hitPoint = hit.point;
-            Instantiate(controller.hitEffectPrefab, hit.point, Quaternion.identity);
+            Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
         } else {
             hitPoint = origin + direction * controller.maxDistance; 
         }

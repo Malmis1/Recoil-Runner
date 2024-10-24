@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3f269d829379aa4ca40d14429c119db, type: 3}
-  m_Name: SimpleGunData
+  m_Name: GunData
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 21300000, guid: e2f9a127337def6cca8b13be07931754, type: 3}
   muzzleFlashPrefab: {fileID: 7715624459591391044, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
   muzzleFlashOffset: {x: -3, y: -1, z: 0}
   bulletTrailPrefab: {fileID: 8052582585650083193, guid: b2bd51b3b81911a4db776d8624380b13, type: 3}
   bulletTrailFadeDuration: 1
+  hitEffectPrefab: {fileID: 140425041097646891, guid: 81c905bdc04ee3948a9dc0af7ecf7354, type: 3}
   recoilForce: 5
   fireRate: 0.2
   additiveRecoilAngleThreshold: 360

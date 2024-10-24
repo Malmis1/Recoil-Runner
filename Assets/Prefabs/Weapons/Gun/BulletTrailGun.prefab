@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6306818763625856815}
   - component: {fileID: 5741253474784912300}
   m_Layer: 0
-  m_Name: GunBulletTrail
+  m_Name: BulletTrailGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
