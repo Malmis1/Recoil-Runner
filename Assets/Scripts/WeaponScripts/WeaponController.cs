@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class WeaponController : MonoBehaviour
@@ -7,6 +8,9 @@ public class WeaponController : MonoBehaviour
 
     [Tooltip("List of GunData configurations")]
     public GunData[] gunDataList;
+    
+    [Tooltip("Bullet trail prefab with LineRenderer")]
+    public GameObject bulletTrailPrefab;
 
     [Tooltip("Particle effect to play at the hit point")]
     public GameObject hitEffectPrefab;
@@ -22,7 +26,6 @@ public class WeaponController : MonoBehaviour
     private Rigidbody2D rb;
     private bool initialRecoil = true;
     private PlayerController playerController;
-    private GameObject currentMuzzleFlashInstance;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -121,58 +124,4 @@ public class WeaponController : MonoBehaviour
         }
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
     }
-
-    public void SendRayCastAndPlayHitEffect() {
-        Vector2 origin = gun.transform.position;
-        Vector2 direction = gun.transform.up;
-
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, maxDistance, hitLayers);
-
-        if (hit.collider != null) {
-            Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
-        }
-    }
-
-    public void ChangeMuzzleFlash(GameObject muzzleFlashParent, string muzzleFlashPath, int xPositionOfMuzzleFlash) {
-        if (currentMuzzleFlashInstance != null) {
-            Destroy(currentMuzzleFlashInstance);
-        }
-
-        GameObject newMuzzleFlashPrefab = Resources.Load<GameObject>(muzzleFlashPath);
-
-        if (newMuzzleFlashPrefab != null) {
-            currentMuzzleFlashInstance = Instantiate(newMuzzleFlashPrefab, muzzleFlashParent.transform);
-
-            currentMuzzleFlashInstance.transform.localRotation = Quaternion.identity;
-            currentMuzzleFlashInstance.transform.localScale = Vector3.one;
-
-            // Adjustments of the muzzle flash position
-            Vector3 currentPosition = currentMuzzleFlashInstance.transform.localPosition;
-
-            currentPosition.x = xPositionOfMuzzleFlash;
-            currentPosition.y = 0f;
-
-            currentMuzzleFlashInstance.transform.localPosition = currentPosition;
-
-        }
-        else {
-            Debug.LogError("Failed to load muzzle flash prefab from path: " + muzzleFlashPath);
-        }
-    }
-
-    public void PlayMuzzleFlashEffect() {
-    if (currentMuzzleFlashInstance != null) {
-        ParticleSystem particleSystem = currentMuzzleFlashInstance.GetComponent<ParticleSystem>();
-        if (particleSystem != null) {
-            particleSystem.Play();
-        }
-        else {
-            Debug.LogError("No ParticleSystem found on the current muzzle flash instance.");
-        }
-    }
-    else {
-        Debug.LogError("No current muzzle flash instance to play.");
-    }
-}
-
 }

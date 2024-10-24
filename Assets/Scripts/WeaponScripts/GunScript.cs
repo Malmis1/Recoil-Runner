@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class GunScript : MonoBehaviour {
@@ -15,7 +16,8 @@ public class GunScript : MonoBehaviour {
     private float additiveRecoilAngleThreshold;
     private bool initialRecoilResetsVelocity;
     private bool isAutomatic;
-    
+    private GameObject bulletTrailPrefab;
+    private float bulletTrailFadeDuration;
     private float nextFireTime = 0f;
 
     private bool isFlipped;
@@ -66,6 +68,10 @@ public class GunScript : MonoBehaviour {
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
         isAutomatic = gunData.isAutomatic;
 
+
+        bulletTrailPrefab = gunData.bulletTrailPrefab;
+        bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
+        
         // Set sprite
         if (gunSpriteRenderer != null) {
             gunSpriteRenderer.sprite = gunData.gunSprite;
@@ -111,9 +117,9 @@ public class GunScript : MonoBehaviour {
 
         PlayMuzzleFlashEffect();
 
-        controller.SendRayCastAndPlayHitEffect();
+        SendRayCastAndPlayHitEffect();
 
-                isFiring = true;
+        isFiring = true;
     }
 
     public bool IsFiring() {
@@ -127,5 +133,56 @@ public class GunScript : MonoBehaviour {
         else {
             Debug.LogError("No ParticleSystem found on the current gun's muzzle flash.");
         }
+    }
+
+    private void SendRayCastAndPlayHitEffect() {
+        Vector2 origin = transform.position;
+        Vector2 direction = transform.up;
+
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, controller.maxDistance, controller.hitLayers);
+
+        Vector2 hitPoint;
+        if (hit.collider != null) {
+            hitPoint = hit.point;
+            Instantiate(controller.hitEffectPrefab, hit.point, Quaternion.identity);
+        } else {
+            hitPoint = origin + direction * controller.maxDistance; 
+        }
+
+        CreateBulletTrail(origin, hitPoint); // Create the bullet trail when firing
+    }
+
+    private void CreateBulletTrail(Vector2 start, Vector2 end) {
+        if (bulletTrailPrefab == null) {
+            Debug.LogWarning("No bullet trail prefab assigned.");
+            return;
+        }
+
+        GameObject trail = Instantiate(bulletTrailPrefab, start, Quaternion.identity);
+
+        LineRenderer lineRenderer = trail.GetComponent<LineRenderer>();
+        if (lineRenderer != null) {
+            lineRenderer.SetPosition(0, start); 
+            lineRenderer.SetPosition(1, end);   
+
+            StartCoroutine(FadeBulletTrail(lineRenderer, bulletTrailFadeDuration));
+        }
+    }
+
+    private IEnumerator FadeBulletTrail(LineRenderer lineRenderer, float fadeDuration) {
+        float timeElapsed = 0f;
+
+        Color startColor = lineRenderer.startColor;
+        Color endColor = lineRenderer.endColor;
+
+        while (timeElapsed < fadeDuration) {
+            timeElapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, timeElapsed / fadeDuration);
+            lineRenderer.startColor = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            lineRenderer.endColor = new Color(endColor.r, endColor.g, endColor.b, alpha);
+            yield return null;
+        }
+
+        Destroy(lineRenderer.gameObject); // Destroy the trail after it fades out
     }
 }

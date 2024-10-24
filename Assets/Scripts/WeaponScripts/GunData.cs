@@ -6,9 +6,13 @@ public class GunData : ScriptableObject
     [Header("Visuals")]
     public Sprite gunSprite;
     public GameObject muzzleFlashPrefab;
-
-    [Tooltip("Offset for the muzzle flash position")]
+      [Tooltip("Offset for the muzzle flash position")]
     public Vector3 muzzleFlashOffset;
+    public GameObject bulletTrailPrefab;
+    [Tooltip("Duration the bullet trail will be visible before fading out")]
+    public float bulletTrailFadeDuration = 0.3f;
+
+  
     
     [Header("Stats")]
     public float recoilForce = 15f;

@@ -10261,6 +10261,10 @@ PrefabInstance:
       propertyPath: minX
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: bulletTrailPrefab
+      value: 
+      objectReference: {fileID: 8052582585650083193, guid: 88d440ca2cb7d894c94c2c5a5c71bc87, type: 3}
     - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: winScript
       value: 
