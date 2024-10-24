@@ -3231,6 +3231,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winMenu: {fileID: 9189272736299883899}
+  finalTimeText: {fileID: 4524494003962191734}
 --- !u!1 &5998744439861467183
 GameObject:
   m_ObjectHideFlags: 0
