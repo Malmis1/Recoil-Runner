@@ -15,8 +15,8 @@ MonoBehaviour:
   gunSprite: {fileID: 21300000, guid: e2f9a127337def6cca8b13be07931754, type: 3}
   muzzleFlashPrefab: {fileID: 7715624459591391044, guid: c0933791edf7bff408a1bc1735361b96, type: 3}
   muzzleFlashOffset: {x: -3, y: -1, z: 0}
-  recoilForce: 15
-  fireRate: 1
-  additiveRecoilAngleThreshold: 225
-  initialRecoilResetsVelocity: 1
+  recoilForce: 5
+  fireRate: 0.2
+  additiveRecoilAngleThreshold: 360
+  initialRecoilResetsVelocity: 0
   isAutomatic: 1

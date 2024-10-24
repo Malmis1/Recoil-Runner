@@ -108,8 +108,6 @@ public class EnemyController : MonoBehaviour
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     playerTransform = player.transform;
 
-                    Debug.Log("Detected player");
-
                     return;
                 }
             }

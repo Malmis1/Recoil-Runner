@@ -4,6 +4,9 @@ public class EnemyMovement : MonoBehaviour {
     [Tooltip("The movement controller for the enemy")]
     public EnemyController controller;
 
+    [Tooltip("The distance at which the enemy stops moving toward the player")]
+    public float stoppingDistance = 0.3f;
+
     private float horizontalMove = 0.2f;
     private bool jump = false;
     private float jumpTimer = 0.0f;
@@ -42,8 +45,14 @@ public class EnemyMovement : MonoBehaviour {
 
     void MoveTowardsPlayer() {
         Transform newPlayerTransform = controller.getPlayerTransform();
-        float direction = newPlayerTransform.position.x - transform.position.x;
-        horizontalMove = Mathf.Sign(direction) * 0.2f; // Right positive. Left negative.
+        float distanceToPlayer = Vector2.Distance(newPlayerTransform.position, transform.position);
+
+        if (distanceToPlayer > stoppingDistance) {
+            float direction = newPlayerTransform.position.x - transform.position.x;
+            horizontalMove = Mathf.Sign(direction) * 0.2f; // Right positive. Left negative.
+        } else {
+            horizontalMove = 0f;
+        }
     }
 
     void SwitchDirection() {

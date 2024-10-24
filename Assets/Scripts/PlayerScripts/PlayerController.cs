@@ -56,10 +56,12 @@ public class PlayerController : MonoBehaviour
     public PlayerState state = PlayerState.Idle;
 
     private bool isJumping;
+    private float playerWidth;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        determinePlayerWidth();
     }
 
     private void FixedUpdate() {
@@ -69,6 +71,18 @@ public class PlayerController : MonoBehaviour
 
         // Limit the player's velocity
         //LimitVelocity();
+    }
+
+    private void determinePlayerWidth() {
+        float maxWidth = 0;
+        foreach (BoxCollider2D boxCollider in rb.GetComponents<BoxCollider2D>())
+        {
+            float boxColliderWidth = boxCollider.bounds.size.x;
+            if (maxWidth < boxColliderWidth) {
+                maxWidth = boxColliderWidth;
+            }
+        }
+        playerWidth = maxWidth;
     }
 
     private void LimitVelocity() {
@@ -88,7 +102,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void CheckIfGrounded() {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(playerWidth, groundedRadius), 0, whatIsGround);
     }
 
     /// <summary>
@@ -104,7 +118,7 @@ public class PlayerController : MonoBehaviour
         MoveH(move);
 
         // Jump
-        if (jump && (isGrounded || Time.time < timeToStopJumpGrace)) {
+        if (jump && (isGrounded || (Time.time < timeToStopJumpGrace && rb.velocity.y <= 0))) {
             isGrounded = false;
             isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
