@@ -10253,6 +10253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3897454843417932996, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: maxX
       value: 82
@@ -14889,6 +14893,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
+    - target: {fileID: 2787076206603415345, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2787076206603415345, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -714049993
+      objectReference: {fileID: 0}
     - target: {fileID: 5982209544911350297, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -14937,6 +14949,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
+    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -714049993
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
