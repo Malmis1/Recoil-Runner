@@ -118,7 +118,7 @@ public class PlayerController : MonoBehaviour
         MoveH(move);
 
         // Jump
-        if (jump && (isGrounded || Time.time < timeToStopJumpGrace)) {
+        if (jump && (isGrounded || (Time.time < timeToStopJumpGrace && rb.velocity.y <= 0))) {
             isGrounded = false;
             isJumping = true; 
             rb.AddForce(new Vector2(0f, jumpForce));
