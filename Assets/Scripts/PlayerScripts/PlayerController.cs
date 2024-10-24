@@ -41,6 +41,8 @@ public class PlayerController : MonoBehaviour
     [Tooltip("The deceleration while the player is not moving")]
     // Higher values will result in air drag which causes the player to slow down in the air
     public float maxDefaultDecel = 5f;
+    [Tooltip("Multiplier for increasing x movement when moving at faster y speeds")]
+    public float xControlMultiplierFactor = 0.1f;
     public enum PlayerState
     {
         Idle,
@@ -119,7 +121,8 @@ public class PlayerController : MonoBehaviour
         float limit = Vector2.Dot(deltaV, rb.velocity) > 0f ? maxAccel : maxDecel;
         Vector2 force = rb.mass * Vector2.ClampMagnitude(accel, limit);
 
-        rb.AddForce(new Vector2(force.x, 0), ForceMode2D.Force);
+        float xControlMultiplier = 1 + Mathf.Abs(force.y) * xControlMultiplierFactor;
+        rb.AddForce(new Vector2(force.x * xControlMultiplier, 0), ForceMode2D.Force);
     }
 
     private void RotateTowardsCursor() {
