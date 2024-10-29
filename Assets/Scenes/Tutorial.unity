@@ -10253,22 +10253,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3897454843417932996, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: maxX
-      value: 82
-      objectReference: {fileID: 0}
-    - target: {fileID: 3897454843417932996, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: minX
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: bulletTrailPrefab
-      value: 
-      objectReference: {fileID: 8052582585650083193, guid: 88d440ca2cb7d894c94c2c5a5c71bc87, type: 3}
     - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: winScript
       value: 
@@ -15015,6 +14999,67 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
+--- !u!1001 &5271124289245401660
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2347399189394975585, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_Name
+      value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.888489
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.4216938
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 87.14042
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5938057006621124897, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: startWithGun
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -15027,3 +15072,4 @@ SceneRoots:
   - {fileID: 1298200095}
   - {fileID: 4006782110937191026}
   - {fileID: 1155484119}
+  - {fileID: 5271124289245401660}

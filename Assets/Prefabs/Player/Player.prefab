@@ -181,8 +181,6 @@ MonoBehaviour:
   gunDataList:
   - {fileID: 11400000, guid: d9ff58475c693fe43b6d26a0e68a8d45, type: 2}
   - {fileID: 11400000, guid: d8b382d93b825764f9a65ad34f09f740, type: 2}
-  bulletTrailPrefab: {fileID: 0}
-  hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
   maxDistance: 100
   hitLayers:
     serializedVersion: 2
@@ -590,8 +588,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 79273368863278957}
-  minX: -3.5
-  maxX: 100
 --- !u!1 &2507194532615294616
 GameObject:
   m_ObjectHideFlags: 0

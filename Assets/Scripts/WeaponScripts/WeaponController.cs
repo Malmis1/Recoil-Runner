@@ -9,12 +9,6 @@ public class WeaponController : MonoBehaviour
     [Tooltip("List of GunData configurations")]
     public GunData[] gunDataList;
     
-    [Tooltip("Bullet trail prefab with LineRenderer")]
-    public GameObject bulletTrailPrefab;
-
-    [Tooltip("Particle effect to play at the hit point")]
-    public GameObject hitEffectPrefab;
-
     [Tooltip("Maximum distance for the raycast")]
     public float maxDistance = 100f;
 
@@ -50,8 +44,6 @@ public class WeaponController : MonoBehaviour
         } else {
             Debug.LogError("Gun object is not assigned in WeaponController.");
         }
-
-        DeactivateGun();
     }
     
     private void Update() {
@@ -96,7 +88,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    private void DeactivateGun()
+    public void DeactivateGun()
     {
         gun.SetActive(false);  // Hide the gun
         currentGunIndex = -1;
