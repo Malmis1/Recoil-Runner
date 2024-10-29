@@ -16,10 +16,7 @@ public class WeaponController : MonoBehaviour
 
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
-    
-    [Tooltip("UI Image component for displaying HUD sprite")]
-    public UnityEngine.UI.Image hudImage;
-
+    [HideInInspector] public UnityEngine.UI.Image hudImage;
     private int currentGunIndex = -1;
     private GunScript gunScript;
     private Rigidbody2D rb;
@@ -74,7 +71,7 @@ public class WeaponController : MonoBehaviour
 
             // Apply the GunData to the GunScript
             gunScript.ApplyGunData(gunDataList[gunIndex]);
-
+            
             if (hudImage != null && gunDataList[gunIndex].hudSprite != null)
             {
                 hudImage.sprite = gunDataList[gunIndex].hudSprite;

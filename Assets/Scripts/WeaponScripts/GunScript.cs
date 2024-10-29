@@ -9,14 +9,9 @@ public class GunScript : MonoBehaviour {
 
     [Tooltip("Reference to the MuzzleFlash game object")]
     public GameObject muzzleFlashParent;
-
-    [Header("UI Elements")]
-    [Tooltip("Parent GameObject containing the current ammo Text component")]
-    public GameObject CurrentAmmoContainer;
-
-    [Tooltip("Parent GameObject containing the total ammo Text component")]
-    public GameObject TotalAmmoContainer;
-
+    [HideInInspector] public TMP_Text currentAmmoText;
+    [HideInInspector] public TMP_Text totalAmmoText;
+    
     private  SpriteRenderer gunSpriteRenderer;
     private ParticleSystem muzzleFlash;
     private float recoilForce;
@@ -32,8 +27,6 @@ public class GunScript : MonoBehaviour {
     private float nextFireTime = 0f;
     private bool isFlipped;
     private bool isFiring;
-    private TMP_Text currentAmmoText;
-    private TMP_Text totalAmmoText;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -46,16 +39,6 @@ public class GunScript : MonoBehaviour {
             Debug.LogError("Weapon child object not found.");
         }
         
-        if (CurrentAmmoContainer != null)
-        {
-            currentAmmoText = CurrentAmmoContainer.GetComponentInChildren<TMP_Text>();
-        }
-
-        if (TotalAmmoContainer != null)
-        {
-            totalAmmoText = TotalAmmoContainer.GetComponentInChildren<TMP_Text>();
-        }
-
         UpdateAmmoUI();
     }
     

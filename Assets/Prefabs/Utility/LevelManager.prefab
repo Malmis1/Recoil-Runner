@@ -44,8 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66951e6f8a9f9ee41bfc2861cfb34e5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minX: -3
-  maxX: 82
+  HUDCanvas: {fileID: 0}
+  minX: 0
+  maxX: 100
   startWithGun: 1
   gunName: Railgun
   startingTotalAmmo: 10
