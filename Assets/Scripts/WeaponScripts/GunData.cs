@@ -23,6 +23,7 @@ public class GunData : ScriptableObject
     
     [Header("Stats")]
     public float recoilForce = 15f;
+    public int maxAmmo = 30; 
     public float fireRate = 1.0f;
     public float additiveRecoilAngleThreshold = 250f;
     public bool initialRecoilResetsVelocity = true;

@@ -19,6 +19,7 @@ MonoBehaviour:
   bulletTrailFadeDuration: 0.3
   hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
   recoilForce: 15
+  maxAmmo: 10
   fireRate: 0.7
   additiveRecoilAngleThreshold: 225
   initialRecoilResetsVelocity: 1

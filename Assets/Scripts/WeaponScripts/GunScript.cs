@@ -1,17 +1,27 @@
 using System.Collections;
 using UnityEngine;
+using TMPro;
 
 public class GunScript : MonoBehaviour {
     [Header("Controller")]
     [Tooltip("The controller for the weapon")]
-    public WeaponController controller;
+    public WeaponController weaponController;
 
     [Tooltip("Reference to the MuzzleFlash game object")]
     public GameObject muzzleFlashParent;
 
+    [Header("UI Elements")]
+    [Tooltip("Parent GameObject containing the current ammo Text component")]
+    public GameObject CurrentAmmoContainer;
+
+    [Tooltip("Parent GameObject containing the total ammo Text component")]
+    public GameObject TotalAmmoContainer;
+
     private  SpriteRenderer gunSpriteRenderer;
     private ParticleSystem muzzleFlash;
     private float recoilForce;
+    private int currentAmmo;
+    private int maxAmmo;
     private float fireRate;
     private float additiveRecoilAngleThreshold;
     private bool initialRecoilResetsVelocity;
@@ -20,9 +30,10 @@ public class GunScript : MonoBehaviour {
     private GameObject hitEffectPrefab;
     private float bulletTrailFadeDuration;
     private float nextFireTime = 0f;
-
     private bool isFlipped;
     private bool isFiring;
+    private TMP_Text currentAmmoText;
+    private TMP_Text totalAmmoText;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -34,6 +45,18 @@ public class GunScript : MonoBehaviour {
         } else {
             Debug.LogError("Weapon child object not found.");
         }
+        
+        if (CurrentAmmoContainer != null)
+        {
+            currentAmmoText = CurrentAmmoContainer.GetComponentInChildren<TMP_Text>();
+        }
+
+        if (TotalAmmoContainer != null)
+        {
+            totalAmmoText = TotalAmmoContainer.GetComponentInChildren<TMP_Text>();
+        }
+
+        UpdateAmmoUI();
     }
     
     void Update() {
@@ -42,7 +65,7 @@ public class GunScript : MonoBehaviour {
         }
 
         Vector3 mouseDirection = Input.mousePosition;
-        controller.LookAtPoint(mouseDirection);
+        weaponController.LookAtPoint(mouseDirection);
 
         FlipGunSprite();
 
@@ -59,11 +82,20 @@ public class GunScript : MonoBehaviour {
                 isFiring = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
+
+        UpdateAmmoUI();
     }
 
     public void ApplyGunData(GunData gunData) {
         // Set stats
         recoilForce = gunData.recoilForce;
+        maxAmmo = gunData.maxAmmo;
+        currentAmmo = maxAmmo;
         fireRate = gunData.fireRate;
         additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
@@ -106,7 +138,7 @@ public class GunScript : MonoBehaviour {
     private void FlipGunSprite() {
         Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        bool shouldFlip = mouseWorldPosition.x < controller.transform.position.x;
+        bool shouldFlip = mouseWorldPosition.x < weaponController.transform.position.x;
 
         gunSpriteRenderer.flipY = shouldFlip;
 
@@ -114,14 +146,22 @@ public class GunScript : MonoBehaviour {
     }
     
     private void Fire() { // Everything that should happen when player fires
-        controller.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
+        if (currentAmmo <= 0)
+        {
+            return; // No ammo
+        }
+
+        weaponController.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
         nextFireTime = Time.time + fireRate;
 
         PlayMuzzleFlashEffect();
 
         FireAndShowEffects();
 
+        currentAmmo--; 
         isFiring = true;
+
+        UpdateAmmoUI();
     }
 
     public bool IsFiring() {
@@ -141,17 +181,39 @@ public class GunScript : MonoBehaviour {
         Vector2 origin = transform.position;
         Vector2 direction = transform.up;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, controller.maxDistance, controller.hitLayers);
+        RaycastHit2D hit = Physics2D.Raycast(origin, direction, weaponController.maxDistance, weaponController.hitLayers);
 
         Vector2 hitPoint;
         if (hit.collider != null) {
             hitPoint = hit.point;
             Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
         } else {
-            hitPoint = origin + direction * controller.maxDistance; 
+            hitPoint = origin + direction * weaponController.maxDistance; 
         }
 
         CreateBulletTrail(origin, hitPoint); // Create the bullet trail when firing
+    }
+
+    private void Reload()
+    {
+        if (currentAmmo == maxAmmo)
+        {
+            return;
+        }
+
+        int ammoNeeded = maxAmmo - currentAmmo; 
+        if (weaponController.TryUseAmmo(ammoNeeded))
+        {
+            currentAmmo = maxAmmo; 
+        }
+        else
+        {
+            int ammoAvailable = weaponController.totalAmmo;
+            currentAmmo += ammoAvailable;
+            weaponController.TryUseAmmo(ammoAvailable);
+        }
+
+        UpdateAmmoUI();
     }
 
     private void CreateBulletTrail(Vector2 start, Vector2 end) {
@@ -186,5 +248,19 @@ public class GunScript : MonoBehaviour {
         }
 
         Destroy(lineRenderer.gameObject); // Destroy the trail after it fades out
+    }
+
+    private void UpdateAmmoUI()
+    {
+        print(currentAmmoText);
+        if (currentAmmoText != null)
+        {
+            currentAmmoText.text = currentAmmo.ToString();
+        }
+
+        if (totalAmmoText != null && weaponController != null)
+        {
+            totalAmmoText.text = weaponController.totalAmmo.ToString();
+        }
     }
 }

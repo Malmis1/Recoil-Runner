@@ -480,8 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4088c95a8d71bab42b8163980475502d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 4243565302050763436}
+  weaponController: {fileID: 4243565302050763436}
   muzzleFlashParent: {fileID: 5228038174342465386}
+  CurrentAmmoContainer: {fileID: 0}
+  TotalAmmoContainer: {fileID: 0}
 --- !u!1 &2110764391603572472
 GameObject:
   m_ObjectHideFlags: 0

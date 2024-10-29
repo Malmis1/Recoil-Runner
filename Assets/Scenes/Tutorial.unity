@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &182099467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8184289128067437703, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 2098864711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!20 &317208793 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -10253,6 +10258,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: TotalAmmoContainer
+      value: 
+      objectReference: {fileID: 1478153857}
+    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: CurrentAmmoContainer
+      value: 
+      objectReference: {fileID: 182099467}
     - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: winScript
       value: 
@@ -14017,6 +14030,11 @@ Transform:
   - {fileID: 2045376139}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1478153857 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3209772025068205446, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 2098864711}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1550211024
 GameObject:
   m_ObjectHideFlags: 0
@@ -14877,10 +14895,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
-    - target: {fileID: 2787076206603415345, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1684020715
-      objectReference: {fileID: 0}
     - target: {fileID: 5982209544911350297, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -14929,10 +14943,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 317208793}
-    - target: {fileID: 7544574061131191178, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
-      propertyPath: m_SortingLayerID
-      value: 1684020715
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
