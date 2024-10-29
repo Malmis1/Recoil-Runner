@@ -181,10 +181,13 @@ MonoBehaviour:
   gunDataList:
   - {fileID: 11400000, guid: d9ff58475c693fe43b6d26a0e68a8d45, type: 2}
   - {fileID: 11400000, guid: d8b382d93b825764f9a65ad34f09f740, type: 2}
+  - {fileID: 11400000, guid: 0fa0c7d6f3fa3df448cc3292e8eff993, type: 2}
   maxDistance: 100
   hitLayers:
     serializedVersion: 2
     m_Bits: 119
+  hudImage: {fileID: 0}
+  ammoCounter: {fileID: 0}
 --- !u!114 &1720813195847083947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +308,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   portalTag: Portal
+  damageTag: Damage
   winScript: {fileID: 0}
+  gameOverScript: {fileID: 0}
 --- !u!61 &584379390108829413
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -482,8 +487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponController: {fileID: 4243565302050763436}
   muzzleFlashParent: {fileID: 5228038174342465386}
-  CurrentAmmoContainer: {fileID: 0}
-  TotalAmmoContainer: {fileID: 0}
+  currentAmmoText: {fileID: 0}
+  totalAmmoText: {fileID: 0}
 --- !u!1 &2110764391603572472
 GameObject:
   m_ObjectHideFlags: 0

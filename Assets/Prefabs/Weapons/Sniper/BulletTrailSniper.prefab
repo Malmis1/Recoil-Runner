@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6306818763625856815}
   - component: {fileID: 5741253474784912300}
   m_Layer: 0
-  m_Name: RailGunBulletTrail
+  m_Name: BulletTrailSniper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,15 +106,15 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0.7971463, a: 0}
-      key1: {r: 0.9316845, g: 0, b: 1, a: 0.5882353}
-      key2: {r: 0.9372549, g: 0.011764725, b: 0.3900227, a: 0.35686275}
+      key0: {r: 0.06437528, g: 1, b: 0, a: 0}
+      key1: {r: 0.53280234, g: 1, b: 0, a: 0.81960785}
+      key2: {r: 0.21714342, g: 0.59748423, b: 0.009394346, a: 0.35686275}
       key3: {r: 0.31132078, g: 0.16634016, b: 0.12482201, a: 0.36862746}
       key4: {r: 0.1981132, g: 0.09285356, b: 0.057004265, a: 0.21568628}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 1295
+      ctime0: 1542
       ctime1: 14563
       ctime2: 21360
       ctime3: 54046
@@ -123,7 +123,7 @@ LineRenderer:
       ctime6: 0
       ctime7: 0
       atime0: 0
-      atime1: 5178
+      atime1: 4755
       atime2: 28156
       atime3: 37217
       atime4: 55502

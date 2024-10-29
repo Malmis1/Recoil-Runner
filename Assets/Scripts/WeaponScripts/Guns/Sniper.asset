@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3f269d829379aa4ca40d14429c119db, type: 3}
+  m_Name: Sniper
+  m_EditorClassIdentifier: 
+  gunSprite: {fileID: 21300000, guid: b2fc5e0042ac35549aae58cd353cba6d, type: 3}
+  hudSprite: {fileID: 21300000, guid: c3e898d5d71bf084e93fdf66d5022dc7, type: 3}
+  muzzleFlashPrefab: {fileID: 4341762118795184373, guid: cf609605c763ac7478c886cb0d825b09, type: 3}
+  muzzleFlashOffset: {x: -3, y: -1, z: 0}
+  bulletTrailPrefab: {fileID: 8052582585650083193, guid: 1e8fcf09954a87947bd75ff82c4e0406, type: 3}
+  bulletTrailFadeDuration: 0.7
+  hitEffectPrefab: {fileID: 140425041097646891, guid: 4517236124a483f49995f50d22dcbd70, type: 3}
+  recoilForce: 20
+  maxAmmo: 5
+  fireRate: 1.5
+  additiveRecoilAngleThreshold: 360
+  initialRecoilResetsVelocity: 0
+  isAutomatic: 0

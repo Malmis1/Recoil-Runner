@@ -140,12 +140,17 @@ public class WeaponController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ChangeGunByIndex(0);  // Gun configuration 1
+            ChangeGunByIndex(0);  
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ChangeGunByIndex(1);  // Gun configuration 2
+            ChangeGunByIndex(1);  
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ChangeGunByIndex(2);  
         }
     }
 
