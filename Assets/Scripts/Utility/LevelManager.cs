@@ -43,7 +43,6 @@ public class LevelManager : MonoBehaviour
             if (weaponController != null)
             {
                 AssignHUDElements();
-                print(startingTotalAmmo);
                 weaponController.totalAmmo = startingTotalAmmo;
                 if (startWithGun)
                 {
@@ -74,7 +73,6 @@ public class LevelManager : MonoBehaviour
         TMP_Text currentAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/CurrentAmmoText")?.GetComponent<TMP_Text>();
         if (currentAmmoText != null)
         {
-            Debug.Log("Found CurrentAmmoText: " + currentAmmoText.name);
             
             // Check if weaponController and gunScript are assigned correctly
             if (weaponController != null && weaponController.gun != null)
@@ -84,7 +82,6 @@ public class LevelManager : MonoBehaviour
                 if (gunScript != null)
                 {
                     gunScript.currentAmmoText = currentAmmoText;
-                    Debug.Log("Assigned CurrentAmmoText to GunScript.");
                 }
                 else
                 {
@@ -111,7 +108,6 @@ public class LevelManager : MonoBehaviour
                 if (gunScript != null)
                 {
                     gunScript.totalAmmoText = totalAmmoText;
-                    Debug.Log("Assigned TotalAmmoText to GunScript.");
                 }
                 else
                 {
@@ -131,7 +127,6 @@ public class LevelManager : MonoBehaviour
             if (weaponController != null)
             {
                 weaponController.hudImage = gunImage;
-                Debug.Log("Assigned GunImage to WeaponController.");
             }
         }
         else
