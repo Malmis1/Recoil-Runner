@@ -69,6 +69,18 @@ public class LevelManager : MonoBehaviour
 {
     if (HUDCanvas != null)
     {
+        // Find AmmoCounter
+        GameObject ammoCounter = HUDCanvas.transform.Find("AmmoCounter")?.gameObject;
+        if (ammoCounter != null)
+        {
+            weaponController.ammoCounter = ammoCounter; 
+        }
+        else
+        {
+            Debug.LogWarning("AmmoCounter not found in HUD.");
+        }
+
+
         // Find CurrentAmmoText
         TMP_Text currentAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/CurrentAmmoText")?.GetComponent<TMP_Text>();
         if (currentAmmoText != null)

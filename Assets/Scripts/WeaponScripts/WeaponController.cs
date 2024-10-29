@@ -17,6 +17,7 @@ public class WeaponController : MonoBehaviour
     [Tooltip("Layers to detect with the raycast")]
     public LayerMask hitLayers;
     [HideInInspector] public UnityEngine.UI.Image hudImage;
+    [HideInInspector] public GameObject ammoCounter;
     private int currentGunIndex = -1;
     private GunScript gunScript;
     private Rigidbody2D rb;
@@ -69,6 +70,14 @@ public class WeaponController : MonoBehaviour
             gun.SetActive(true);  // Show the gun
             currentGunIndex = gunIndex;
 
+            if (ammoCounter != null)
+            {
+                ammoCounter.SetActive(true);
+            }
+            else {
+            Debug.LogWarning("AmmoCounter not found in WeaponController");
+            }       
+
             // Apply the GunData to the GunScript
             gunScript.ApplyGunData(gunDataList[gunIndex]);
             
@@ -112,6 +121,14 @@ public class WeaponController : MonoBehaviour
     {
         gun.SetActive(false);  // Hide the gun
         currentGunIndex = -1;
+
+         if (ammoCounter != null)
+        {
+            ammoCounter.SetActive(false);
+        } 
+        else {
+            Debug.LogWarning("AmmoCounter not found in WeaponController");
+        }
     }
 
      private void HandleWeaponSwitching()
