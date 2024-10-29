@@ -5,6 +5,7 @@ public class GunData : ScriptableObject
 {
     [Header("Visuals")]
     public Sprite gunSprite;
+    public Sprite hudSprite;
     [Space(10)]
     public GameObject muzzleFlashPrefab;
     [Tooltip("Offset for the muzzle flash position")]

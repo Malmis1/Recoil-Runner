@@ -16,12 +16,6 @@ public class LevelManager : MonoBehaviour
 
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
-
-     public float MinX
-    {
-        get => minX;
-        set => minX = value;
-    }
     
     void Start()
     {

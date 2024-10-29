@@ -252,7 +252,6 @@ public class GunScript : MonoBehaviour {
 
     private void UpdateAmmoUI()
     {
-        print(currentAmmoText);
         if (currentAmmoText != null)
         {
             currentAmmoText.text = currentAmmo.ToString();
