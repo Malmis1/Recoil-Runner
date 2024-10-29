@@ -12,9 +12,11 @@ public class LevelManager : MonoBehaviour
     [Tooltip("The name of the gun to start with if 'Start With Gun' is enabled.")]
     [HideInInspector] public string gunName; 
 
+    [SerializeField] private int startingTotalAmmo = 90;
+
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
-
+    
     void Start()
     {
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
@@ -34,9 +36,9 @@ public class LevelManager : MonoBehaviour
             weaponController = player.GetComponent<WeaponController>();
             if (weaponController != null)
             {
+                weaponController.totalAmmo = startingTotalAmmo;
                 if (startWithGun)
                 {
-                    Debug.Log("Starting gun: " + gunName);
                     weaponController.ChangeGunByName(gunName); 
                 }
                 else
