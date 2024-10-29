@@ -7,14 +7,24 @@ public class PlayerCollision : MonoBehaviour
     [Tooltip("The tag of the portal/goal")]
     public string portalTag = "Portal";
 
-    [Tooltip("Reference to the win script script")]
+    [Tooltip("The tag of objects that take damage to the player")]
+    public string damageTag = "Damage";
+
+    [Tooltip("Reference to the win script")]
     public WinScript winScript;
+
+    [Tooltip("Reference to the game-over script")]
+    public GameOverScript gameOverScript;
     
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag(portalTag)) {
-            Debug.Log("Player triggered by: " + collision.gameObject.name);
-
             winScript.PauseAndShowWinMenu();
+        }
+
+        if (collision.gameObject.CompareTag(damageTag)) {
+            Debug.Log("Player took damage by: " + collision.gameObject.name);
+
+            gameOverScript.PauseAndShowGOMenu();
         }
     }
 }

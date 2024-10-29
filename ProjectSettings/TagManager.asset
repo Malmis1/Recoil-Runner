@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Portal
   - Enemy
+  - Damage
   layers:
   - Default
   - TransparentFX
