@@ -76,6 +76,14 @@ public class EnemyController : MonoBehaviour
         spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
+    public float AdjustBulletSpeed(float originalShootSpeed) {
+        if (!facingRight) {
+            originalShootSpeed = originalShootSpeed * (-1);
+        }
+
+        return originalShootSpeed;
+    }
+
     private void RotateTowardsWalkingDirection() {
         float xVel = rb.velocity.x;
 

@@ -14,6 +14,9 @@ public class EnemyShooting : MonoBehaviour {
     [Tooltip("Time between each shot")]
     public float fireRate = 1.0f;
 
+    [Tooltip("The enemy controller")]
+    public EnemyController controller;
+
     private float nextFireTime;
 
     void Update() {
@@ -28,7 +31,8 @@ public class EnemyShooting : MonoBehaviour {
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) {
-            rb.velocity = firePoint.right * bulletSpeed;
+            float adjustedBulletSpeed = controller.AdjustBulletSpeed(bulletSpeed);
+            rb.velocity = firePoint.right * adjustedBulletSpeed;
         }
     }
 }
