@@ -38,8 +38,6 @@ public class GunScript : MonoBehaviour {
         } else {
             Debug.LogError("Weapon child object not found.");
         }
-        
-        UpdateAmmoUI();
     }
     
     void Update() {
