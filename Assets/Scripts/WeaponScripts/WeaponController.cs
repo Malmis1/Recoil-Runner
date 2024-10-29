@@ -54,7 +54,7 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void ChangeGun(int gunIndex)
+    public void ChangeGunByIndex(int gunIndex)
     {
         if (gunIndex >= 0 && gunIndex < gunDataList.Length)
         {
@@ -70,6 +70,25 @@ public class WeaponController : MonoBehaviour
         }
     }
 
+    public void ChangeGunByName(string gunName)
+    {
+        int gunIndex = System.Array.FindIndex(gunDataList, g => g.name == gunName);
+        if (gunIndex != -1)
+        {
+            ChangeGunByIndex(gunIndex); // Change to the gun if it’s found by name
+        }
+        else
+        {
+            Debug.LogWarning("Gun with name '" + gunName + "' not found in gunDataList.");
+        }
+    }
+
+    public void DeactivateGun()
+    {
+        gun.SetActive(false);  // Hide the gun
+        currentGunIndex = -1;
+    }
+
      private void HandleWeaponSwitching()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -79,19 +98,13 @@ public class WeaponController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ChangeGun(0);  // Gun configuration 1
+            ChangeGunByIndex(0);  // Gun configuration 1
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ChangeGun(1);  // Gun configuration 2
+            ChangeGunByIndex(1);  // Gun configuration 2
         }
-    }
-
-    public void DeactivateGun()
-    {
-        gun.SetActive(false);  // Hide the gun
-        currentGunIndex = -1;
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse

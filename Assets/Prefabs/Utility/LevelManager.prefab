@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minX: -3
   maxX: 82
-  startWithGun: 1
-  gunIndex: 1
+  startWithGun: 0
+  gunName: Railgun

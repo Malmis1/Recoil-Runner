@@ -5,8 +5,8 @@ public class WeaponPickup : MonoBehaviour
     [Tooltip("Reference to the player object that has the WeaponController")]
     public GameObject player;
 
-    [Tooltip("The index of the gun in WeaponController's gunDataList to equip")]
-    public int gunIndex;
+    [Tooltip("The name of the gun in WeaponController's gunDataList to equip")]
+    public string gunName;
 
     [Tooltip("Hover height and speed")]
     public float hoverHeight = 0.5f;  
@@ -51,7 +51,7 @@ public class WeaponPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            weaponController.ChangeGun(gunIndex);
+            weaponController.ChangeGunByName(gunName);
             Destroy(gameObject);
         }
     }

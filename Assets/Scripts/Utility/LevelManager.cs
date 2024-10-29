@@ -3,18 +3,14 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     [Header("Camera Settings")]
-    [Tooltip("Minimum X value for camera position in this level.")]
     [SerializeField] private float minX;
-
-    [Tooltip("Maximum X value for camera position in this level.")]
     [SerializeField] private float maxX;
 
     [Header("Player Settings")]
-    [Tooltip("Should the player start with a gun?")]
     [SerializeField] public bool startWithGun;
 
-    [Tooltip("The index of the gun to start with if 'Start With Gun' is enabled.")]
-    [SerializeField] public int gunIndex;
+    [Tooltip("The name of the gun to start with if 'Start With Gun' is enabled.")]
+    [HideInInspector] public string gunName; 
 
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
@@ -26,14 +22,13 @@ public class LevelManager : MonoBehaviour
         {
             cameraFollow.MinX = minX;
             cameraFollow.MaxX = maxX;
-
         }
         else
         {
             Debug.LogWarning("CameraFollow component not found on the main camera.");
         }
 
-        GameObject player = GameObject.FindWithTag("Player"); 
+        GameObject player = GameObject.FindWithTag("Player");
         if (player != null)
         {
             weaponController = player.GetComponent<WeaponController>();
@@ -41,11 +36,12 @@ public class LevelManager : MonoBehaviour
             {
                 if (startWithGun)
                 {
-                    weaponController.ChangeGun(gunIndex); 
+                    Debug.Log("Starting gun: " + gunName);
+                    weaponController.ChangeGunByName(gunName); 
                 }
                 else
                 {
-                    weaponController.DeactivateGun(); 
+                    weaponController.DeactivateGun();
                 }
             }
             else
