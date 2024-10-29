@@ -79,6 +79,18 @@ public class WeaponController : MonoBehaviour
             {
                 hudImage.sprite = gunDataList[gunIndex].hudSprite;
             }
+            else
+            {
+                if (hudImage = null) 
+                {
+                    Debug.LogWarning("hudImage or the is null");
+                }
+
+                if (gunDataList[gunIndex].hudSprite = null) 
+                {
+                    Debug.LogWarning("hudSprite in gundata is null");
+                }
+            }       
         }
         else
         {

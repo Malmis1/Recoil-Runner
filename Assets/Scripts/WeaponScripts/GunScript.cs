@@ -256,10 +256,18 @@ public class GunScript : MonoBehaviour {
         {
             currentAmmoText.text = currentAmmo.ToString();
         }
+        else 
+        {
+            Debug.LogWarning("currentAmmoText is null");
+        }
 
         if (totalAmmoText != null && weaponController != null)
         {
             totalAmmoText.text = weaponController.totalAmmo.ToString();
+        } 
+        else 
+        {
+            Debug.LogWarning("currentAmmoText or weaponController is null");
         }
     }
 }
