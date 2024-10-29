@@ -11,11 +11,10 @@ public class GunScript : MonoBehaviour {
     public GameObject muzzleFlashParent;
     [HideInInspector] public TMP_Text currentAmmoText;
     [HideInInspector] public TMP_Text totalAmmoText;
-    
+    [HideInInspector] public int currentAmmo;
     private  SpriteRenderer gunSpriteRenderer;
     private ParticleSystem muzzleFlash;
     private float recoilForce;
-    private int currentAmmo;
     private int maxAmmo;
     private float fireRate;
     private float additiveRecoilAngleThreshold;
@@ -84,7 +83,6 @@ public class GunScript : MonoBehaviour {
 
         bulletTrailPrefab = gunData.bulletTrailPrefab;
         bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
-
         hitEffectPrefab = gunData.hitEffectPrefab;
 
         // Set sprite
@@ -94,6 +92,30 @@ public class GunScript : MonoBehaviour {
 
         // Instantiate the muzzle flash prefab
         if (gunData.muzzleFlashPrefab != null) {
+            ChangeMuzzleFlash(gunData.muzzleFlashPrefab, gunData.muzzleFlashOffset);
+        }
+    }
+    public void ApplyGunDataWithoutResettingAmmo(GunData gunData)
+    {
+        // Set all stats except currentAmmo
+        recoilForce = gunData.recoilForce;
+        maxAmmo = gunData.maxAmmo;
+        fireRate = gunData.fireRate;
+        additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
+        initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
+        isAutomatic = gunData.isAutomatic;
+
+        bulletTrailPrefab = gunData.bulletTrailPrefab;
+        bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
+        hitEffectPrefab = gunData.hitEffectPrefab;
+
+        if (gunSpriteRenderer != null)
+        {
+            gunSpriteRenderer.sprite = gunData.gunSprite;
+        }
+
+        if (gunData.muzzleFlashPrefab != null)
+        {
             ChangeMuzzleFlash(gunData.muzzleFlashPrefab, gunData.muzzleFlashOffset);
         }
     }

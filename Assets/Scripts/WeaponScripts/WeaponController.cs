@@ -2,6 +2,7 @@ using System.Collections;
 using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class WeaponController : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class WeaponController : MonoBehaviour
         get => _totalAmmo;
         set => _totalAmmo = value;
     }
+
+    private Dictionary<int, int> gunAmmoDict = new Dictionary<int, int>();
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -67,7 +70,13 @@ public class WeaponController : MonoBehaviour
     {
         if (gunIndex >= 0 && gunIndex < gunDataList.Length)
         {
-            gun.SetActive(true);  // Show the gun
+
+            if (currentGunIndex != -1 && gunScript != null)
+            {
+                gunAmmoDict[currentGunIndex] = gunScript.currentAmmo;
+            }
+
+            gun.SetActive(true);  
             currentGunIndex = gunIndex;
 
             if (ammoCounter != null)
@@ -76,11 +85,21 @@ public class WeaponController : MonoBehaviour
             }
             else {
             Debug.LogWarning("AmmoCounter not found in WeaponController");
-            }       
+            }
 
-            // Apply the GunData to the GunScript
-            gunScript.ApplyGunData(gunDataList[gunIndex]);
-            
+            if (gunAmmoDict.TryGetValue(gunIndex, out int savedAmmo))
+            {
+                gunScript.currentAmmo = savedAmmo; // Restore saved ammo
+            }
+            else
+            {
+                gunScript.currentAmmo = gunDataList[gunIndex].maxAmmo; // Initialize with max ammo
+                gunAmmoDict[gunIndex] = gunScript.currentAmmo; // Save initial ammo
+            }
+
+            gunScript.ApplyGunDataWithoutResettingAmmo(gunDataList[gunIndex]);
+
+
             if (hudImage != null && gunDataList[gunIndex].hudSprite != null)
             {
                 hudImage.sprite = gunDataList[gunIndex].hudSprite;
@@ -119,6 +138,12 @@ public class WeaponController : MonoBehaviour
 
     public void DeactivateGun()
     {
+        if (currentGunIndex != -1)
+        {
+            // Save current ammo before deactivating
+            gunAmmoDict[currentGunIndex] = gunScript.currentAmmo;
+        }
+
         gun.SetActive(false);  // Hide the gun
         currentGunIndex = -1;
 
