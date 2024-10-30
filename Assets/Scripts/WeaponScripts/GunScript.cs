@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class GunScript : MonoBehaviour {
     [Header("Controller")]
@@ -26,6 +27,7 @@ public class GunScript : MonoBehaviour {
     private float nextFireTime = 0f;
     private bool isFlipped;
     private bool isFiring;
+    private List<GameObject> activeBulletTrails = new List<GameObject>();   
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -226,11 +228,12 @@ public class GunScript : MonoBehaviour {
         }
 
         GameObject trail = Instantiate(bulletTrailPrefab, start, Quaternion.identity);
+        activeBulletTrails.Add(trail);
 
         LineRenderer lineRenderer = trail.GetComponent<LineRenderer>();
         if (lineRenderer != null) {
-            lineRenderer.SetPosition(0, start); 
-            lineRenderer.SetPosition(1, end);   
+            lineRenderer.SetPosition(0, start);
+            lineRenderer.SetPosition(1, end);
 
             StartCoroutine(FadeBulletTrail(lineRenderer, bulletTrailFadeDuration));
         }
@@ -238,7 +241,6 @@ public class GunScript : MonoBehaviour {
 
     private IEnumerator FadeBulletTrail(LineRenderer lineRenderer, float fadeDuration) {
         float timeElapsed = 0f;
-
         Color startColor = lineRenderer.startColor;
         Color endColor = lineRenderer.endColor;
 
@@ -250,7 +252,8 @@ public class GunScript : MonoBehaviour {
             yield return null;
         }
 
-        Destroy(lineRenderer.gameObject); // Destroy the trail after it fades out
+        activeBulletTrails.Remove(lineRenderer.gameObject);
+        Destroy(lineRenderer.gameObject);
     }
 
     private void UpdateAmmoUI()
@@ -272,5 +275,18 @@ public class GunScript : MonoBehaviour {
         {
             Debug.LogWarning("currentAmmoText or weaponController is null");
         }
+    }
+
+    private void OnDisable() {
+        DestroyAllActiveBulletTrails();
+    }
+
+    private void DestroyAllActiveBulletTrails() {
+        foreach (GameObject trail in activeBulletTrails) {
+            if (trail != null) {
+                Destroy(trail);
+            }
+        }
+        activeBulletTrails.Clear(); 
     }
 }

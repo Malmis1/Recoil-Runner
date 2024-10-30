@@ -30,7 +30,7 @@ public class BulletScript : MonoBehaviour {
         }
 
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
-            Debug.Log("Ground");
+            // Debug.Log("Ground");
             Destroy(gameObject);
         }
     }
