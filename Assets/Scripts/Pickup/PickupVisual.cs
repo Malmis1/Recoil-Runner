@@ -6,7 +6,7 @@ public class PickupVisual : MonoBehaviour
     public float hoverHeight = 0.3f;
     public float hoverSpeed = 1f;
 
-    [Tooltip("Glow object behind the pickup")]
+    [Tooltip("Optional: Glow object behind the pickup")]
     public SpriteRenderer glowSpriteRenderer;
     [Tooltip("Rotation speed for the glow effect")]
     public float glowRotationSpeed = 80f;
@@ -22,16 +22,18 @@ public class PickupVisual : MonoBehaviour
     private void Start()
     {
         initialPosition = transform.position;
-        initialScale = glowSpriteRenderer.transform.localScale;
+        
+        if (glowSpriteRenderer != null)
+        {
+            initialScale = glowSpriteRenderer.transform.localScale;
+        }
     }
 
     private void Update()
     {
-        // Hover effect
         float newY = initialPosition.y + Mathf.Sin(Time.time * hoverSpeed) * hoverHeight;
         transform.position = new Vector3(initialPosition.x, newY, initialPosition.z);
 
-        // Glow effect
         if (glowSpriteRenderer != null)
         {
             glowSpriteRenderer.transform.Rotate(Vector3.forward, glowRotationSpeed * Time.deltaTime);
