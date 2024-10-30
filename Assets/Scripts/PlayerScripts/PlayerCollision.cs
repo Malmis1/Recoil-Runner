@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -15,16 +14,28 @@ public class PlayerCollision : MonoBehaviour
 
     [Tooltip("Reference to the game-over script")]
     public GameOverScript gameOverScript;
-    
+
+    [Tooltip("Cooldown time before triggering game over after taking damage")]
+    public float damageCooldown = 1f; 
+
+    private bool canTakeDamage = true;
+
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag(portalTag)) {
             winScript.PauseAndShowWinMenu();
         }
 
-        if (collision.gameObject.CompareTag(damageTag)) {
+        if (collision.gameObject.CompareTag(damageTag) && canTakeDamage) {
             Debug.Log("Player took damage by: " + collision.gameObject.name);
-
-            gameOverScript.PauseAndShowGOMenu();
+            StartCoroutine(DamageCooldown());
         }
+    }
+
+    private IEnumerator DamageCooldown()
+    {
+        canTakeDamage = false;
+        yield return new WaitForSeconds(damageCooldown);
+        gameOverScript.PauseAndShowGOMenu();
+        canTakeDamage = true;
     }
 }
