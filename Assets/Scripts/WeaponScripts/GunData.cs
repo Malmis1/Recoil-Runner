@@ -18,8 +18,11 @@ public class GunData : ScriptableObject
     [Tooltip("Particle effect to play at the hit point")]
     public GameObject hitEffectPrefab;
     [Space(10)]
-    
-
+    [Tooltip("The audio clip for shooting")]
+    public AudioClip shootingAudio;
+    [Space(10)]
+    [Tooltip("The audio clip for reloading")]
+    public AudioClip reloadAudio;
   
     
     [Header("Stats")]

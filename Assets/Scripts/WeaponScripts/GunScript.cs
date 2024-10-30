@@ -10,6 +10,10 @@ public class GunScript : MonoBehaviour {
 
     [Tooltip("Reference to the MuzzleFlash game object")]
     public GameObject muzzleFlashParent;
+
+    [Tooltip("The audio source for playing gun sound effects")]
+    public AudioSource audioSource;
+
     [HideInInspector] public TMP_Text currentAmmoText;
     [HideInInspector] public TMP_Text totalAmmoText;
     [HideInInspector] public int currentAmmo;
@@ -28,6 +32,8 @@ public class GunScript : MonoBehaviour {
     private bool isFlipped;
     private bool isFiring;
     private List<GameObject> activeBulletTrails = new List<GameObject>();   
+    private AudioClip shootingClip;
+    private AudioClip reloadClip;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -38,7 +44,9 @@ public class GunScript : MonoBehaviour {
             }
         } else {
             Debug.LogError("Weapon child object not found.");
-        }
+        }        
+
+        audioSource = GetComponent<AudioSource>();
     }
     
     void Update() {
@@ -120,6 +128,9 @@ public class GunScript : MonoBehaviour {
         {
             ChangeMuzzleFlash(gunData.muzzleFlashPrefab, gunData.muzzleFlashOffset);
         }
+
+        shootingClip = gunData.shootingAudio;
+        reloadClip = gunData.reloadAudio;
     }
 
     private void ChangeMuzzleFlash(GameObject newMuzzleFlashPrefab, Vector3 muzzleFlashOffset) {
@@ -150,24 +161,30 @@ public class GunScript : MonoBehaviour {
         isFlipped = shouldFlip;
     }
     
-    private void Fire() { // Everything that should happen when player fires
-        if (currentAmmo <= 0)
-        {
-            return; // No ammo
+    private void Fire() {
+        if (currentAmmo <= 0) {
+            return;
         }
 
         weaponController.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
         nextFireTime = Time.time + fireRate;
 
         PlayMuzzleFlashEffect();
-
         FireAndShowEffects();
+
+        if (shootingClip != null) {
+            audioSource.clip = shootingClip;
+            audioSource.Play();
+        } else {
+            Debug.LogWarning("Shooting clip is not assigned.");
+        }
 
         currentAmmo--; 
         isFiring = true;
 
         UpdateAmmoUI();
     }
+
 
     public bool IsFiring() {
         return isFiring;  
@@ -210,6 +227,13 @@ public class GunScript : MonoBehaviour {
         if (weaponController.TryUseAmmo(ammoNeeded))
         {
             currentAmmo = maxAmmo; 
+
+            if (reloadClip != null) {
+                audioSource.clip = reloadClip;
+                audioSource.Play();
+            } else {
+                Debug.LogWarning("Reload audio clip is not assigned.");
+            }
         }
         else
         {
