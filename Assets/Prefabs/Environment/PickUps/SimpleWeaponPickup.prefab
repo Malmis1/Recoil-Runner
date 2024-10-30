@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 1470166993779463370}
   - component: {fileID: 7289822326935450875}
   - component: {fileID: 3229510118310239171}
+  - component: {fileID: 2892055174400116007}
   m_Layer: 0
   m_Name: SimpleWeaponPickup
   m_TagString: Untagged
@@ -230,10 +231,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   gunName: Gun
-  hoverHeight: 0.5
-  hoverSpeed: 1.5
+--- !u!114 &2892055174400116007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7248015862986076923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53b961506cbb9e46aa94df7d8095e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverHeight: 0.3
+  hoverSpeed: 1
   glowSpriteRenderer: {fileID: 6387872425006269421}
-  glowRotationSpeed: 100
-  glowScaleSpeed: 2
+  glowRotationSpeed: 80
+  glowScaleSpeed: 1.5
   minGlowScale: 0.1
-  maxGlowScale: 0.13
+  maxGlowScale: 0.12
