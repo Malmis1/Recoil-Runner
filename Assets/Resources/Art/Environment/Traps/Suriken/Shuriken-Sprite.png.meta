@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 15992cfbda468a69baa3433af9f4b41f
+guid: 8418e6d91c1ffbfcaad81b9e211a12d0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,169 +110,169 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Suriken-Sprite_0
+      name: Shuriken-Sprite_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3c0b858b6a264310ba1bdaba6df65c7
-      internalID: -1279718322
+      spriteID: 166967444ea210201ba89372b6e6d679
+      internalID: 1069207967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_1
+      name: Shuriken-Sprite_1
       rect:
         serializedVersion: 2
         x: 32
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0cc161aa3fb6538abb3a31ea973c4a2
-      internalID: -838182007
+      spriteID: 97728576c77750c6f821487822a266b7
+      internalID: -408455008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_2
+      name: Shuriken-Sprite_2
       rect:
         serializedVersion: 2
         x: 64
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 86782e581875b73bfbb4aa3877c4118c
-      internalID: -943418123
+      spriteID: 8d9a3add78b9a5a99a2fded3c88f0977
+      internalID: -1723426530
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_3
+      name: Shuriken-Sprite_3
       rect:
         serializedVersion: 2
         x: 96
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adb49595f28d7f03dbc97d1e44607e3a
-      internalID: 468176016
+      spriteID: fc27db7bc114579f1a89b5baed14ffb5
+      internalID: 1752381396
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_4
+      name: Shuriken-Sprite_4
       rect:
         serializedVersion: 2
         x: 128
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97e837038fe1bceb8ad46a3eeb2a8e87
-      internalID: 1038476387
+      spriteID: 46b68870827b6a45d83bf432b87ff128
+      internalID: -182501754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_5
+      name: Shuriken-Sprite_5
       rect:
         serializedVersion: 2
         x: 160
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9be444d2331e923483d483e850644ed
-      internalID: 20912258
+      spriteID: 7ef7886c9ef86f7a1839b79fa4085a48
+      internalID: -1189956891
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_6
+      name: Shuriken-Sprite_6
       rect:
         serializedVersion: 2
         x: 192
         y: 0
         width: 32
         height: 32
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7086fad2309ea6fe99d15ba277efe07d
-      internalID: 756439066
+      spriteID: e70a7510a7eedc219b699073287e60f9
+      internalID: 1270072275
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Suriken-Sprite_7
+      name: Shuriken-Sprite_7
       rect:
         serializedVersion: 2
         x: 224
         y: 0
         width: 32
         height: 32
-      alignment: 9
-      pivot: {x: 0.5, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3e0f985b45d8437e897e26ecdee3461
-      internalID: -633981698
+      spriteID: c40fee325747d2e579f98e52fd65a7d8
+      internalID: -623508667
       vertices: []
       indices: 
       edges: []
@@ -288,14 +288,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Suriken-Sprite_0: -1279718322
-      Suriken-Sprite_1: -838182007
-      Suriken-Sprite_2: -943418123
-      Suriken-Sprite_3: 468176016
-      Suriken-Sprite_4: 1038476387
-      Suriken-Sprite_5: 20912258
-      Suriken-Sprite_6: 756439066
-      Suriken-Sprite_7: -633981698
+      Shuriken-Sprite_0: 1069207967
+      Shuriken-Sprite_1: -408455008
+      Shuriken-Sprite_2: -1723426530
+      Shuriken-Sprite_3: 1752381396
+      Shuriken-Sprite_4: -182501754
+      Shuriken-Sprite_5: -1189956891
+      Shuriken-Sprite_6: 1270072275
+      Shuriken-Sprite_7: -623508667
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
