@@ -21,6 +21,9 @@ public class PlayerController : MonoBehaviour
     
     [Tooltip("The player's eyes")]
     [SerializeField] private Transform eyes;
+    
+    [Tooltip("The player's weapon")]
+    [SerializeField] private GameObject weapon;
 
     private const float groundedRadius = .2f;
     private bool isGrounded;
@@ -170,9 +173,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetState(PlayerState newState)
+    public void SetState(PlayerState newState)
     {
         state = newState;
+
+        if (state == PlayerState.Dead)
+        {
+            if (eyes != null)
+                eyes.gameObject.SetActive(false);
+            
+            if (weapon != null)
+                weapon.SetActive(false);
+        }
     }
 
     private void DetermineState()

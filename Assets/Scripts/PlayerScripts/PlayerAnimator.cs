@@ -132,8 +132,7 @@ public class PlayerAnimator : MonoBehaviour
             UpdateMovementAnimation();
         }
 
-        // Uncomment when adding the dead state
-        // animator.SetBool("isDead", playerController.state == PlayerController.PlayerState.Dead);
+        animator.SetBool("isDead", playerController.state == PlayerController.PlayerState.Dead);
     }
 
     private void ResetAnimations() 

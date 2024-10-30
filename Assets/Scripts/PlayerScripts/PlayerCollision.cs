@@ -16,16 +16,32 @@ public class PlayerCollision : MonoBehaviour
     public GameOverScript gameOverScript;
 
     [Tooltip("Cooldown time before triggering game over after taking damage")]
-    public float damageCooldown = 1f; 
+    public float damageCooldown = 1f;
 
     private bool canTakeDamage = true;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.CompareTag(portalTag)) {
+    // Reference to the PlayerController
+    private PlayerController playerController;
+
+    private void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag(portalTag))
+        {
             winScript.PauseAndShowWinMenu();
         }
 
-        if (collision.gameObject.CompareTag(damageTag) && canTakeDamage) {
+        if (collision.gameObject.CompareTag(damageTag) && canTakeDamage)
+        {
+            if (playerController != null)
+            {
+                playerController.SetState(PlayerController.PlayerState.Dead); 
+            }
+
             Debug.Log("Player took damage by: " + collision.gameObject.name);
             StartCoroutine(DamageCooldown());
         }
