@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8418e6d91c1ffbfcaad81b9e211a12d0
+guid: 9e7f0f4d92731b25f9a3adb41d544d13
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Shuriken-Sprite_0
+      name: Enemy2-walk_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,14 +124,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 166967444ea210201ba89372b6e6d679
-      internalID: 1069207967
+      spriteID: 501c3c585d590a7f0b3719198df90999
+      internalID: -1986677252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_1
+      name: Enemy2-walk_1
       rect:
         serializedVersion: 2
         x: 32
@@ -145,14 +145,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97728576c77750c6f821487822a266b7
-      internalID: -408455008
+      spriteID: 60ea0c206bd9d31f29a7d2be0f65e56f
+      internalID: 1630828914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_2
+      name: Enemy2-walk_2
       rect:
         serializedVersion: 2
         x: 64
@@ -166,14 +166,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8d9a3add78b9a5a99a2fded3c88f0977
-      internalID: -1723426530
+      spriteID: 3a669e1f505842ce9bf895c64ddb4b86
+      internalID: -1081007021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_3
+      name: Enemy2-walk_3
       rect:
         serializedVersion: 2
         x: 96
@@ -187,14 +187,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc27db7bc114579f1a89b5baed14ffb5
-      internalID: 1752381396
+      spriteID: f1212d2dde9a61a119fc49aba0f93077
+      internalID: -242629503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_4
+      name: Enemy2-walk_4
       rect:
         serializedVersion: 2
         x: 128
@@ -208,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46b68870827b6a45d83bf432b87ff128
-      internalID: -182501754
+      spriteID: f1933053397a5fa9b9b11068e1f319de
+      internalID: 1157646273
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_5
+      name: Enemy2-walk_5
       rect:
         serializedVersion: 2
         x: 160
@@ -229,14 +229,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ef7886c9ef86f7a1839b79fa4085a48
-      internalID: -1189956891
+      spriteID: 2782671c0f6c886f9b2cfd8733b62dc1
+      internalID: 4728444
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_6
+      name: Enemy2-walk_6
       rect:
         serializedVersion: 2
         x: 192
@@ -250,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e70a7510a7eedc219b699073287e60f9
-      internalID: 1270072275
+      spriteID: 365e79c6741189cd7a8c6da5dbbb2d5d
+      internalID: 1998017542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shuriken-Sprite_7
+      name: Enemy2-walk_7
       rect:
         serializedVersion: 2
         x: 224
@@ -271,8 +271,134 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c40fee325747d2e579f98e52fd65a7d8
-      internalID: -623508667
+      spriteID: 990edb6002bd3ba11afb8c6f69df786b
+      internalID: -1559839594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_8
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fa77df56f0c93bd7895fb86b427d51e
+      internalID: 1224422925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_9
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55ca9b50462e2901092f3728fb706b88
+      internalID: 189169042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_10
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f9c5a04a4283a7cc9f095ad7506ae2e
+      internalID: -744159511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_11
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bff9e6c8eede4075dbb253544931c64f
+      internalID: -1734513228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_12
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5abd50c065c2e1c7ba88a909f99def40
+      internalID: 105645183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Enemy2-walk_13
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652f4062c5615fba99c0e6fea020ead1
+      internalID: -448037587
       vertices: []
       indices: 
       edges: []
@@ -288,14 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Shuriken-Sprite_0: 1069207967
-      Shuriken-Sprite_1: -408455008
-      Shuriken-Sprite_2: -1723426530
-      Shuriken-Sprite_3: 1752381396
-      Shuriken-Sprite_4: -182501754
-      Shuriken-Sprite_5: -1189956891
-      Shuriken-Sprite_6: 1270072275
-      Shuriken-Sprite_7: -623508667
+      Enemy2-walk_0: -1986677252
+      Enemy2-walk_1: 1630828914
+      Enemy2-walk_10: -744159511
+      Enemy2-walk_11: -1734513228
+      Enemy2-walk_12: 105645183
+      Enemy2-walk_13: -448037587
+      Enemy2-walk_2: -1081007021
+      Enemy2-walk_3: -242629503
+      Enemy2-walk_4: 1157646273
+      Enemy2-walk_5: 4728444
+      Enemy2-walk_6: 1998017542
+      Enemy2-walk_7: -1559839594
+      Enemy2-walk_8: 1224422925
+      Enemy2-walk_9: 189169042
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
