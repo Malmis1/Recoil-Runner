@@ -148,11 +148,11 @@ GameObject:
   - component: {fileID: 4982340143865886447}
   m_Layer: 0
   m_Name: Enemy1
-  m_TagString: Damage
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1302685416474836089
 Transform:
   m_ObjectHideFlags: 0
@@ -235,6 +235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fbafcbced94e6083ab535ba724f41eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: {fileID: 0}
   health: 100
 --- !u!114 &1246724940260000773
 MonoBehaviour:

@@ -153,8 +153,6 @@ public class EnemyController : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.isKinematic = true; 
 
-        Debug.Log("Enemy died.");
-
         StartCoroutine(PlayDeathAnimationAndDestroy(0.5f));
     }
 

@@ -33,4 +33,5 @@ public class GunData : ScriptableObject
     public float additiveRecoilAngleThreshold = 250f;
     public bool initialRecoilResetsVelocity = true;
     public bool isAutomatic = false;
+    public float damage = 20.0f;
 }

@@ -36,6 +36,7 @@ public class GunScript : MonoBehaviour {
     private List<GameObject> activeBulletTrails = new List<GameObject>();   
     private AudioClip shootingClip;
     private AudioClip reloadClip;
+    private float damage;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -93,6 +94,7 @@ public class GunScript : MonoBehaviour {
         additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
         isAutomatic = gunData.isAutomatic;
+        damage = gunData.damage;
 
         bulletTrailPrefab = gunData.bulletTrailPrefab;
         bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
