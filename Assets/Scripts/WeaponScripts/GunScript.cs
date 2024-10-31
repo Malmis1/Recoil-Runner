@@ -22,6 +22,8 @@ public class GunScript : MonoBehaviour {
     private float recoilForce;
     private int maxAmmo;
     private float fireRate;
+    private float shotsPerFire;
+    private float spreadAngle;
     private float additiveRecoilAngleThreshold;
     private bool initialRecoilResetsVelocity;
     private bool isAutomatic;
@@ -86,6 +88,8 @@ public class GunScript : MonoBehaviour {
         recoilForce = gunData.recoilForce;
         maxAmmo = gunData.maxAmmo;
         fireRate = gunData.fireRate;
+        shotsPerFire = gunData.shotsPerFire;
+        spreadAngle = gunData.spreadAngle; 
         additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
         isAutomatic = gunData.isAutomatic;
@@ -176,19 +180,22 @@ public class GunScript : MonoBehaviour {
 
     private void FireAndShowEffects() {
         Vector2 origin = transform.position;
-        Vector2 direction = transform.up;
+        for (int i = 0; i < shotsPerFire; i++) {
+            float spread = Random.Range(-spreadAngle, spreadAngle);
+            Vector2 direction = Quaternion.Euler(0, 0, spread) * transform.up;
 
-        RaycastHit2D hit = Physics2D.Raycast(origin, direction, weaponController.maxDistance, weaponController.hitLayers);
+            RaycastHit2D hit = Physics2D.Raycast(origin, direction, weaponController.maxDistance, weaponController.hitLayers);
 
-        Vector2 hitPoint;
-        if (hit.collider != null) {
-            hitPoint = hit.point;
-            Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
-        } else {
-            hitPoint = origin + direction * weaponController.maxDistance; 
+            Vector2 hitPoint;
+            if (hit.collider != null) {
+                hitPoint = hit.point;
+                Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
+            } else {
+                hitPoint = origin + direction * weaponController.maxDistance;
+            }
+
+            CreateBulletTrail(origin, hitPoint); // Create a bullet trail for each shot
         }
-
-        CreateBulletTrail(origin, hitPoint); // Create the bullet trail when firing
     }
 
     private void Reload()

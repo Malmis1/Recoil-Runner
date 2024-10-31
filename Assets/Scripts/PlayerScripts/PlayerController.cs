@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
         float limit = Vector2.Dot(deltaV, rb.velocity) > 0f ? maxAccel : maxDecel;
         Vector2 force = Vector2.zero;
         // Ensure the player does not slow down when moving in the same direction as velocity
-        if (((targetVelocity.magnitude - rb.velocity.magnitude) > 0) || (Mathf.Sign(move) != Mathf.Sign(rb.velocity.x))) {
+        if (((Mathf.Abs(targetVelocity.x) - Mathf.Abs(rb.velocity.x)) > 0) || (Mathf.Sign(move) != Mathf.Sign(rb.velocity.x))) {
             force = rb.mass * Vector2.ClampMagnitude(accel, limit);
         }
 
