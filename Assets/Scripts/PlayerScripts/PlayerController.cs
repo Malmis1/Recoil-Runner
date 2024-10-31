@@ -136,7 +136,11 @@ public class PlayerController : MonoBehaviour
         Vector2 deltaV = targetVelocity - rb.velocity;
         Vector2 accel = deltaV / Time.deltaTime;
         float limit = Vector2.Dot(deltaV, rb.velocity) > 0f ? maxAccel : maxDecel;
-        Vector2 force = rb.mass * Vector2.ClampMagnitude(accel, limit);
+        Vector2 force = Vector2.zero;
+        // Ensure the player does not slow down when moving in the same direction as velocity
+        if (((targetVelocity.magnitude - rb.velocity.magnitude) > 0) || (Mathf.Sign(move) != Mathf.Sign(rb.velocity.x))) {
+            force = rb.mass * Vector2.ClampMagnitude(accel, limit);
+        }
 
         float xControlMultiplier = 1 + Mathf.Abs(force.y) * xControlMultiplierFactor;
         rb.AddForce(new Vector2(force.x * xControlMultiplier, 0), ForceMode2D.Force);
