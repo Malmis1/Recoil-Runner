@@ -30,6 +30,8 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        Debug.Log("Test");
         if (collision.gameObject.CompareTag(portalTag))
         {
             winScript.PauseAndShowWinMenu();
