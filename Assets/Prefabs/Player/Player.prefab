@@ -145,7 +145,7 @@ MonoBehaviour:
     m_Bits: 119
   groundCheck: {fileID: 5251167963582078972}
   eyes: {fileID: 9188469316448821321}
-  weapon: {fileID: 0}
+  weapon: {fileID: 1987310977281509233}
   maxHorizontalSpeed: 10
   maxVerticalSpeed: 20
   maxAccel: 35
