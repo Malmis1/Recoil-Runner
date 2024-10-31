@@ -24,6 +24,6 @@ MonoBehaviour:
   recoilForce: 20
   maxAmmo: 5
   fireRate: 1.5
-  additiveRecoilAngleThreshold: 360
-  initialRecoilResetsVelocity: 0
-  isAutomatic: 0
+  additiveRecoilAngleThreshold: 215
+  initialRecoilResetsVelocity: 1
+  isAutomatic: 1
