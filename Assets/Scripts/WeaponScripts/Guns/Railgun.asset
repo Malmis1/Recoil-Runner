@@ -24,6 +24,7 @@ MonoBehaviour:
   recoilForce: 15
   maxAmmo: 10
   fireRate: 0.7
+  spreadAngle: 0.8
   additiveRecoilAngleThreshold: 225
   initialRecoilResetsVelocity: 1
   isAutomatic: 1

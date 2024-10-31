@@ -20,7 +20,6 @@ public class GunData : ScriptableObject
     [Space(10)]
     [Tooltip("The audio clip for shooting")]
     public AudioClip shootingAudio;
-    [Space(10)]
     [Tooltip("The audio clip for reloading")]
     public AudioClip reloadAudio;
   
@@ -29,6 +28,8 @@ public class GunData : ScriptableObject
     public float recoilForce = 15f;
     public int maxAmmo = 30; 
     public float fireRate = 1.0f;
+    public int shotsPerFire = 1; 
+    public float spreadAngle = 5f; 
     public float additiveRecoilAngleThreshold = 250f;
     public bool initialRecoilResetsVelocity = true;
     public bool isAutomatic = false;
