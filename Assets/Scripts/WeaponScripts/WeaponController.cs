@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
                 gunAmmoDict[gunIndex] = gunScript.currentAmmo; // Save initial ammo
             }
 
-            gunScript.ApplyGunDataWithoutResettingAmmo(gunDataList[gunIndex]);
+            gunScript.ApplyGunData(gunDataList[gunIndex]);
 
 
             if (hudImage != null && gunDataList[gunIndex].hudSprite != null)

@@ -81,33 +81,8 @@ public class GunScript : MonoBehaviour {
         UpdateAmmoUI();
     }
 
-    public void ApplyGunData(GunData gunData) {
-        // Set stats
-        recoilForce = gunData.recoilForce;
-        maxAmmo = gunData.maxAmmo;
-        currentAmmo = maxAmmo;
-        fireRate = gunData.fireRate;
-        additiveRecoilAngleThreshold = gunData.additiveRecoilAngleThreshold;
-        initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
-        isAutomatic = gunData.isAutomatic;
-
-        bulletTrailPrefab = gunData.bulletTrailPrefab;
-        bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
-        hitEffectPrefab = gunData.hitEffectPrefab;
-
-        // Set sprite
-        if (gunSpriteRenderer != null) {
-            gunSpriteRenderer.sprite = gunData.gunSprite;
-        }
-
-        // Instantiate the muzzle flash prefab
-        if (gunData.muzzleFlashPrefab != null) {
-            ChangeMuzzleFlash(gunData.muzzleFlashPrefab, gunData.muzzleFlashOffset);
-        }
-    }
-    public void ApplyGunDataWithoutResettingAmmo(GunData gunData)
+    public void ApplyGunData(GunData gunData)
     {
-        // Set all stats except currentAmmo
         recoilForce = gunData.recoilForce;
         maxAmmo = gunData.maxAmmo;
         fireRate = gunData.fireRate;
