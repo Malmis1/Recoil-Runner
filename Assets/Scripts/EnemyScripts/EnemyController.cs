@@ -48,9 +48,11 @@ public class EnemyController : MonoBehaviour
     }
 
     private void FixedUpdate() {
-        CheckIfGrounded();
-        RotateTowardsWalkingDirection();
-        DetermineState();
+        if (state != EnemyState.Dead) {
+            CheckIfGrounded();
+            RotateTowardsWalkingDirection();
+            DetermineState();
+        }
     }
 
     private void CheckIfGrounded() {
@@ -58,6 +60,8 @@ public class EnemyController : MonoBehaviour
     }
 
     public void Move(float move, bool jump) {
+        if (state == EnemyState.Dead) return;
+
         // Run
         Vector3 targetVelocity = new Vector2(move * moveSpeed * 10, rb.velocity.y);
         rb.velocity = targetVelocity;
@@ -143,8 +147,23 @@ public class EnemyController : MonoBehaviour
         Dead,
     }
 
-    private void SetState(EnemyState newState)
-    {
+    public void EnemyDie() {
+        SetState(EnemyState.Dead);
+
+        rb.velocity = Vector2.zero;
+        rb.isKinematic = true; 
+
+        Debug.Log("Enemy died.");
+
+        StartCoroutine(PlayDeathAnimationAndDestroy(0.5f));
+    }
+
+    private IEnumerator PlayDeathAnimationAndDestroy(float duration) {
+        yield return new WaitForSeconds(duration);
+        Destroy(gameObject);
+    }
+
+    private void SetState(EnemyState newState) {
         state = newState;
     }
 

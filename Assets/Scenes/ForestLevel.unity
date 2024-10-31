@@ -310,6 +310,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+--- !u!114 &1210925792 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8712153663763423309, guid: 3769f097fff1f80cf8c5969b77fcee32, type: 3}
+  m_PrefabInstance: {fileID: 7081995563210405700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 239f4d6d1f6775c18a5ab73d16ed6189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1286837360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 79273368863278957, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
@@ -2674,6 +2685,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3628365268234937850, guid: 3769f097fff1f80cf8c5969b77fcee32, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1210925792}
     - target: {fileID: 6279744303033137164, guid: 3769f097fff1f80cf8c5969b77fcee32, type: 3}
       propertyPath: m_Name
       value: Enemy2
