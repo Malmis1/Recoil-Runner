@@ -10262,6 +10262,14 @@ PrefabInstance:
       propertyPath: hudImage
       value: 
       objectReference: {fileID: 2098864713}
+    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: gunDataList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: gunDataList.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5b39ee9dc0f3524458cd5eb3634662c1, type: 2}
     - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: TotalAmmoContainer
       value: 

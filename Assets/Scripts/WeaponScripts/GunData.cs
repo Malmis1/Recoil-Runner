@@ -29,7 +29,7 @@ public class GunData : ScriptableObject
     public int maxAmmo = 30; 
     public float fireRate = 1.0f;
     public int shotsPerFire = 1; 
-    public float spreadAngle = 5f; 
+    public float spreadAngle = 1f; 
     public float additiveRecoilAngleThreshold = 250f;
     public bool initialRecoilResetsVelocity = true;
     public bool isAutomatic = false;

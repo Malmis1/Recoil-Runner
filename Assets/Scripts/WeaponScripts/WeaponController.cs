@@ -177,6 +177,11 @@ public class WeaponController : MonoBehaviour
         {
             ChangeGunByIndex(2);  
         }
+        
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ChangeGunByIndex(3);  
+        }
     }
 
     public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
