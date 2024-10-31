@@ -19,6 +19,8 @@ MonoBehaviour:
   bulletTrailPrefab: {fileID: 8052582585650083193, guid: 88d440ca2cb7d894c94c2c5a5c71bc87, type: 3}
   bulletTrailFadeDuration: 0.3
   hitEffectPrefab: {fileID: 140425041097646891, guid: 75e8d17927f9c93418ba159d8deee53c, type: 3}
+  shootingAudio: {fileID: 8300000, guid: 6e419b82d9e57c4cf8323aa336f5fbac, type: 3}
+  reloadAudio: {fileID: 8300000, guid: 09b270e41b55f3615b75124ff2fe59f5, type: 3}
   recoilForce: 15
   maxAmmo: 10
   fireRate: 0.7
