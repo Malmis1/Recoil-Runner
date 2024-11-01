@@ -192,11 +192,27 @@ public class GunScript : MonoBehaviour {
             if (hit.collider != null) {
                 hitPoint = hit.point;
                 Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
+
+                DealDamage(hit); 
+                Debug.Log("Fire");
             } else {
                 hitPoint = origin + direction * weaponController.maxDistance;
             }
 
             CreateBulletTrail(origin, hitPoint); // Create a bullet trail for each shot
+        }
+    }
+
+    private void DealDamage(RaycastHit2D hit2D) {
+        if (hit2D.collider.CompareTag("Enemy")) {
+            EnemyHealth enemyHealth = hit2D.collider.GetComponent<EnemyHealth>();
+            
+            if (enemyHealth != null) {
+                enemyHealth.TakeDamage(damage);
+                Debug.Log("Deal damage");
+            } else {
+                Debug.Log("Enemy health is not being assigned properly");
+            }
         }
     }
 

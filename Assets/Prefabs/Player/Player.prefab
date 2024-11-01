@@ -491,6 +491,9 @@ MonoBehaviour:
   weaponController: {fileID: 4243565302050763436}
   muzzleFlashParent: {fileID: 5228038174342465386}
   audioSource: {fileID: 7094573604681807568}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   currentAmmoText: {fileID: 0}
   totalAmmoText: {fileID: 0}
   currentAmmo: 0

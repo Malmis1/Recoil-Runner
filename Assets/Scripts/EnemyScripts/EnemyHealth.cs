@@ -6,19 +6,20 @@ public class EnemyHealth : MonoBehaviour {
     [Tooltip("The controller for the enemy")]
     public EnemyController controller;
 
-    public int health = 1;
+    public float health = 1.0f;
 
     void Update() {
-        if (health <= 0) {
+        if (health <= 0f) {
             controller.EnemyDie();
         }
     }
 
-    public void TakeDamage(int amount) {
-        health += amount;
+    public void TakeDamage(float amount) {
+        health -= amount;
+        Debug.Log("Enemy health: " + health);
     }
 
-    public void AddHealth(int amount) {
+    public void AddHealth(float amount) {
         health += amount;
     }
 }
