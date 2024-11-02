@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7607653860123401379}
   - component: {fileID: 2605107525471360553}
   - component: {fileID: 470921056502211970}
+  - component: {fileID: 1092697488427984374}
+  - component: {fileID: 5006024753191284132}
   m_Layer: 7
   m_Name: UFO
   m_TagString: Enemy
@@ -224,6 +226,41 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2605107525471360553}
   health: 1
+--- !u!95 &1092697488427984374
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55085584675485010}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 128302c9ead2fb24c8a7e379bd7960e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5006024753191284132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55085584675485010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a02edab630a0d2faa5ac28e9f305760, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyController: {fileID: 2605107525471360553}
+  animator: {fileID: 1092697488427984374}
 --- !u!1 &3436691156615676967
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +306,7 @@ GameObject:
   - component: {fileID: 9084663235044226210}
   m_Layer: 0
   m_Name: Laser
-  m_TagString: Untagged
+  m_TagString: Damage
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -15,7 +15,7 @@ public class TimeDisplay : MonoBehaviour
 
         int milliseconds = Mathf.FloorToInt((timeSinceLoad - seconds) * 100);
 
-        string timeString = string.Format("Text: {0:00}:{1:00}", seconds, milliseconds);
+        string timeString = string.Format("Time: {0:00}:{1:00}", seconds, milliseconds);
 
         timeText.text = timeString;
     }

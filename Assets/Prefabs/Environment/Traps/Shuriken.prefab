@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1443013229418330529}
   - component: {fileID: 2025965123620745413}
   - component: {fileID: 6989531324927284794}
-  - component: {fileID: 5280783228058510633}
+  - component: {fileID: 2612005598605924373}
   m_Layer: 0
   m_Name: Shuriken
   m_TagString: Damage
@@ -107,8 +107,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &5280783228058510633
-BoxCollider2D:
+--- !u!58 &2612005598605924373
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -139,16 +139,6 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.002849415, y: 0.0014247}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: -0.00000009313226, y: 0}
   serializedVersion: 2
-  m_Size: {x: 0.33322552, y: 0.336075}
-  m_EdgeRadius: 0
+  m_Radius: 0.17240432
