@@ -145,6 +145,7 @@ public class EnemyController : MonoBehaviour
         Jump,
         Fall,
         Dead,
+        Attack,
     }
 
     public void EnemyDie() {
@@ -156,12 +157,16 @@ public class EnemyController : MonoBehaviour
         StartCoroutine(PlayDeathAnimationAndDestroy(0.5f));
     }
 
+    public void EnemyAttack() {
+        SetState(EnemyState.Attack);
+    }
+
     private IEnumerator PlayDeathAnimationAndDestroy(float duration) {
         yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 
-    private void SetState(EnemyState newState) {
+    public void SetState(EnemyState newState) {
         state = newState;
     }
 

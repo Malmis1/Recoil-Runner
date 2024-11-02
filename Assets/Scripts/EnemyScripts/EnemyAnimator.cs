@@ -39,6 +39,9 @@ public class EnemyAnimator : MonoBehaviour {
             case EnemyController.EnemyState.Dead:
                 animator.SetTrigger("isDead");
                 break;
+            case EnemyController.EnemyState.Attack:
+                animator.SetBool("isAttacking", true);
+                break;
         }
     }
 
@@ -47,5 +50,6 @@ public class EnemyAnimator : MonoBehaviour {
         animator.SetBool("isWalking", false);
         animator.SetBool("isJumping", false);
         animator.SetBool("isFalling", false);
+        animator.SetBool("isAttacking", false);
     }
 }
