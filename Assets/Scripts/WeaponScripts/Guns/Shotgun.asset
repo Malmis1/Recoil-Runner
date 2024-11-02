@@ -29,3 +29,4 @@ MonoBehaviour:
   additiveRecoilAngleThreshold: 215
   initialRecoilResetsVelocity: 1
   isAutomatic: 1
+  damage: 70

@@ -33,12 +33,14 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private bool facingRight = true;
     private SpriteRenderer spriteRenderer;
-    private Transform playerTransform;
+    public Transform playerTransform;
 
     public EnemyState state = EnemyState.Idle;
     public UnityEvent OnLandEvent;
 
     private bool isJumping;
+
+    public Vector2? playerDirection;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -119,13 +121,13 @@ public class EnemyController : MonoBehaviour
 
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     playerTransform = player.transform;
-
+                    playerDirection = directionToPlayer.normalized;
                     return;
                 }
             }
         }
-
         playerTransform = null;
+        playerDirection = null;
     }
 
     private void OnDrawGizmosSelected() { // Test method for visualizing the detection zone

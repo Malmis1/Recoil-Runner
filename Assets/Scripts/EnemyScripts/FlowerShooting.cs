@@ -20,23 +20,25 @@ public class FlowerShooting : MonoBehaviour {
     private float nextFireTime;
 
     void Update() {
-        if (Time.time >= nextFireTime) {
+        controller.DetectPlayer();
+
+        if (Time.time >= nextFireTime && controller.playerTransform != null) {
+            Vector2 directionToPlayer = controller.playerDirection.Value;
+            float angle = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
+            firePoint.rotation = Quaternion.Euler(0, 0, angle);
+
             controller.EnemyAttack();
             StartCoroutine(DelayShoot(0.3f));
-
             nextFireTime = Time.time + fireRate;
         }
     }
-
-
 
     void Shoot() {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         if (rb != null) {
-            float adjustedBulletSpeed = controller.AdjustBulletSpeed(bulletSpeed);
-            rb.velocity = firePoint.right * adjustedBulletSpeed;
+            rb.velocity = firePoint.right * bulletSpeed;
         }
 
         StartCoroutine(WaitAndSetIdle(0.7f));
