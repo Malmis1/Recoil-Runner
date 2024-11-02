@@ -8,10 +8,9 @@ public class EnemyUFO : MonoBehaviour
     public float stoppingDistance = 0.1f;
 
     private Vector2 targetPosition;
-    private Laser laser; // Reference to the Laser script
+    public Laser laser;
 
     void Start() {
-        laser = GetComponentInChildren<Laser>();
         if (laser != null) {
             laser.DisableLaser();
         }

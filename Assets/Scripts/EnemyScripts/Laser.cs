@@ -13,10 +13,9 @@ public class Laser : MonoBehaviour {
         lineRenderer.positionCount = 2;
         lineRenderer.enabled = false;
 
-        // Set up the BoxCollider2D and configure it as a trigger
         laserCollider = GetComponent<BoxCollider2D>();
         laserCollider.isTrigger = true;
-        laserCollider.enabled = false; // Disable initially
+        laserCollider.enabled = false;
     }
 
     public void EnableLaser() {
@@ -41,9 +40,9 @@ public class Laser : MonoBehaviour {
         laserCollider.size = new Vector2(0.1f, laserLength);
     }
 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Player")) {
-            Debug.Log("Player hit by laser!");
-        }
-    }
+    // private void OnTriggerEnter2D(Collider2D other) {
+    //     if (other.CompareTag("Player")) {
+    //         Debug.Log("Player hit by laser!");
+    //     }
+    // }
 }

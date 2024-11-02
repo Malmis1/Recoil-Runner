@@ -16,7 +16,6 @@ public class EnemyHealth : MonoBehaviour {
 
     public void TakeDamage(float amount) {
         health -= amount;
-        Debug.Log("Enemy health: " + health);
     }
 
     public void AddHealth(float amount) {

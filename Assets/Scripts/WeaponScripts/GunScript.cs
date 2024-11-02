@@ -193,8 +193,7 @@ public class GunScript : MonoBehaviour {
                 hitPoint = hit.point;
                 Instantiate(hitEffectPrefab, hit.point, Quaternion.identity);
 
-                DealDamage(hit); 
-                Debug.Log("Fire");
+                DealDamage(hit);
             } else {
                 hitPoint = origin + direction * weaponController.maxDistance;
             }
@@ -209,10 +208,11 @@ public class GunScript : MonoBehaviour {
             
             if (enemyHealth != null) {
                 enemyHealth.TakeDamage(damage);
-                Debug.Log("Deal damage");
             } else {
                 Debug.Log("Enemy health is not being assigned properly");
             }
+        } else {
+            Debug.Log("Trying to deal damage to a non enemy.");
         }
     }
 

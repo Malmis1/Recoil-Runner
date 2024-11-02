@@ -28,10 +28,7 @@ public class PlayerCollision : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        Debug.Log("Test");
+    private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.CompareTag(portalTag))
         {
             winScript.PauseAndShowWinMenu();
