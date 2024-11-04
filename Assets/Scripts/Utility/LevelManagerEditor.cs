@@ -1,6 +1,9 @@
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(LevelManager))]
 public class LevelManagerEditor : Editor
 {
@@ -51,3 +54,4 @@ public class LevelManagerEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
 }
+#endif
