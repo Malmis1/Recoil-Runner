@@ -32,10 +32,10 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     [Tooltip("Maximum horizontal speed")]
-    public float maxHorizontalSpeed = 10f;
+    public float maxHorizontalSpeed = 100f;
 
     [Tooltip("Maximum vertical speed")]
-    public float maxVerticalSpeed = 20f;
+    public float maxVerticalSpeed = 25f;
 
     [Tooltip("Maximum acceleration of the player")]
     public float maxAccel = 35f;
@@ -73,7 +73,7 @@ public class PlayerController : MonoBehaviour
         DetermineState();
 
         // Limit the player's velocity
-        //LimitVelocity();
+        LimitVelocity();
     }
 
     private void determinePlayerWidth() {
