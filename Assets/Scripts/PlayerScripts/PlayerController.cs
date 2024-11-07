@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
                 maxWidth = boxColliderWidth;
             }
         }
-        playerWidth = maxWidth;
+        playerWidth = maxWidth - 0.1f;
     }
 
     private void LimitVelocity() {
