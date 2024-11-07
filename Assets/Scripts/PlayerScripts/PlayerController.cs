@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
-    [Tooltip("The movement speed")]
-    public float moveSpeed = 40f;
+    [Tooltip("The movement speed determined by the amount of force applied to the player")]
+    public float moveForce = 400f;
 
     [Tooltip("Leniency for jumping after not being grounded anymore")]
     public float jumpGraceTime = 0.1f;
@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void MoveH(float move) {
-        Vector2 targetVelocity = new Vector2(move * moveSpeed * 10, 0);
+        Vector2 targetVelocity = new Vector2(move * moveForce, 0);
 
         float maxDecel = move != 0 ? maxControlledDecel : maxDefaultDecel;
 
