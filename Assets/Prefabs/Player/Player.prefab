@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 720d625a04390044d99d6bf9bf2cdc5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 40
+  moveForce: 400
   jumpGraceTime: 0.1
   jumpForce: 500
   whatIsGround:
@@ -294,7 +294,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.18}
+  m_Size: {x: 0.108, y: 0.18}
   m_EdgeRadius: 0
 --- !u!114 &8367137877836100255
 MonoBehaviour:
@@ -356,8 +356,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1061, y: 0.1759}
-  m_EdgeRadius: 0.02
+  m_Size: {x: 0.11, y: 0.179}
+  m_EdgeRadius: 0
 --- !u!1 &1388137580178813562
 GameObject:
   m_ObjectHideFlags: 0
