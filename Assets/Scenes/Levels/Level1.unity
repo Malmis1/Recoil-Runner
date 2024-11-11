@@ -4977,6 +4977,10 @@ PrefabInstance:
       propertyPath: winScript
       value: 
       objectReference: {fileID: 659974362}
+    - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: gameOverScript
+      value: 
+      objectReference: {fileID: 2098864715}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6331,6 +6335,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8184289128067437703, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
   m_PrefabInstance: {fileID: 2098864711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098864715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 514322347481616686, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 2098864711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e277b2e5f2f9ed40a4e36c4abfa4b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5271124289245401660
 PrefabInstance:
   m_ObjectHideFlags: 0
