@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     [Header("Camera Settings")]
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
+    [SerializeField] private float minY;
+    [SerializeField] private float maxY;
 
     [Header("Player Settings")]
     [SerializeField] public bool startWithGun;
@@ -30,6 +32,8 @@ public class LevelManager : MonoBehaviour
         {
             cameraFollow.MinX = minX;
             cameraFollow.MaxX = maxX;
+            cameraFollow.MinY = minY;
+            cameraFollow.MaxY = maxY;
         }
         else
         {

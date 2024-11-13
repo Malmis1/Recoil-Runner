@@ -7,6 +7,8 @@ public class CameraFollow : MonoBehaviour
     
     private float minX;
     private float maxX;
+    private float minY;
+    private float maxY;
     
     private Vector3 offset;  // Offset between the camera and the player.
 
@@ -22,6 +24,18 @@ public class CameraFollow : MonoBehaviour
         set => maxX = value;
     }
 
+    public float MinY
+    {
+        get => minY;
+        set => minY = value;
+    }
+
+    public float MaxY
+    {
+        get => maxY;
+        set => maxY = value;
+    }
+
     void Start()
     {
         offset = transform.position - player.position;
@@ -32,6 +46,7 @@ public class CameraFollow : MonoBehaviour
         Vector3 newPos = player.position + offset;
         
         newPos.x = Mathf.Clamp(newPos.x, minX, maxX);
+        newPos.y = Mathf.Clamp(newPos.y, minY, maxY);
 
         transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
     }

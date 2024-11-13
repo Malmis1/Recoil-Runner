@@ -47,6 +47,8 @@ MonoBehaviour:
   HUDCanvas: {fileID: 0}
   minX: 0
   maxX: 100
+  minY: -2
+  maxY: 100
   startWithGun: 1
   gunName: Railgun
   startingTotalAmmo: 10
