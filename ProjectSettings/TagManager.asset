@@ -41,6 +41,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background 2
+    uniqueID: 2981884191
+    locked: 0
   - name: Background
     uniqueID: 1493351987
     locked: 0
@@ -52,6 +55,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Glass
+    uniqueID: 1722344523
     locked: 0
   - name: ForeGroundDetail
     uniqueID: 258231953
