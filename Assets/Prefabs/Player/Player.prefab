@@ -187,7 +187,7 @@ MonoBehaviour:
   maxDistance: 100
   hitLayers:
     serializedVersion: 2
-    m_Bits: 119
+    m_Bits: 247
   hudImage: {fileID: 0}
   ammoCounter: {fileID: 0}
 --- !u!114 &1720813195847083947
