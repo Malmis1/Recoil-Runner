@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3355568106693114795
 Transform:
   m_ObjectHideFlags: 0
@@ -171,6 +171,7 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 70
+  playerTransform: {fileID: 0}
   state: 0
   OnLandEvent:
     m_PersistentCalls:
@@ -235,7 +236,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011077739, y: -0.0055832565}
+  m_Offset: {x: -0.011077739, y: -0.004373215}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -246,7 +247,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24503599, y: 0.27226907}
+  m_Size: {x: 0.24503599, y: 0.27468914}
   m_EdgeRadius: 0
 --- !u!50 &1997519246078060487
 Rigidbody2D:
