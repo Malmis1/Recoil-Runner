@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T)) {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 
