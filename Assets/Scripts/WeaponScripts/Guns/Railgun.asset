@@ -27,6 +27,6 @@ MonoBehaviour:
   shotsPerFire: 1
   spreadAngle: 0.8
   additiveRecoilAngleThreshold: 225
-  initialRecoilResetsVelocity: 1
+  initialRecoilResetsVelocity: 0
   isAutomatic: 1
   damage: 50
