@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LightningTrapScript : MonoBehaviour {
-    private BoxCollider2D collider;
+    private BoxCollider2D trapCollider;
     private Animator animator;
 
     [Tooltip("The amount of time the trap will be on.")]
@@ -13,7 +13,7 @@ public class LightningTrapScript : MonoBehaviour {
     public float toggleIntervalTrapOff = 4f;
 
     void Start() {
-        collider = GetComponent<BoxCollider2D>();
+        trapCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
 
         StartCoroutine(ToggleCollider());
@@ -21,13 +21,13 @@ public class LightningTrapScript : MonoBehaviour {
 
     IEnumerator ToggleCollider() {
         while (true) {
-            collider.enabled = true;
+            trapCollider.enabled = true;
             animator.SetBool("isAttacking", true);
             animator.SetBool("isIdle", false);
 
             yield return new WaitForSeconds(toggleIntervalTrapOn);
 
-            collider.enabled = false;
+            trapCollider.enabled = false;
             animator.SetBool("isAttacking", false);
             animator.SetBool("isIdle", true);
 
