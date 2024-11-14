@@ -36,14 +36,17 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag(damageTag) && canTakeDamage)
         {
-            if (playerController != null)
-            {
-                playerController.SetState(PlayerController.PlayerState.Dead); 
-            }
-
-            Debug.Log("Player took damage by: " + collision.gameObject.name);
-            StartCoroutine(DamageCooldown());
+           KillPlayer();
         }
+    }
+
+    public void KillPlayer() {
+        if (playerController != null)
+        {
+            playerController.SetState(PlayerController.PlayerState.Dead); 
+        }
+
+        StartCoroutine(DamageCooldown());
     }
 
     private IEnumerator DamageCooldown()
