@@ -211,8 +211,6 @@ public class GunScript : MonoBehaviour {
             } else {
                 Debug.Log("Enemy health is not being assigned properly");
             }
-        } else {
-            Debug.Log("Trying to deal damage to a non enemy.");
         }
     }
 
