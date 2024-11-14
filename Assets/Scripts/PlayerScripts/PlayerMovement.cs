@@ -1,6 +1,7 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
     [Tooltip("The movement controller for the player")]
     public PlayerController controller;
 
@@ -17,15 +18,24 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void Update() { // Get input
+    void Update()
+    { // Get input
+        if (controller.state == PlayerController.PlayerState.Dead)
+            return;
+
         horizontalMove = Input.GetAxisRaw("Horizontal");
 
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump"))
+        {
             jump = true;
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
+        if (controller.state == PlayerController.PlayerState.Dead)
+            return;
+
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
     }
