@@ -183,6 +183,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d9ff58475c693fe43b6d26a0e68a8d45, type: 2}
   - {fileID: 11400000, guid: d8b382d93b825764f9a65ad34f09f740, type: 2}
   - {fileID: 11400000, guid: 0fa0c7d6f3fa3df448cc3292e8eff993, type: 2}
+  - {fileID: 11400000, guid: 5b39ee9dc0f3524458cd5eb3634662c1, type: 2}
   maxDistance: 100
   hitLayers:
     serializedVersion: 2
