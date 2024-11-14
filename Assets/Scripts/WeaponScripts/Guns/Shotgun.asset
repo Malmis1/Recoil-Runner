@@ -26,7 +26,7 @@ MonoBehaviour:
   fireRate: 1
   shotsPerFire: 8
   spreadAngle: 7
-  additiveRecoilAngleThreshold: 215
-  initialRecoilResetsVelocity: 1
+  additiveRecoilAngleThreshold: 225
+  initialRecoilResetsVelocity: 0
   isAutomatic: 1
   damage: 70
