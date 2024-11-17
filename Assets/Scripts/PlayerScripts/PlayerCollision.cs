@@ -28,22 +28,25 @@ public class PlayerCollision : MonoBehaviour
         playerController = GetComponent<PlayerController>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag(portalTag))
         {
+            FindObjectOfType<LevelManager>()?.UnlockNextLevel();
             winScript.PauseAndShowWinMenu();
         }
 
         if (collision.gameObject.CompareTag(damageTag) && canTakeDamage)
         {
-           KillPlayer();
+            KillPlayer();
         }
     }
 
-    public void KillPlayer() {
+    public void KillPlayer()
+    {
         if (playerController != null)
         {
-            playerController.SetState(PlayerController.PlayerState.Dead); 
+            playerController.SetState(PlayerController.PlayerState.Dead);
         }
 
         StartCoroutine(DamageCooldown());
