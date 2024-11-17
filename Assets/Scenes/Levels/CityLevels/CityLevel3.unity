@@ -122,6 +122,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &31790067 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 514322347481616686, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 871082841}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e277b2e5f2f9ed40a4e36c4abfa4b99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &31790068 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6786643715086332627, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 871082841}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10678614c1fa7ca2db285e8a0dbe51db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &395377197
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,6 +227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSprite
       objectReference: {fileID: 0}
+    - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: winScript
+      value: 
+      objectReference: {fileID: 31790068}
+    - target: {fileID: 8367137877836100255, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: gameOverScript
+      value: 
+      objectReference: {fileID: 31790067}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
