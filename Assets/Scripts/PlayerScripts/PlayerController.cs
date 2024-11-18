@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Leniency for jumping after not being grounded anymore")]
     public float jumpGraceTime = 0.1f;
+
     private float timeToStopJumpGrace = 0;
 
     [Tooltip("The force applied when jumping")]
@@ -39,13 +40,25 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Maximum acceleration of the player")]
     public float maxAccel = 35f;
+
     [Tooltip("The deceleration when the player moves")]
     public float maxControlledDecel = 35f;
+
     [Tooltip("The deceleration while the player is not moving")]
     // Higher values will result in air drag which causes the player to slow down in the air
     public float maxDefaultDecel = 5f;
+
     [Tooltip("Multiplier for increasing x movement when moving at faster y speeds")]
     public float xControlMultiplierFactor = 0.1f;
+
+    [Tooltip("The audioclip for the player jumping")]
+    public AudioClip jumpSound;
+
+    [Tooltip("The audioclip for the player dying")]
+    public AudioClip deathSound;
+
+    private AudioSource audioSource;
+
     public enum PlayerState
     {
         Idle,
@@ -65,6 +78,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         determinePlayerWidth();
     }
 
@@ -136,6 +150,8 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             isJumping = true;
             rb.AddForce(new Vector2(0f, jumpForce));
+
+            audioSource.PlayOneShot(jumpSound);
         }
     }
 
@@ -209,6 +225,8 @@ public class PlayerController : MonoBehaviour
 
             if (weapon != null)
                 weapon.SetActive(false);
+
+            audioSource.PlayOneShot(deathSound);
         }
     }
 

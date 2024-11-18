@@ -11,6 +11,11 @@ public class AmmoPickup : MonoBehaviour
     [Tooltip("Respawn cooldown in seconds")]
     public float respawnCooldown = 5f;
 
+    [Tooltip("The audioclip for picking up ammo")]
+    public AudioClip pickupSound;
+
+    private AudioSource audioSource;
+
     private BoxCollider2D pickupCollider;
     private SpriteRenderer[] renderers;
     private bool hasBeenCollected = false;
@@ -19,6 +24,7 @@ public class AmmoPickup : MonoBehaviour
     {
         pickupCollider = GetComponent<BoxCollider2D>();
         renderers = GetComponentsInChildren<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -28,6 +34,8 @@ public class AmmoPickup : MonoBehaviour
         {
             hasBeenCollected = true;
             weaponController.totalAmmo += ammoAmount;
+
+            audioSource.PlayOneShot(pickupSound);
 
             if (respawn)
             {

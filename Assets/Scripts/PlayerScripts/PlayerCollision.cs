@@ -23,9 +23,16 @@ public class PlayerCollision : MonoBehaviour
     // Reference to the PlayerController
     private PlayerController playerController;
 
+    [Tooltip("The audioclip for the player winning")]
+    public AudioClip winSound;
+
+    private AudioSource audioSource;
+
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -34,6 +41,8 @@ public class PlayerCollision : MonoBehaviour
         {
             FindObjectOfType<LevelManager>()?.UnlockNextLevel();
             winScript.PauseAndShowWinMenu();
+
+            audioSource.PlayOneShot(winSound);
         }
 
         if (collision.gameObject.CompareTag(damageTag) && canTakeDamage)
