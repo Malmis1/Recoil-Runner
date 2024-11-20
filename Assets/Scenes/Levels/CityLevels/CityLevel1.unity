@@ -7529,6 +7529,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.10588236
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.08235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: hudImage
       value: 
