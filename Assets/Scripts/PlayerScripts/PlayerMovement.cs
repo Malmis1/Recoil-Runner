@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerMovement : MonoBehaviour {
+public class PlayerMovement : MonoBehaviour
+{
     [Tooltip("The movement controller for the player")]
     public PlayerController controller;
 
@@ -18,19 +19,29 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
 
-    void Update() { // Get input
-        horizontalMove = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump")) {
-            jump = true;
+    void Update()
+    { // Get input
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (controller.state != PlayerController.PlayerState.Dead)
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
         }
     }
 
-    void FixedUpdate() {
+    void FixedUpdate()
+    {
+        if (controller.state == PlayerController.PlayerState.Dead)
+            return;
+
         controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
         jump = false;
     }

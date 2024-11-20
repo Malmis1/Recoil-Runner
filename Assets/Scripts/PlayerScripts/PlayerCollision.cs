@@ -23,27 +23,42 @@ public class PlayerCollision : MonoBehaviour
     // Reference to the PlayerController
     private PlayerController playerController;
 
+    [Tooltip("The audioclip for the player winning")]
+    public AudioClip winSound;
+
+    private AudioSource audioSource;
+
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.CompareTag(portalTag))
         {
+            FindObjectOfType<LevelManager>()?.UnlockNextLevel();
             winScript.PauseAndShowWinMenu();
+
+            audioSource.PlayOneShot(winSound);
         }
 
         if (collision.gameObject.CompareTag(damageTag) && canTakeDamage)
         {
-            if (playerController != null)
-            {
-                playerController.SetState(PlayerController.PlayerState.Dead); 
-            }
-
-            Debug.Log("Player took damage by: " + collision.gameObject.name);
-            StartCoroutine(DamageCooldown());
+            KillPlayer();
         }
+    }
+
+    public void KillPlayer()
+    {
+        if (playerController != null)
+        {
+            playerController.SetState(PlayerController.PlayerState.Dead);
+        }
+
+        StartCoroutine(DamageCooldown());
     }
 
     private IEnumerator DamageCooldown()

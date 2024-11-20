@@ -7,13 +7,13 @@ public class PlayerAnimator : MonoBehaviour
     [Header("Settings")]
     [Tooltip("The player controller script to read state information from")]
     public PlayerController playerController;
-    
+
     [Tooltip("The animator component that controls the player's animations")]
     public Animator animator;
 
     [Tooltip("The animator controller for when the player is holding a gun")]
     public RuntimeAnimatorController playerControllerNoHands;
-    
+
     [Tooltip("The animator controller for when the player is not holding a gun")]
     public RuntimeAnimatorController playerControllerHands;
 
@@ -45,7 +45,7 @@ public class PlayerAnimator : MonoBehaviour
                 animator.runtimeAnimatorController = playerControllerHands;
             }
         }
-        
+
         ReadPlayerStateAndAnimate();
     }
 
@@ -79,11 +79,11 @@ public class PlayerAnimator : MonoBehaviour
             }
             else if (angle >= -45 && angle < 45)
             {
-                animator.SetBool("isShootingHorizontal", true); 
+                animator.SetBool("isShootingHorizontal", true);
             }
             else if (angle < -135 || angle >= 135)
             {
-                animator.SetBool("isShootingHorizontal", true); 
+                animator.SetBool("isShootingHorizontal", true);
             }
         }
         else
@@ -95,7 +95,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("isDead", playerController.state == PlayerController.PlayerState.Dead);
     }
 
-    private void ResetAnimations() 
+    private void ResetAnimations()
     {
         animator.SetBool("isIdle", false);
         animator.SetBool("isJumping", false);

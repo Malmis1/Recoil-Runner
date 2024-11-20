@@ -14471,11 +14471,6 @@ MonoBehaviour:
   canvasGroup: {fileID: 1720854851}
   triggerDistance: 8
   fadeSpeed: 3
---- !u!1 &1855007451 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 853108847956066348, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-  m_PrefabInstance: {fileID: 650432226}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1990752146
 GameObject:
   m_ObjectHideFlags: 0
@@ -14974,57 +14969,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1118113982846186446, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118113982846186446, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470166993779463370, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_FlipX
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470166993779463370, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_Size.x
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470166993779463370, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_Size.y
-      value: 0.15625
-      objectReference: {fileID: 0}
-    - target: {fileID: 1470166993779463370, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 25b47045c873e4144bb0b709a8dc672e, type: 3}
-    - target: {fileID: 1470166993779463370, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3229510118310239171, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 1855007451}
     - target: {fileID: 7248015862986076923, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_Name
       value: SimpleWeaponPickup
-      objectReference: {fileID: 0}
-    - target: {fileID: 7289822326935450875, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.x
-      value: 0.625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7289822326935450875, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_SpriteTilingProperty.newSize.y
-      value: 0.15625
-      objectReference: {fileID: 0}
-    - target: {fileID: 7289822326935450875, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 7289822326935450875, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
-      propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 8632372632368749349, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_LocalPosition.x

@@ -23,10 +23,10 @@ MonoBehaviour:
   reloadAudio: {fileID: 8300000, guid: d1f1cafca674a799bb9bc670252c8e87, type: 3}
   recoilForce: 20
   maxAmmo: 5
-  fireRate: 1.5
+  fireRate: 2
   shotsPerFire: 1
   spreadAngle: 0
   additiveRecoilAngleThreshold: 215
-  initialRecoilResetsVelocity: 1
-  isAutomatic: 1
+  initialRecoilResetsVelocity: 0
+  isAutomatic: 0
   damage: 100

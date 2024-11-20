@@ -14,17 +14,21 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float minY;
     [SerializeField] private float maxY;
 
+    [Header("Level Settings")]
+    [Tooltip("The current level number.")]
+    public int currentLevel = 1;
+
     [Header("Player Settings")]
     [SerializeField] public bool startWithGun;
 
     [Tooltip("The name of the gun to start with if 'Start With Gun' is enabled.")]
-    [HideInInspector] public string gunName; 
+    [HideInInspector] public string gunName;
 
     [SerializeField] private int startingTotalAmmo = 90;
 
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
-    
+
     void Start()
     {
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
@@ -50,13 +54,13 @@ public class LevelManager : MonoBehaviour
                 weaponController.totalAmmo = startingTotalAmmo;
                 if (startWithGun)
                 {
-                    weaponController.ChangeGunByName(gunName); 
+                    weaponController.ChangeGunByName(gunName);
                 }
                 else
                 {
                     weaponController.DeactivateGun();
                 }
-                
+
             }
             else
             {
@@ -69,91 +73,102 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    private void AssignHUDElements()
-{
-    if (HUDCanvas != null)
+    public void UnlockNextLevel()
     {
-        // Find AmmoCounter
-        GameObject ammoCounter = HUDCanvas.transform.Find("AmmoCounter")?.gameObject;
-        if (ammoCounter != null)
-        {
-            weaponController.ammoCounter = ammoCounter; 
-        }
-        else
-        {
-            Debug.LogWarning("AmmoCounter not found in HUD.");
-        }
+        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
 
-
-        // Find CurrentAmmoText
-        TMP_Text currentAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/CurrentAmmoText")?.GetComponent<TMP_Text>();
-        if (currentAmmoText != null)
+        if (currentLevel >= levelsUnlocked)
         {
-            
-            // Check if weaponController and gunScript are assigned correctly
-            if (weaponController != null && weaponController.gun != null)
+            PlayerPrefs.SetInt("LevelsUnlocked", currentLevel + 1);
+            PlayerPrefs.Save();
+        }
+    }
+
+    private void AssignHUDElements()
+    {
+        if (HUDCanvas != null)
+        {
+            // Find AmmoCounter
+            GameObject ammoCounter = HUDCanvas.transform.Find("AmmoCounter")?.gameObject;
+            if (ammoCounter != null)
             {
-                // Get GunScript from the gun GameObject
-                GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
-                if (gunScript != null)
+                weaponController.ammoCounter = ammoCounter;
+            }
+            else
+            {
+                Debug.LogWarning("AmmoCounter not found in HUD.");
+            }
+
+
+            // Find CurrentAmmoText
+            TMP_Text currentAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/CurrentAmmoText")?.GetComponent<TMP_Text>();
+            if (currentAmmoText != null)
+            {
+
+                // Check if weaponController and gunScript are assigned correctly
+                if (weaponController != null && weaponController.gun != null)
                 {
-                    gunScript.currentAmmoText = currentAmmoText;
+                    // Get GunScript from the gun GameObject
+                    GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
+                    if (gunScript != null)
+                    {
+                        gunScript.currentAmmoText = currentAmmoText;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("GunScript component not found on the gun GameObject.");
+                    }
                 }
                 else
                 {
-                    Debug.LogWarning("GunScript component not found on the gun GameObject.");
+                    Debug.LogWarning("weaponController or weaponController.gun is null. Ensure they are assigned correctly.");
                 }
             }
             else
             {
-                Debug.LogWarning("weaponController or weaponController.gun is null. Ensure they are assigned correctly.");
+                Debug.LogWarning("CurrentAmmoText not found or TMP_Text component missing.");
             }
-        }
-        else
-        {
-            Debug.LogWarning("CurrentAmmoText not found or TMP_Text component missing.");
-        }
 
-        // Find TotalAmmoText
-        TMP_Text totalAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/TotalAmmoText")?.GetComponent<TMP_Text>();
-        if (totalAmmoText != null)
-        {
-            if (weaponController != null && weaponController.gun != null)
+            // Find TotalAmmoText
+            TMP_Text totalAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/TotalAmmoText")?.GetComponent<TMP_Text>();
+            if (totalAmmoText != null)
             {
-                GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
-                if (gunScript != null)
+                if (weaponController != null && weaponController.gun != null)
                 {
-                    gunScript.totalAmmoText = totalAmmoText;
-                }
-                else
-                {
-                    Debug.LogWarning("GunScript component not found on the gun GameObject.");
+                    GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
+                    if (gunScript != null)
+                    {
+                        gunScript.totalAmmoText = totalAmmoText;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("GunScript component not found on the gun GameObject.");
+                    }
                 }
             }
-        }
-        else
-        {
-            Debug.LogWarning("TotalAmmoText not found or TMP_Text component missing.");
-        }
-
-        // Find GunImage
-        Image gunImage = HUDCanvas.transform.Find("AmmoCounter/GunImage")?.GetComponent<Image>();
-        if (gunImage != null)
-        {
-            if (weaponController != null)
+            else
             {
-                weaponController.hudImage = gunImage;
+                Debug.LogWarning("TotalAmmoText not found or TMP_Text component missing.");
+            }
+
+            // Find GunImage
+            Image gunImage = HUDCanvas.transform.Find("AmmoCounter/GunImage")?.GetComponent<Image>();
+            if (gunImage != null)
+            {
+                if (weaponController != null)
+                {
+                    weaponController.hudImage = gunImage;
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GunImage not found in HUD.");
             }
         }
         else
         {
-            Debug.LogWarning("GunImage not found in HUD.");
+            Debug.LogWarning("HUDCanvas is not assigned in LevelManager.");
         }
     }
-    else
-    {
-        Debug.LogWarning("HUDCanvas is not assigned in LevelManager.");
-    }
-}
 
 }

@@ -17,7 +17,16 @@ public class EnemyShooting : MonoBehaviour {
     [Tooltip("The enemy controller")]
     public EnemyController controller;
 
+    [Tooltip("The audioclip for the enemy shooting")]
+    public AudioClip shootSound;
+
+    private AudioSource audioSource;
+
     private float nextFireTime;
+
+    void Start() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     void Update() {
         if (Time.time >= nextFireTime) {
@@ -34,5 +43,7 @@ public class EnemyShooting : MonoBehaviour {
             float adjustedBulletSpeed = controller.AdjustBulletSpeed(bulletSpeed);
             rb.velocity = firePoint.right * adjustedBulletSpeed;
         }
+
+        audioSource.PlayOneShot(shootSound);
     }
 }

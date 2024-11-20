@@ -12,9 +12,15 @@ public class LightningTrapScript : MonoBehaviour {
     [Tooltip("The amount of time the trap will be off.")]
     public float toggleIntervalTrapOff = 4f;
 
+    [Tooltip("The audioclip for the trap attacking")]
+    public AudioClip lightningSound;
+
+    private AudioSource audioSource;
+
     void Start() {
         trapCollider = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(ToggleCollider());
     }
@@ -25,11 +31,15 @@ public class LightningTrapScript : MonoBehaviour {
             animator.SetBool("isAttacking", true);
             animator.SetBool("isIdle", false);
 
+            audioSource.PlayOneShot(lightningSound);
+
             yield return new WaitForSeconds(toggleIntervalTrapOn);
 
             trapCollider.enabled = false;
             animator.SetBool("isAttacking", false);
             animator.SetBool("isIdle", true);
+
+            audioSource.Stop();
 
             yield return new WaitForSeconds(toggleIntervalTrapOff);
         }

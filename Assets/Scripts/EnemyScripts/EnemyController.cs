@@ -27,6 +27,14 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("Obstacles layers")]
     public LayerMask obstacleLayer;
+
+    [Tooltip("The audioclip for the enemy dying")]
+    public AudioClip deathSound;
+
+    [Tooltip("The audioclip for the enemy detecting player")]
+    public AudioClip detectPlayerSound;
+
+    private AudioSource audioSource;
     
     private const float groundedRadius = .2f;
     private bool isGrounded;
@@ -45,6 +53,7 @@ public class EnemyController : MonoBehaviour
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         OnLandEvent ??= new UnityEvent();
+        audioSource = GetComponent<AudioSource>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -122,6 +131,11 @@ public class EnemyController : MonoBehaviour
                 if (hit.collider != null && hit.collider.CompareTag("Player")) {
                     playerTransform = player.transform;
                     playerDirection = directionToPlayer.normalized;
+
+                    if (detectPlayerSound != null) {
+                        audioSource.PlayOneShot(detectPlayerSound);
+                    }
+
                     return;
                 }
             }
@@ -155,6 +169,8 @@ public class EnemyController : MonoBehaviour
 
         rb.velocity = Vector2.zero;
         rb.isKinematic = true; 
+
+        audioSource.PlayOneShot(deathSound);
 
         StartCoroutine(PlayDeathAnimationAndDestroy(0.5f));
     }

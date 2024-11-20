@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Leniency for jumping after not being grounded anymore")]
     public float jumpGraceTime = 0.1f;
+
     private float timeToStopJumpGrace = 0;
 
     [Tooltip("The force applied when jumping")]
@@ -18,10 +19,10 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("The position to check if the player is grounded")]
     [SerializeField] private Transform groundCheck;
-    
+
     [Tooltip("The player's eyes")]
     [SerializeField] private Transform eyes;
-    
+
     [Tooltip("The player's weapon")]
     [SerializeField] private GameObject weapon;
 
@@ -39,13 +40,25 @@ public class PlayerController : MonoBehaviour
 
     [Tooltip("Maximum acceleration of the player")]
     public float maxAccel = 35f;
+
     [Tooltip("The deceleration when the player moves")]
     public float maxControlledDecel = 35f;
+
     [Tooltip("The deceleration while the player is not moving")]
     // Higher values will result in air drag which causes the player to slow down in the air
     public float maxDefaultDecel = 5f;
+
     [Tooltip("Multiplier for increasing x movement when moving at faster y speeds")]
     public float xControlMultiplierFactor = 0.1f;
+
+    [Tooltip("The audioclip for the player jumping")]
+    public AudioClip jumpSound;
+
+    [Tooltip("The audioclip for the player dying")]
+    public AudioClip deathSound;
+
+    private AudioSource audioSource;
+
     public enum PlayerState
     {
         Idle,
@@ -61,13 +74,16 @@ public class PlayerController : MonoBehaviour
     private bool isJumping;
     private float playerWidth;
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
         determinePlayerWidth();
     }
 
-    private void FixedUpdate() {
+    private void FixedUpdate()
+    {
         CheckIfGrounded();
         RotateTowardsCursor();
         DetermineState();
@@ -76,35 +92,41 @@ public class PlayerController : MonoBehaviour
         LimitVelocity();
     }
 
-    private void determinePlayerWidth() {
+    private void determinePlayerWidth()
+    {
         float maxWidth = 0;
         foreach (BoxCollider2D boxCollider in rb.GetComponents<BoxCollider2D>())
         {
             float boxColliderWidth = boxCollider.bounds.size.x;
-            if (maxWidth < boxColliderWidth) {
+            if (maxWidth < boxColliderWidth)
+            {
                 maxWidth = boxColliderWidth;
             }
         }
         playerWidth = maxWidth - 0.1f;
     }
 
-    private void LimitVelocity() {
+    private void LimitVelocity()
+    {
         Vector2 clampedVelocity = rb.velocity;
 
         // Limit horizontal speed
-        if (Mathf.Abs(clampedVelocity.x) > maxHorizontalSpeed) {
+        if (Mathf.Abs(clampedVelocity.x) > maxHorizontalSpeed)
+        {
             clampedVelocity.x = Mathf.Sign(clampedVelocity.x) * maxHorizontalSpeed;
         }
 
         // Limit vertical speed
-        if (Mathf.Abs(clampedVelocity.y) > maxVerticalSpeed) {
+        if (Mathf.Abs(clampedVelocity.y) > maxVerticalSpeed)
+        {
             clampedVelocity.y = Mathf.Sign(clampedVelocity.y) * maxVerticalSpeed;
         }
 
         rb.velocity = clampedVelocity;
     }
 
-    private void CheckIfGrounded() {
+    private void CheckIfGrounded()
+    {
         isGrounded = Physics2D.OverlapBox(groundCheck.position, new Vector2(playerWidth, groundedRadius), 0, whatIsGround);
     }
 
@@ -112,23 +134,29 @@ public class PlayerController : MonoBehaviour
     /// Gets whether or not the player is grounded.
     /// </summary>
     /// <returns><b>true</b> if the player is grounded.</returns>
-    public bool GetIsGrounded() {
+    public bool GetIsGrounded()
+    {
         return isGrounded;
     }
 
-    public void Move(float move, bool jump) {
+    public void Move(float move, bool jump)
+    {
         // Run
         MoveH(move);
 
         // Jump
-        if (jump && (isGrounded || (Time.time < timeToStopJumpGrace && rb.velocity.y <= 0))) {
+        if (jump && (isGrounded || (Time.time < timeToStopJumpGrace && rb.velocity.y <= 0)))
+        {
             isGrounded = false;
-            isJumping = true; 
+            isJumping = true;
             rb.AddForce(new Vector2(0f, jumpForce));
+
+            audioSource.PlayOneShot(jumpSound);
         }
     }
 
-    private void MoveH(float move) {
+    private void MoveH(float move)
+    {
         Vector2 targetVelocity = new Vector2(move * moveForce, 0);
 
         float maxDecel = move != 0 ? maxControlledDecel : maxDefaultDecel;
@@ -138,7 +166,8 @@ public class PlayerController : MonoBehaviour
         float limit = Vector2.Dot(deltaV, rb.velocity) > 0f ? maxAccel : maxDecel;
         Vector2 force = Vector2.zero;
         // Ensure the player does not slow down when moving in the same direction as velocity
-        if (((Mathf.Abs(targetVelocity.x) - Mathf.Abs(rb.velocity.x)) > 0) || (Mathf.Sign(move) != Mathf.Sign(rb.velocity.x))) {
+        if (((Mathf.Abs(targetVelocity.x) - Mathf.Abs(rb.velocity.x)) > 0) || (Mathf.Sign(move) != Mathf.Sign(rb.velocity.x)))
+        {
             force = rb.mass * Vector2.ClampMagnitude(accel, limit);
         }
 
@@ -146,31 +175,39 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(new Vector2(force.x * xControlMultiplier, 0), ForceMode2D.Force);
     }
 
-    private void RotateTowardsCursor() {
+    private void RotateTowardsCursor()
+    {
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.z = 0f; 
+        mousePosition.z = 0f;
 
         Vector3 direction = mousePosition - transform.position;
 
         // Flip based on the direction of the mouse
-        if (direction.x < 0 && facingRight) {
+        if (direction.x < 0 && facingRight)
+        {
             Flip();
         }
-        else if (direction.x > 0 && !facingRight) {
+        else if (direction.x > 0 && !facingRight)
+        {
             Flip();
         }
     }
 
-    private void Flip() {
+    private void Flip()
+    {
         // Flip the character
         facingRight = !facingRight;
         spriteRenderer.flipX = !spriteRenderer.flipX;
 
-        if (eyes != null) {
+        if (eyes != null)
+        {
             Vector3 eyesPosition = eyes.localPosition;
-            if (facingRight) {
+            if (facingRight)
+            {
                 eyesPosition.x = Mathf.Abs(eyesPosition.x);
-            } else {
+            }
+            else
+            {
                 eyesPosition.x = -Mathf.Abs(eyesPosition.x);
             }
             eyes.localPosition = eyesPosition;
@@ -185,14 +222,19 @@ public class PlayerController : MonoBehaviour
         {
             if (eyes != null)
                 eyes.gameObject.SetActive(false);
-            
+
             if (weapon != null)
                 weapon.SetActive(false);
+
+            audioSource.PlayOneShot(deathSound);
         }
     }
 
     private void DetermineState()
     {
+        if (state == PlayerState.Dead)
+            return;
+
         if (isGrounded)
         {
             timeToStopJumpGrace = Time.time + jumpGraceTime;
@@ -211,7 +253,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (rb.velocity.y <= 0)
                 {
-                    isJumping = false; 
+                    isJumping = false;
                     SetState(PlayerState.Fall);
                 }
                 else
