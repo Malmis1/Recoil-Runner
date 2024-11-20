@@ -21,18 +21,19 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     { // Get input
-        if (controller.state == PlayerController.PlayerState.Dead)
-            return;
-
-        horizontalMove = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            jump = true;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        if (Input.GetKeyDown(KeyCode.T)) {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (controller.state != PlayerController.PlayerState.Dead)
+        {
+            horizontalMove = Input.GetAxisRaw("Horizontal");
+
+            if (Input.GetButtonDown("Jump"))
+            {
+                jump = true;
+            }
         }
     }
 

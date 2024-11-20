@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GunScript : MonoBehaviour {
     [Header("Controller")]
@@ -13,6 +14,9 @@ public class GunScript : MonoBehaviour {
 
     [Tooltip("The audio source for playing gun sound effects")]
     public AudioSource audioSource;
+
+    [Tooltip("The circular image for cooldown visual")]
+    public Image cooldownImage;
 
     [HideInInspector] public TMP_Text currentAmmoText;
     [HideInInspector] public TMP_Text totalAmmoText;
@@ -50,6 +54,11 @@ public class GunScript : MonoBehaviour {
         }        
 
         audioSource = GetComponent<AudioSource>();
+
+        if (cooldownImage != null) {
+            cooldownImage.fillAmount = 0f;
+        }
+
     }
     
     void Update() {
@@ -63,6 +72,8 @@ public class GunScript : MonoBehaviour {
         FlipGunSprite();
 
         isFiring = false;
+
+        UpdateCooldownUI();
 
         if (isAutomatic) {
             if (Input.GetButton("Fire1") && Time.time >= nextFireTime) {
@@ -165,6 +176,7 @@ public class GunScript : MonoBehaviour {
 
         UpdateAmmoUI();
     }
+
 
 
     public bool IsFiring() {
@@ -296,6 +308,20 @@ public class GunScript : MonoBehaviour {
         else 
         {
             Debug.LogWarning("currentAmmoText or weaponController is null");
+        }
+    }
+
+    private void UpdateCooldownUI() {
+        if (cooldownImage != null) {
+            if (nextFireTime > Time.time) {
+                float cooldownProgress = (nextFireTime - Time.time) / fireRate;
+                cooldownImage.fillAmount = cooldownProgress;
+            } else {
+                cooldownImage.fillAmount = 0f;
+            }
+
+            Vector3 mousePosition = Input.mousePosition;
+            cooldownImage.transform.position = mousePosition;
         }
     }
 
