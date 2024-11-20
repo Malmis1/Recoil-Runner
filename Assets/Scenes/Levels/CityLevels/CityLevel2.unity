@@ -8862,6 +8862,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2098864713}
     - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
+      propertyPath: cooldownImage
+      value: 
+      objectReference: {fileID: 2098864715}
+    - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: TotalAmmoContainer
       value: 
       objectReference: {fileID: 2098864712}
@@ -12290,6 +12294,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8184289128067437703, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
   m_PrefabInstance: {fileID: 2098864711}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098864715 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3724175713890088206, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+  m_PrefabInstance: {fileID: 2098864711}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5271124289245401660
 PrefabInstance:
   m_ObjectHideFlags: 0
