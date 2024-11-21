@@ -258,8 +258,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 1295891726377269750}
-  horizontalDetectionRange: 5
-  verticalDetectionRange: 2
+  horizontalDetectionRange: 10
+  verticalDetectionRange: 5
   playerLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -373,8 +373,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 1342654616338984241, guid: f0df0dd5e1be02428bf375d837dff438, type: 3}
   firePoint: {fileID: 1211001955752650532}
-  bulletSpeed: 30
-  fireRate: 1
+  bulletSpeed: 20
+  fireRate: 2
   controller: {fileID: 1246724940260000773}
   shootSound: {fileID: 8300000, guid: 82f4f7bd21c885b48b1c06f260a5b3b1, type: 3}
 --- !u!95 &3767856650610395678
