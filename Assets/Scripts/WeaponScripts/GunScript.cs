@@ -183,7 +183,7 @@ public class GunScript : MonoBehaviour {
 
     private void DoubleFire() {
         Fire();
-        StartCoroutine(DoubleShootWithDelay(0.6f));
+        StartCoroutine(DoubleShootWithDelay(0.5f));
     }
 
     private IEnumerator DoubleShootWithDelay(float delay) {

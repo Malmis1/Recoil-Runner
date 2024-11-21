@@ -22,7 +22,7 @@ MonoBehaviour:
   shootingAudio: {fileID: 8300000, guid: 5a319893ad215ba4d9f9cd32d61b5682, type: 3}
   recoilForce: 15
   maxAmmo: 10
-  fireRate: 1.2
+  fireRate: 1
   shotsPerFire: 8
   spreadAngle: 7
   additiveRecoilAngleThreshold: 225
