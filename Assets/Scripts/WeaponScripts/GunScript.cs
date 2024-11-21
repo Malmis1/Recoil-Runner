@@ -39,6 +39,7 @@ public class GunScript : MonoBehaviour {
     private List<GameObject> activeBulletTrails = new List<GameObject>();   
     private AudioClip shootingClip;
     private float damage;
+    private bool hasDoubleShot;
 
     private void Awake() {
         Transform weaponTransform = transform.Find("Weapon");
@@ -75,12 +76,22 @@ public class GunScript : MonoBehaviour {
 
         if (isAutomatic) {
             if (Input.GetButton("Fire1") && Time.time >= nextFireTime) {
-                Fire();
+                if (!hasDoubleShot) {
+                    Fire();
+                }
+                else {
+                    Debug.LogWarning("Weapon can not have double shot and automatic shooting enabled at once");
+                }
                 isFiring = true;
             }
         } else {
             if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime) {
-                Fire();
+                if (!hasDoubleShot) {
+                    Fire();
+                }
+                else {
+                    DoubleFire();
+                }
                 isFiring = true;
             }
         }
@@ -99,6 +110,7 @@ public class GunScript : MonoBehaviour {
         initialRecoilResetsVelocity = gunData.initialRecoilResetsVelocity;
         isAutomatic = gunData.isAutomatic;
         damage = gunData.damage;
+        hasDoubleShot = gunData.hasDoubleShot;
 
         bulletTrailPrefab = gunData.bulletTrailPrefab;
         bulletTrailFadeDuration = gunData.bulletTrailFadeDuration;
@@ -169,7 +181,16 @@ public class GunScript : MonoBehaviour {
         UpdateAmmoUI();
     }
 
+    private void DoubleFire() {
+        Fire();
+        StartCoroutine(DoubleShootWithDelay(0.6f));
+    }
 
+    private IEnumerator DoubleShootWithDelay(float delay) {
+        yield return new WaitForSeconds(delay);
+
+        Fire();
+    }
 
     public bool IsFiring() {
         return isFiring;  

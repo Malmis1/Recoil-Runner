@@ -20,13 +20,13 @@ MonoBehaviour:
   bulletTrailFadeDuration: 0.3
   hitEffectPrefab: {fileID: 140425041097646891, guid: b396b966d27e40740a50f3a18efcee09, type: 3}
   shootingAudio: {fileID: 8300000, guid: 5a319893ad215ba4d9f9cd32d61b5682, type: 3}
-  reloadAudio: {fileID: 8300000, guid: 7c3f21f2473c03041b16be905d4d702f, type: 3}
   recoilForce: 15
   maxAmmo: 10
-  fireRate: 1
+  fireRate: 1.5
   shotsPerFire: 8
   spreadAngle: 7
   additiveRecoilAngleThreshold: 225
   initialRecoilResetsVelocity: 0
-  isAutomatic: 1
+  isAutomatic: 0
   damage: 70
+  hasDoubleShot: 1

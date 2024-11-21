@@ -31,4 +31,5 @@ public class GunData : ScriptableObject
     public bool initialRecoilResetsVelocity = true;
     public bool isAutomatic = false;
     public float damage = 20.0f;
+    public bool hasDoubleShot = false;
 }
