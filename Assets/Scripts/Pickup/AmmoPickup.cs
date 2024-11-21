@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AmmoPickup : MonoBehaviour
 {
-    [Tooltip("The amount of ammo to add to the total")]
+    [Tooltip("The amount of ammo to add")]
     public int ammoAmount = 10;
 
     [Tooltip("Check to enable respawning after pickup")]
@@ -33,7 +33,17 @@ public class AmmoPickup : MonoBehaviour
         if (weaponController != null && !hasBeenCollected)
         {
             hasBeenCollected = true;
-            weaponController.totalAmmo += ammoAmount;
+
+            if (weaponController.gun != null) {
+                GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
+                if (gunScript != null) {
+                    gunScript.currentAmmo += ammoAmount; // Add ammo to the gun
+                } else {
+                    Debug.LogWarning("GunScript not found on the gun object.");
+                }
+            } else {
+                Debug.LogWarning("No gun assigned to WeaponController.");
+            }
 
             audioSource.PlayOneShot(pickupSound);
 

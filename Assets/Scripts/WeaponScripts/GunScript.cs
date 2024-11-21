@@ -19,7 +19,6 @@ public class GunScript : MonoBehaviour {
     public Image cooldownImage;
 
     [HideInInspector] public TMP_Text currentAmmoText;
-    [HideInInspector] public TMP_Text totalAmmoText;
     [HideInInspector] public int currentAmmo;
     private  SpriteRenderer gunSpriteRenderer;
     private ParticleSystem muzzleFlash;
@@ -39,7 +38,6 @@ public class GunScript : MonoBehaviour {
     private bool isFiring;
     private List<GameObject> activeBulletTrails = new List<GameObject>();   
     private AudioClip shootingClip;
-    private AudioClip reloadClip;
     private float damage;
 
     private void Awake() {
@@ -87,11 +85,6 @@ public class GunScript : MonoBehaviour {
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reload();
-        }
-
         UpdateAmmoUI();
     }
 
@@ -122,7 +115,6 @@ public class GunScript : MonoBehaviour {
         }
 
         shootingClip = gunData.shootingAudio;
-        reloadClip = gunData.reloadAudio;
     }
 
     private void ChangeMuzzleFlash(GameObject newMuzzleFlashPrefab, Vector3 muzzleFlashOffset) {
@@ -226,35 +218,6 @@ public class GunScript : MonoBehaviour {
         }
     }
 
-    private void Reload()
-    {
-        if (currentAmmo == maxAmmo)
-        {
-            return;
-        }
-
-        int ammoNeeded = maxAmmo - currentAmmo; 
-        if (weaponController.TryUseAmmo(ammoNeeded))
-        {
-            currentAmmo = maxAmmo; 
-
-            if (reloadClip != null) {
-                audioSource.clip = reloadClip;
-                audioSource.Play();
-            } else {
-                Debug.LogWarning("Reload audio clip is not assigned.");
-            }
-        }
-        else
-        {
-            int ammoAvailable = weaponController.totalAmmo;
-            currentAmmo += ammoAvailable;
-            weaponController.TryUseAmmo(ammoAvailable);
-        }
-
-        UpdateAmmoUI();
-    }
-
     private void CreateBulletTrail(Vector2 start, Vector2 end) {
         if (bulletTrailPrefab == null) {
             Debug.LogWarning("No bullet trail prefab assigned.");
@@ -299,15 +262,6 @@ public class GunScript : MonoBehaviour {
         else 
         {
             Debug.LogWarning("currentAmmoText is null");
-        }
-
-        if (totalAmmoText != null && weaponController != null)
-        {
-            totalAmmoText.text = weaponController.totalAmmo.ToString();
-        } 
-        else 
-        {
-            Debug.LogWarning("currentAmmoText or weaponController is null");
         }
     }
 
