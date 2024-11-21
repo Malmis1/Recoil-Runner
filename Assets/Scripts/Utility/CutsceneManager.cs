@@ -10,12 +10,9 @@ public class CutsceneManager : MonoBehaviour
     public Vector2 moveStartOffset = new Vector2(500, 0);
     public Vector2 moveEndOffset = new Vector2(-500, 0);
 
-    // Camera Zoom Parameters
     public Camera mainCamera;
     public float zoomStart = 60f;
     public float zoomEnd = 50f;
-    public bool useOrthographicCamera = false;
-
     void Start()
     {
         foreach (RectTransform image in images)
@@ -23,10 +20,7 @@ public class CutsceneManager : MonoBehaviour
             image.gameObject.SetActive(false);
         }
 
-        if (useOrthographicCamera)
-            mainCamera.orthographicSize = zoomStart;
-        else
-            mainCamera.fieldOfView = zoomStart;
+        mainCamera.fieldOfView = zoomStart;
 
         StartCoroutine(PlayIntro());
     }
@@ -78,18 +72,9 @@ public class CutsceneManager : MonoBehaviour
         float timer = 0f;
         while (timer < duration)
         {
-            // Move the image
             image.anchoredPosition = Vector2.Lerp(start, end, timer / duration);
 
-            // Zoom the camera
-            if (useOrthographicCamera)
-            {
-                mainCamera.orthographicSize = Mathf.Lerp(zoomStart, zoomEnd, timer / duration);
-            }
-            else
-            {
-                mainCamera.fieldOfView = Mathf.Lerp(zoomStart, zoomEnd, timer / duration);
-            }
+            mainCamera.fieldOfView = Mathf.Lerp(zoomStart, zoomEnd, timer / duration);
 
             timer += Time.deltaTime;
             yield return null;
@@ -97,10 +82,6 @@ public class CutsceneManager : MonoBehaviour
 
         image.anchoredPosition = end;
 
-        // Ensure the camera is set to the final zoom level
-        if (useOrthographicCamera)
-            mainCamera.orthographicSize = zoomEnd;
-        else
-            mainCamera.fieldOfView = zoomEnd;
+        mainCamera.fieldOfView = zoomEnd;
     }
 }
