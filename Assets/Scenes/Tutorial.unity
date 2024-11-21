@@ -10109,7 +10109,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 63.87, y: 6.4}
+  m_AnchoredPosition: {x: 65.47, y: 6.85}
   m_SizeDelta: {x: 8, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574233870
@@ -12694,7 +12694,13 @@ MonoBehaviour:
   m_text: 'A LEGENDARY weapon!
 
 
-    Aim and shoot with your mouse'
+    Aim and shoot with your mouse
+
+
+    With some
+    weapon, you can hold
+
+    to shoot'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29fbebd47b7c37e43800a2335aa658da, type: 2}
   m_sharedMaterial: {fileID: 6171342535216485859, guid: 29fbebd47b7c37e43800a2335aa658da, type: 2}
@@ -14513,7 +14519,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 46.79, y: 7.17}
+  m_AnchoredPosition: {x: 44.56, y: 7.32}
   m_SizeDelta: {x: 8, y: 4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1990752148
@@ -14990,7 +14996,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8632372632368749349, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 44.93
+      value: 43.11
       objectReference: {fileID: 0}
     - target: {fileID: 8632372632368749349, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_LocalPosition.y
