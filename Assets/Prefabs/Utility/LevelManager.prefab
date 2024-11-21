@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HUDCanvas: {fileID: 0}
-  minX: 0
-  maxX: 100
+  minX: -12
+  maxX: 30
   minY: -2
-  maxY: 100
+  maxY: 18
+  currentLevel: 1
   startWithGun: 1
-  gunName: Railgun
-  startingTotalAmmo: 10
+  gunName: Gun

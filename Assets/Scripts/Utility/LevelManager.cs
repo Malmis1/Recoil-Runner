@@ -24,8 +24,6 @@ public class LevelManager : MonoBehaviour
     [Tooltip("The name of the gun to start with if 'Start With Gun' is enabled.")]
     [HideInInspector] public string gunName;
 
-    [SerializeField] private int startingTotalAmmo = 90;
-
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
 
@@ -51,7 +49,6 @@ public class LevelManager : MonoBehaviour
             if (weaponController != null)
             {
                 AssignHUDElements();
-                weaponController.totalAmmo = startingTotalAmmo;
                 if (startWithGun)
                 {
                     weaponController.ChangeGunByName(gunName);
@@ -127,28 +124,6 @@ public class LevelManager : MonoBehaviour
             else
             {
                 Debug.LogWarning("CurrentAmmoText not found or TMP_Text component missing.");
-            }
-
-            // Find TotalAmmoText
-            TMP_Text totalAmmoText = HUDCanvas.transform.Find("AmmoCounter/AmmoTexts/TotalAmmoText")?.GetComponent<TMP_Text>();
-            if (totalAmmoText != null)
-            {
-                if (weaponController != null && weaponController.gun != null)
-                {
-                    GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
-                    if (gunScript != null)
-                    {
-                        gunScript.totalAmmoText = totalAmmoText;
-                    }
-                    else
-                    {
-                        Debug.LogWarning("GunScript component not found on the gun GameObject.");
-                    }
-                }
-            }
-            else
-            {
-                Debug.LogWarning("TotalAmmoText not found or TMP_Text component missing.");
             }
 
             // Find GunImage

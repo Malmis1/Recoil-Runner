@@ -23,12 +23,6 @@ public class WeaponController : MonoBehaviour
     private Rigidbody2D rb;
     private bool initialRecoil = true;
     private PlayerController playerController;
-    private int _totalAmmo;
-    public int totalAmmo
-    {
-        get => _totalAmmo;
-        set => _totalAmmo = value;
-    }
 
     private Dictionary<int, int> gunAmmoDict = new Dictionary<int, int>();
 
@@ -204,18 +198,5 @@ public class WeaponController : MonoBehaviour
             ResetVelocity();
         }
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
-    }
-
-    public bool TryUseAmmo(int amount)
-    {
-        if (totalAmmo >= amount)
-        {
-            totalAmmo -= amount;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
     }
 }

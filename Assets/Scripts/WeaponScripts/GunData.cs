@@ -20,9 +20,6 @@ public class GunData : ScriptableObject
     [Space(10)]
     [Tooltip("The audio clip for shooting")]
     public AudioClip shootingAudio;
-    [Tooltip("The audio clip for reloading")]
-    public AudioClip reloadAudio;
-  
     
     [Header("Stats")]
     public float recoilForce = 15f;
