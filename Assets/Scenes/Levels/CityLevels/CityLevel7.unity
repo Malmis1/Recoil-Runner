@@ -11598,6 +11598,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 785184756}
+    - target: {fileID: 3562070757373062862, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: CityLevel7
+      objectReference: {fileID: 0}
     - target: {fileID: 5982209544911350297, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_Name
       value: UI
