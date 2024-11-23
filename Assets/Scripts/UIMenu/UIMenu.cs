@@ -5,12 +5,23 @@ using UnityEngine.SceneManagement;
 
 public class UIMenu : MonoBehaviour
 {
-    public void LoadLevel(string levelToLoad) {
+    public void LoadLevel(string levelToLoad)
+    {
+        if (!PlayerPrefs.HasKey("IntroCompleted"))
+        {
+            PlayerPrefs.SetInt("IntroCompleted", 1); 
+            PlayerPrefs.Save();
 
-        SceneManager.LoadScene(levelToLoad);
+            SceneManager.LoadScene("Intro");
+        }
+        else
+        {
+            SceneManager.LoadScene(levelToLoad);
+        }
     }
 
-    public void QuitGame() {
+    public void QuitGame()
+    {
         Application.Quit();
     }
 }
