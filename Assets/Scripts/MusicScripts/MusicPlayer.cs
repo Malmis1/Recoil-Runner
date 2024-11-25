@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+//Updated musicplayer
 public class MusicPlayer : MonoBehaviour
 {
     private AudioSource mainMenuAudio;
