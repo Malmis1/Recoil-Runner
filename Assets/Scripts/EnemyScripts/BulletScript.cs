@@ -14,7 +14,6 @@ public class BulletScript : MonoBehaviour {
     private void Start() {
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         StartCoroutine(MakeVisibleAfterDelay(visibilityDelay));
-
         Destroy(gameObject, lifeTime);
     }
 
@@ -24,10 +23,14 @@ public class BulletScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.CompareTag("Player")) {
+        EnemyHealth enemyHealth = collision.GetComponent<EnemyHealth>();
+        if (enemyHealth != null) {
+            enemyHealth.TakeDamage(damage);
             Destroy(gameObject);
         }
-
+        else if (collision.CompareTag("Player")) {
+            Destroy(gameObject);
+        }
         else if (collision.gameObject.layer == LayerMask.NameToLayer("Ground")) {
             Destroy(gameObject);
         }

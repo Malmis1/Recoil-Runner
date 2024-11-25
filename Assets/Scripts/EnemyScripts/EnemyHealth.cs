@@ -1,21 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
-    [Tooltip("The controller for the enemy")]
     public EnemyController controller;
-
     public float health = 1.0f;
+    private bool isDead = false;
+    private bool initialized = false;
+    private float initDelay = 0.1f;
+
+    void Start() {
+        // Give time for physics to initialize
+        Invoke("SetInitialized", initDelay);
+    }
+
+    void SetInitialized() {
+        initialized = true;
+    }
 
     void Update() {
-        if (health <= 0f) {
+        if (!initialized) return;
+        
+        if (health <= 0f && !isDead) {
+            isDead = true;
+            GameManager.Instance.IncrementKillCount();
             controller.EnemyDie();
         }
     }
 
     public void TakeDamage(float amount) {
-        health -= amount;
+        if (!isDead && initialized) {
+            health -= amount;
+        }
     }
 
     public void AddHealth(float amount) {
