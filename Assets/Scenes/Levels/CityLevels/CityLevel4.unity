@@ -12465,7 +12465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73182344f9f5743dfb7f827383a5d803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  killCountText: {fileID: 0}
+  killCountText: {fileID: 1500622260}
 --- !u!4 &1830928788
 Transform:
   m_ObjectHideFlags: 0
