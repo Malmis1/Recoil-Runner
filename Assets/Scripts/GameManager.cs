@@ -2,16 +2,33 @@ using UnityEngine;
 using TMPro;
 
 public class GameManager : MonoBehaviour {
-    public static GameManager Instance { get; private set; }
+    private static GameManager instance;
+    public static GameManager Instance {
+        get {
+            if (instance == null) {
+                instance = FindObjectOfType<GameManager>();
+                if (instance == null) {
+                    GameObject go = new GameObject("GameManager");
+                    instance = go.AddComponent<GameManager>();
+                }
+            }
+            return instance;
+        }
+    }
+
     public TextMeshProUGUI killCountText;
     private int killCount = 0;
 
     void Awake() {
-        if (Instance == null) {
-            Instance = this;
+        if (instance == null) {
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
-        else {
+        else if (instance != this) {
+            // If there's already a GameManager, destroy this one
+            if (killCountText != null) {
+                instance.killCountText = killCountText;
+            }
             Destroy(gameObject);
         }
     }

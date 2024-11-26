@@ -122,51 +122,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &21908195
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 21908197}
-  - component: {fileID: 21908196}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &21908196
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21908195}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73182344f9f5743dfb7f827383a5d803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  killCountText: {fileID: 550816168}
---- !u!4 &21908197
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21908195}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1035.8334, y: 310.47202, z: 29.009373}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &111918176
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,6 +6534,7 @@ GameObject:
   - component: {fileID: 550816167}
   - component: {fileID: 550816169}
   - component: {fileID: 550816168}
+  - component: {fileID: 550816170}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -6702,6 +6658,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 550816166}
   m_CullTransparentMesh: 1
+--- !u!114 &550816170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550816166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cf53711bda0f4376a8368daeb6c0335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &563908682 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8555528261651751890, guid: 398fe978110be8a48bd036691939694d, type: 3}
@@ -26881,4 +26849,3 @@ SceneRoots:
   - {fileID: 1072692440}
   - {fileID: 1665588065}
   - {fileID: 484953063}
-  - {fileID: 21908197}
