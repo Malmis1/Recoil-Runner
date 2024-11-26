@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
             DontDestroyOnLoad(gameObject);
         }
         else if (instance != this) {
-            // If there's already a GameManager, destroy this one
             if (killCountText != null) {
                 instance.killCountText = killCountText;
             }
