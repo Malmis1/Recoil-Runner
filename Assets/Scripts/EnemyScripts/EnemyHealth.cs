@@ -1,7 +1,9 @@
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour {
+    [Tooltip("The controller for the enemy")]
     public EnemyController controller;
+    [Tooltip("The health of the enemy")]
     public float health = 1.0f;
     private bool isDead = false;
     private bool initialized = false;
