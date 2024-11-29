@@ -37,7 +37,7 @@ public class AmmoPickup : MonoBehaviour
             if (weaponController.gun != null) {
                 GunScript gunScript = weaponController.gun.GetComponent<GunScript>();
                 if (gunScript != null) {
-                    gunScript.currentAmmo += ammoAmount; // Add ammo to the gun
+                    gunScript.currentAmmo = ammoAmount;
                 } else {
                     Debug.LogWarning("GunScript not found on the gun object.");
                 }
