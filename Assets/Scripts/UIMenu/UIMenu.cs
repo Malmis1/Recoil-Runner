@@ -9,7 +9,8 @@ public class UIMenu : MonoBehaviour
     {
         if (!PlayerPrefs.HasKey("IntroCompleted"))
         {
-            PlayerPrefs.SetInt("IntroCompleted", 1); 
+            PlayerPrefs.SetInt("IntroCompleted", 1);
+            PlayerPrefs.SetString("NextSceneAfterIntro", levelToLoad);
             PlayerPrefs.Save();
 
             SceneManager.LoadScene("Intro");
@@ -18,6 +19,12 @@ public class UIMenu : MonoBehaviour
         {
             SceneManager.LoadScene(levelToLoad);
         }
+    }
+
+    public void SkipIntro()
+    {
+        string nextScene = PlayerPrefs.GetString("NextSceneAfterIntro", "Tutorial");
+        SceneManager.LoadScene(nextScene);
     }
 
     public void QuitGame()

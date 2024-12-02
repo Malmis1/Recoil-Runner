@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fac8720c07debda42bd10448ad4618c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextSceneName: Tutorial
 --- !u!328 &148578731
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -655,8 +654,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1980782975}
         m_TargetAssemblyTypeName: UIMenu, Assembly-CSharp
-        m_MethodName: LoadLevel
-        m_Mode: 5
+        m_MethodName: SkipIntro
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -4,17 +4,17 @@ using UnityEngine.SceneManagement;
 
 public class VideoToSceneLoader : MonoBehaviour
 {
-    public string nextSceneName; 
     private VideoPlayer videoPlayer;
 
     void Start()
     {
         videoPlayer = GetComponent<VideoPlayer>();
-        videoPlayer.loopPointReached += OnVideoEnd; 
+        videoPlayer.loopPointReached += OnVideoEnd;
     }
 
     void OnVideoEnd(VideoPlayer vp)
     {
-        SceneManager.LoadScene(nextSceneName); 
+        string nextSceneName = PlayerPrefs.GetString("NextSceneAfterIntro", "Tutorial"); // Default to Tutorial
+        SceneManager.LoadScene(nextSceneName);
     }
 }
