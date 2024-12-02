@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
             }
             else
             {
-                gunScript.currentAmmo = gunDataList[gunIndex].maxAmmo; // Initialize with max ammo
+                gunScript.currentAmmo = gunDataList[gunIndex].ammo; // Initialize with ammo
                 gunAmmoDict[gunIndex] = gunScript.currentAmmo; // Save initial ammo
             }
 
