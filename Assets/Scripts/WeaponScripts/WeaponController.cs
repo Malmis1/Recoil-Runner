@@ -10,7 +10,7 @@ public class WeaponController : MonoBehaviour
 
     [Tooltip("List of GunData configurations")]
     public GunData[] gunDataList;
-    
+
     [Tooltip("Maximum distance for the raycast")]
     public float maxDistance = 100f;
 
@@ -26,35 +26,45 @@ public class WeaponController : MonoBehaviour
 
     private Dictionary<int, int> gunAmmoDict = new Dictionary<int, int>();
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
         playerController = GetComponent<PlayerController>();
 
-        if (gun != null) {
+        if (gun != null)
+        {
             gunScript = gun.GetComponent<GunScript>();
 
             Transform weaponTransform = gun.transform.Find("Weapon");
-            if (weaponTransform != null) {
-            } else {
+            if (weaponTransform != null)
+            {
+            }
+            else
+            {
                 Debug.LogError("Weapon child object not found on gun.");
             }
 
             // Find the MuzzleFlash in the "Weapon" child object
             Transform muzzleFlashTransform = weaponTransform?.Find("MuzzleFlash");
-            if (muzzleFlashTransform != null) {
+            if (muzzleFlashTransform != null)
+            {
                 gunScript.muzzleFlashParent = muzzleFlashTransform.gameObject;
-            } else {
+            }
+            else
+            {
                 Debug.LogError("MuzzleFlash child object not found under Weapon.");
             }
-        } else {
+        }
+        else
+        {
             Debug.LogError("Gun object is not assigned in WeaponController.");
         }
     }
-    
-    private void Update() {
-        HandleWeaponSwitching();
 
-        if (!initialRecoil && playerController.GetIsGrounded()) {
+    private void Update()
+    {
+        if (!initialRecoil && playerController.GetIsGrounded())
+        {
             initialRecoil = true;
         }
     }
@@ -69,15 +79,16 @@ public class WeaponController : MonoBehaviour
                 gunAmmoDict[currentGunIndex] = gunScript.currentAmmo;
             }
 
-            gun.SetActive(true);  
+            gun.SetActive(true);
             currentGunIndex = gunIndex;
 
             if (ammoCounter != null)
             {
                 ammoCounter.SetActive(true);
             }
-            else {
-            Debug.LogWarning("AmmoCounter not found in WeaponController");
+            else
+            {
+                Debug.LogWarning("AmmoCounter not found in WeaponController");
             }
 
             if (gunAmmoDict.TryGetValue(gunIndex, out int savedAmmo))
@@ -99,16 +110,16 @@ public class WeaponController : MonoBehaviour
             }
             else
             {
-                if (hudImage = null) 
+                if (hudImage = null)
                 {
                     Debug.LogWarning("hudImage or the is null");
                 }
 
-                if (gunDataList[gunIndex].hudSprite = null) 
+                if (gunDataList[gunIndex].hudSprite = null)
                 {
                     Debug.LogWarning("hudSprite in gundata is null");
                 }
-            }       
+            }
         }
         else
         {
@@ -140,61 +151,39 @@ public class WeaponController : MonoBehaviour
         gun.SetActive(false);  // Hide the gun
         currentGunIndex = -1;
 
-         if (ammoCounter != null)
+        if (ammoCounter != null)
         {
             ammoCounter.SetActive(false);
-        } 
-        else {
+        }
+        else
+        {
             Debug.LogWarning("AmmoCounter not found in WeaponController");
         }
     }
 
-     private void HandleWeaponSwitching()
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            DeactivateGun();  // No gun equipped
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            ChangeGunByIndex(0);  
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            ChangeGunByIndex(1);  
-        }
-
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            ChangeGunByIndex(2);  
-        }
-        
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            ChangeGunByIndex(3);  
-        }
-    }
-
-    public void LookAtPoint(Vector3 point) { // Rotate the gun to look at the mouse
+    public void LookAtPoint(Vector3 point)
+    { // Rotate the gun to look at the mouse
         Vector2 lookDirection = Camera.main.ScreenToWorldPoint(point) - transform.position;
         gun.transform.up = lookDirection;
     }
 
-    private void ResetVelocity() {
+    private void ResetVelocity()
+    {
         // rb.velocity = Vector2.zero;
         rb.velocity = new Vector2(rb.velocity.x * 0, rb.velocity.y * 0); // can individually change the velocity for the axes
     }
 
-    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold, bool initialRecoilResetsVelocity) {
+    public void ApplyRecoil(float recoilForce, float additiveRecoilAngleThreshold, bool initialRecoilResetsVelocity)
+    {
         Vector2 recoilDirection = -gun.transform.up;
-        if (initialRecoilResetsVelocity && initialRecoil) {
+        if (initialRecoilResetsVelocity && initialRecoil)
+        {
             ResetVelocity(); // Reset the velocity first so the recoil is consistent
             initialRecoil = false;
         }
         float angle = Vector2.Angle(recoilDirection, rb.velocity);
-        if (angle >= additiveRecoilAngleThreshold / 2) {
+        if (angle >= additiveRecoilAngleThreshold / 2)
+        {
             ResetVelocity();
         }
         rb.AddForce(recoilDirection * recoilForce, ForceMode2D.Impulse);
