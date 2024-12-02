@@ -592,8 +592,9 @@ MonoBehaviour:
   weaponController: {fileID: 4243565302050763436}
   muzzleFlashParent: {fileID: 5228038174342465386}
   audioSource: {fileID: 7094573604681807568}
+  cooldownImage: {fileID: 0}
+  noAmmoText: {fileID: 0}
   currentAmmoText: {fileID: 0}
-  totalAmmoText: {fileID: 0}
   currentAmmo: 0
 --- !u!82 &7094573604681807568
 AudioSource:
@@ -735,7 +736,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.21176471, g: 0.3254902, b: 0.31764707, a: 0}
+  m_BackGroundColor: {r: 0, g: 0.08235294, b: 0.10588236, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0

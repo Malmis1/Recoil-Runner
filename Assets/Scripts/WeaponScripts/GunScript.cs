@@ -16,8 +16,11 @@ public class GunScript : MonoBehaviour
     [Tooltip("The audio source for playing gun sound effects")]
     public AudioSource audioSource;
 
+    [Header("UI Elements")]
     [Tooltip("The circular image for cooldown visual")]
     public Image cooldownImage;
+    [Tooltip("The text object for cooldown visual")]
+    public TMP_Text noAmmoText;
 
     [HideInInspector] public TMP_Text currentAmmoText;
     [HideInInspector] public int currentAmmo;
@@ -182,6 +185,8 @@ public class GunScript : MonoBehaviour
             return;
         }
 
+        noAmmoText.gameObject.SetActive(false);
+
         weaponController.ApplyRecoil(recoilForce, additiveRecoilAngleThreshold, initialRecoilResetsVelocity);
         nextFireTime = Time.time + fireRate;
 
@@ -200,6 +205,14 @@ public class GunScript : MonoBehaviour
 
         currentAmmo--;
         isFiring = true;
+
+        if (currentAmmo <= 0)
+        {
+            if (noAmmoText != null)
+            {
+                noAmmoText.gameObject.SetActive(true);
+            }
+        }
 
         UpdateAmmoUI();
     }
