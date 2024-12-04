@@ -23,7 +23,6 @@ public class GunData : ScriptableObject
 
     [Header("Stats")]
     public float recoilForce = 15f;
-    public int ammo = 30;
     public float fireRate = 1.0f;
     public int shotsPerFire = 1;
     public float spreadAngle = 1f;

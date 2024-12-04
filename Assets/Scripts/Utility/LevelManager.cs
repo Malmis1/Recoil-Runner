@@ -23,6 +23,9 @@ public class LevelManager : MonoBehaviour
 
     [Tooltip("The name of the gun to start with if 'Start With Gun' is enabled.")]
     [HideInInspector] public string gunName;
+    [Tooltip("The amount of ammo to start with for all guns")]
+    public int starterAmmo = 30;
+
 
     private CameraFollow cameraFollow;
     private WeaponController weaponController;
@@ -49,6 +52,7 @@ public class LevelManager : MonoBehaviour
             if (weaponController != null)
             {
                 AssignHUDElements();
+                weaponController.SetStarterAmmo(starterAmmo);
                 if (startWithGun)
                 {
                     weaponController.ChangeGunByName(gunName);

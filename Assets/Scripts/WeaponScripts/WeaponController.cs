@@ -23,7 +23,7 @@ public class WeaponController : MonoBehaviour
     private Rigidbody2D rb;
     private bool initialRecoil = true;
     private PlayerController playerController;
-
+    private int starterAmmo;
     private Dictionary<int, int> gunAmmoDict = new Dictionary<int, int>();
 
     private void Awake()
@@ -97,7 +97,7 @@ public class WeaponController : MonoBehaviour
             }
             else
             {
-                gunScript.currentAmmo = gunDataList[gunIndex].ammo; // Initialize with ammo
+                gunScript.currentAmmo = starterAmmo; // Initialize with ammo
                 gunAmmoDict[gunIndex] = gunScript.currentAmmo; // Save initial ammo
             }
 
@@ -125,6 +125,11 @@ public class WeaponController : MonoBehaviour
         {
             Debug.LogError("Invalid gun index");
         }
+    }
+
+    public void SetStarterAmmo(int ammo)
+    {
+        starterAmmo = ammo;
     }
 
     public void ChangeGunByName(string gunName)

@@ -52,3 +52,4 @@ MonoBehaviour:
   currentLevel: 1
   startWithGun: 1
   gunName: Gun
+  starterAmmo: 30
