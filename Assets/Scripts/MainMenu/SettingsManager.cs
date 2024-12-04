@@ -13,15 +13,11 @@ public class SettingsManager : MonoBehaviour
 
         if (audioManager != null)
         {
-            // Set slider values from saved preferences
-            masterVolumeSlider.value = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
-            musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+            // Initialize sliders with current AudioManager values
+            masterVolumeSlider.value = audioManager.masterVolume;
+            musicSlider.value = audioManager.musicVolume;
 
-            // Initialize audio settings
-            audioManager.SetMasterVolume(masterVolumeSlider.value);
-            audioManager.SetMusicVolume(musicSlider.value);
-
-            // Add listeners to sliders
+            // Update values dynamically
             masterVolumeSlider.onValueChanged.AddListener(audioManager.SetMasterVolume);
             musicSlider.onValueChanged.AddListener(audioManager.SetMusicVolume);
         }
