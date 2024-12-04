@@ -74,7 +74,7 @@ public class AudioManager : MonoBehaviour
         float dbValue = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
         audioMixer.SetFloat("MusicVolume", dbValue);
 
-        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
         PlayerPrefs.Save();
     }
 
