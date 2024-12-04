@@ -51,7 +51,7 @@ public class EnemyHealth : MonoBehaviour
         if (health <= 0f && !isDead)
         {
             isDead = true;
-            GameManager.Instance.IncrementKillCount();
+            //GameManager.Instance.IncrementKillCount();
             controller.EnemyDie();
         }
     }
