@@ -1801,6 +1801,7 @@ Transform:
   - {fileID: 1534791630}
   - {fileID: 1680075124}
   - {fileID: 1436291970}
+  - {fileID: 1631326123}
   - {fileID: 1509093950}
   m_Father: {fileID: 152573567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5932,6 +5933,68 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
   m_PrefabInstance: {fileID: 148079629}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1631326122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 512594217}
+    m_Modifications:
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -35.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -43.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.18005568
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483755011843950765, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+      propertyPath: m_Name
+      value: Shuriken (33)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+--- !u!4 &1631326123 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1443013229418330529, guid: 3d483da807205cba9bd054b6bfd207a4, type: 3}
+  m_PrefabInstance: {fileID: 1631326122}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1654460967
 PrefabInstance:
