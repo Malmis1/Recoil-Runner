@@ -9,17 +9,15 @@ public class AudioManager : MonoBehaviour
     public AudioMixer audioMixer;
     [Tooltip("The AudioMixerGroup for all audio sources.")]
     public AudioMixerGroup masterGroup;
-
-    [Header("Audio Sources")]
-    [Tooltip("Audio Source for music")]
-    public AudioSource musicSource;
-
+    [Tooltip("The AudioMixerGroup for all music audio sources.")]
+    public AudioMixerGroup musicGroup;
     [Header("Volume Settings")]
     [Range(0f, 1f)]
     public float masterVolume = 0.5f;
 
     [Range(0f, 1f)]
     public float musicVolume = 0.5f;
+    private static bool isInitialized = false;
 
     private void OnEnable()
     {
@@ -33,13 +31,23 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
+        if (!isInitialized)
+        {
+            masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
+            musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+
+            SetMasterVolume(masterVolume);
+            SetMusicVolume(musicVolume);
+
+            isInitialized = true;
+        }
+        else
+        {
+            SetMasterVolume(masterVolume);
+            SetMusicVolume(musicVolume);
+        }
+
         AssignAllAudioSourcesToMasterGroup();
-
-        masterVolume = PlayerPrefs.GetFloat("MasterVolume", 0.5f);
-        musicVolume = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
-
-        SetMasterVolume(masterVolume);
-        SetMusicVolume(musicVolume);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -55,7 +63,6 @@ public class AudioManager : MonoBehaviour
         float dbValue = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
         audioMixer.SetFloat("MasterVolume", dbValue);
 
-
         PlayerPrefs.SetFloat("MasterVolume", masterVolume);
         PlayerPrefs.Save();
     }
@@ -64,12 +71,9 @@ public class AudioManager : MonoBehaviour
     {
         musicVolume = volume;
 
-        if (musicSource != null)
-        {
-            musicSource.volume = volume;
-        }
+        float dbValue = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
+        audioMixer.SetFloat("MusicVolume", dbValue);
 
-        // Save the setting
         PlayerPrefs.SetFloat("MusicVolume", musicVolume);
         PlayerPrefs.Save();
     }
@@ -80,7 +84,14 @@ public class AudioManager : MonoBehaviour
 
         foreach (AudioSource audioSource in audioSources)
         {
-            audioSource.outputAudioMixerGroup = masterGroup;
+            if (audioSource.CompareTag("Music"))
+            {
+                audioSource.outputAudioMixerGroup = musicGroup;
+            }
+            else
+            {
+                audioSource.outputAudioMixerGroup = masterGroup;
+            }
         }
     }
 }
