@@ -895,6 +895,10 @@ PrefabInstance:
       propertyPath: HUDCanvas
       value: 
       objectReference: {fileID: 1529453989}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: starterAmmo
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2028,7 +2032,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 51154237796246823, guid: 99e2091202ce1a24ea77c77f2f6c3c57, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.602623
+      value: -14.27
       objectReference: {fileID: 0}
     - target: {fileID: 51154237796246823, guid: 99e2091202ce1a24ea77c77f2f6c3c57, type: 3}
       propertyPath: m_LocalPosition.y
