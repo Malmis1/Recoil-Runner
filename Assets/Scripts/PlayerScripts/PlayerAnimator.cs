@@ -34,25 +34,42 @@ public class PlayerAnimator : MonoBehaviour
 
     void Update()
     {
-        if (gunObject != null)
+        if (playerController.state != PlayerController.PlayerState.Dead)
         {
-            if (gunObject.activeSelf)
+            if (gunObject != null)
             {
-                animator.runtimeAnimatorController = playerControllerNoHands;
+                if (gunObject.activeSelf)
+                {
+                    animator.runtimeAnimatorController = playerControllerNoHands;
+                }
+                else
+                {
+                    animator.runtimeAnimatorController = playerControllerHands;
+                }
             }
-            else
-            {
-                animator.runtimeAnimatorController = playerControllerHands;
-            }
-        }
 
-        ReadPlayerStateAndAnimate();
+            ReadPlayerStateAndAnimate();
+        }
+        else
+        {
+            // When dead, only set the isDead parameter
+            animator.SetBool("isDead", true);
+        }
     }
+
+
 
     void ReadPlayerStateAndAnimate()
     {
         if (animator == null || gunScript == null)
         {
+            return;
+        }
+
+        if (playerController.state == PlayerController.PlayerState.Dead)
+        {
+            ResetAnimations();
+            animator.SetBool("isDead", true);
             return;
         }
 
@@ -91,8 +108,6 @@ public class PlayerAnimator : MonoBehaviour
             animator.SetBool("isShooting", false);
             UpdateMovementAnimation();
         }
-
-        animator.SetBool("isDead", playerController.state == PlayerController.PlayerState.Dead);
     }
 
     private void ResetAnimations()
@@ -103,6 +118,7 @@ public class PlayerAnimator : MonoBehaviour
         animator.SetBool("isWalking", false);
         animator.SetBool("isShootingHorizontal", false);
         animator.SetBool("isShootingDown", false);
+        animator.SetBool("isShooting", false);
     }
 
     private void UpdateMovementAnimation()
