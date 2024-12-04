@@ -9,11 +9,8 @@ public class AudioManager : MonoBehaviour
     public AudioMixer audioMixer;
     [Tooltip("The AudioMixerGroup for all audio sources.")]
     public AudioMixerGroup masterGroup;
-
-    [Header("Audio Sources")]
-    [Tooltip("Audio Source for music")]
-    public AudioSource musicSource;
-
+    [Tooltip("The AudioMixerGroup for all music audio sources.")]
+    public AudioMixerGroup musicGroup;
     [Header("Volume Settings")]
     [Range(0f, 1f)]
     public float masterVolume = 0.5f;
@@ -64,13 +61,10 @@ public class AudioManager : MonoBehaviour
     {
         musicVolume = volume;
 
-        if (musicSource != null)
-        {
-            musicSource.volume = volume;
-        }
+        float dbValue = Mathf.Log10(Mathf.Clamp(volume, 0.0001f, 1f)) * 20;
+        audioMixer.SetFloat("MusicVolume", dbValue);
 
-        // Save the setting
-        PlayerPrefs.SetFloat("MusicVolume", musicVolume);
+        PlayerPrefs.SetFloat("MasterVolume", masterVolume);
         PlayerPrefs.Save();
     }
 
@@ -80,7 +74,15 @@ public class AudioManager : MonoBehaviour
 
         foreach (AudioSource audioSource in audioSources)
         {
-            audioSource.outputAudioMixerGroup = masterGroup;
+            if (audioSource.CompareTag("Music"))
+            {
+                audioSource.outputAudioMixerGroup = musicGroup;
+            }
+            else
+            {
+                audioSource.outputAudioMixerGroup = masterGroup;
+            }
         }
     }
+
 }
