@@ -11477,6 +11477,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32968229879645709, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: TotalEnemies
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2347399189394975585, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: m_Name
       value: LevelManager
@@ -11539,7 +11543,7 @@ SceneRoots:
   - {fileID: 650432226}
   - {fileID: 2098864711}
   - {fileID: 1298200095}
-  - {fileID: 5271124289245401660}
   - {fileID: 280193760}
   - {fileID: 72791056}
   - {fileID: 1139709181}
+  - {fileID: 5271124289245401660}

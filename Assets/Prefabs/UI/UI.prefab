@@ -6435,7 +6435,7 @@ GameObject:
   - component: {fileID: 6487222716733629259}
   - component: {fileID: 6786643715086332627}
   - component: {fileID: 514322347481616686}
-  - component: {fileID: 7912339298679490054}
+  - component: {fileID: 4578540808211427928}
   m_Layer: 0
   m_Name: UI
   m_TagString: Untagged
@@ -6503,7 +6503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GOMenu: {fileID: 3408421812182834387}
---- !u!114 &7912339298679490054
+--- !u!114 &4578540808211427928
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

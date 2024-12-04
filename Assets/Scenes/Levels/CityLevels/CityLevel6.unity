@@ -22570,6 +22570,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32968229879645709, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: TotalEnemies
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2347399189394975585, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: m_Name
       value: LevelManager

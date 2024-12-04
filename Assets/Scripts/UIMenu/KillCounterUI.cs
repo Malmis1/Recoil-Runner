@@ -8,7 +8,7 @@ public class KillCounterUI : MonoBehaviour {
 
     private void Update() {
         if (KillCounter.Instance != null) {
-            killCountText.text = "Kills: " + KillCounter.Instance.KillCount;
+            killCountText.text = "Kills: " + KillCounter.Instance.KillCount + " / " + KillCounter.Instance.TotalEnemies;
         }
     }
 }
