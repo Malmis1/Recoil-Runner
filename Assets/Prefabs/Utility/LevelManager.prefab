@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5938057006621124897}
   - component: {fileID: 6493307031614394902}
+  - component: {fileID: 32968229879645709}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -53,3 +54,15 @@ MonoBehaviour:
   startWithGun: 1
   gunName: Gun
   starterAmmo: 30
+--- !u!114 &32968229879645709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2347399189394975585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9577fa0b368cb754ba76bee599ada412, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

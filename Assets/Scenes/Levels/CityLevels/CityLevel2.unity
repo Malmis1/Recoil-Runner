@@ -12729,7 +12729,8 @@ PrefabInstance:
       propertyPath: startingTotalAmmo
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 839879085863915827, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -12743,6 +12744,6 @@ SceneRoots:
   - {fileID: 650432226}
   - {fileID: 2098864711}
   - {fileID: 1298200095}
-  - {fileID: 5271124289245401660}
   - {fileID: 280193760}
   - {fileID: 2029853967}
+  - {fileID: 5271124289245401660}
