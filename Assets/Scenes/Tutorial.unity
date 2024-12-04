@@ -16936,6 +16936,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 86291767}
     - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: starterAmmo
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: currentLevel
       value: 0
       objectReference: {fileID: 0}
