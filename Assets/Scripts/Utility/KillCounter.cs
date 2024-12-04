@@ -16,6 +16,5 @@ public class KillCounter : MonoBehaviour {
 
     public void IncreaseKillAmount() {
         KillCount = KillCount + 1;
-        Debug.Log("Kill Count is: " + KillCount);
     }
 }
