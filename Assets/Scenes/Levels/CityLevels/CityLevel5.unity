@@ -10961,6 +10961,10 @@ PrefabInstance:
       propertyPath: gunName
       value: Railgun
       objectReference: {fileID: 0}
+    - target: {fileID: 3229510118310239171, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
+      propertyPath: ammoAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7248015862986076923, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_Name
       value: SimpleWeaponPickup
@@ -23977,6 +23981,10 @@ PrefabInstance:
       propertyPath: HUDCanvas
       value: 
       objectReference: {fileID: 86291767}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: starterAmmo
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: currentLevel
       value: 5

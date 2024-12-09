@@ -24,7 +24,6 @@ public class WeaponController : MonoBehaviour
     private bool initialRecoil = true;
     private PlayerController playerController;
     private int starterAmmo;
-    private Dictionary<int, int> gunAmmoDict = new Dictionary<int, int>();
 
     private void Awake()
     {
@@ -69,16 +68,10 @@ public class WeaponController : MonoBehaviour
         }
     }
 
-    public void ChangeGunByIndex(int gunIndex)
+    public void ChangeGunByIndex(int gunIndex, int ammoAmount)
     {
         if (gunIndex >= 0 && gunIndex < gunDataList.Length)
         {
-
-            if (currentGunIndex != -1 && gunScript != null)
-            {
-                gunAmmoDict[currentGunIndex] = gunScript.currentAmmo;
-            }
-
             gun.SetActive(true);
             currentGunIndex = gunIndex;
 
@@ -91,15 +84,7 @@ public class WeaponController : MonoBehaviour
                 Debug.LogWarning("AmmoCounter not found in WeaponController");
             }
 
-            if (gunAmmoDict.TryGetValue(gunIndex, out int savedAmmo))
-            {
-                gunScript.currentAmmo = savedAmmo; // Restore saved ammo
-            }
-            else
-            {
-                gunScript.currentAmmo = starterAmmo; // Initialize with ammo
-                gunAmmoDict[gunIndex] = gunScript.currentAmmo; // Save initial ammo
-            }
+            gunScript.currentAmmo = ammoAmount; // Set ammo to the specified amount
 
             gunScript.ApplyGunData(gunDataList[gunIndex]);
 
@@ -132,12 +117,12 @@ public class WeaponController : MonoBehaviour
         starterAmmo = ammo;
     }
 
-    public void ChangeGunByName(string gunName)
+    public void ChangeGunByName(string gunName, int ammoAmount)
     {
         int gunIndex = System.Array.FindIndex(gunDataList, g => g.name == gunName);
         if (gunIndex != -1)
         {
-            ChangeGunByIndex(gunIndex); // Change to the gun if it’s found by name
+            ChangeGunByIndex(gunIndex, ammoAmount); // Change to the gun if it’s found by name
         }
         else
         {
@@ -147,12 +132,6 @@ public class WeaponController : MonoBehaviour
 
     public void DeactivateGun()
     {
-        if (currentGunIndex != -1)
-        {
-            // Save current ammo before deactivating
-            gunAmmoDict[currentGunIndex] = gunScript.currentAmmo;
-        }
-
         gun.SetActive(false);  // Hide the gun
         currentGunIndex = -1;
 

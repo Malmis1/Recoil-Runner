@@ -7,6 +7,7 @@ public class WeaponPickup : MonoBehaviour
 
     [Tooltip("The audioclip for picking up weapon")]
     public AudioClip pickupSound;
+    public int ammoAmount = 30;
 
     private void OnTriggerEnter2D(Collider2D other) {
         WeaponController weaponController = other.GetComponent<WeaponController>();
@@ -15,7 +16,7 @@ public class WeaponPickup : MonoBehaviour
                 AudioSource.PlayClipAtPoint(pickupSound, transform.position);
             }
 
-            weaponController.ChangeGunByName(gunName);
+            weaponController.ChangeGunByName(gunName, ammoAmount);
             Destroy(gameObject);
         }
     }

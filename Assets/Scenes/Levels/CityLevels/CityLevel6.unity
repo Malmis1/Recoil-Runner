@@ -246,6 +246,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmmoPickup
       objectReference: {fileID: 0}
+    - target: {fileID: 4266814481200807433, guid: 99e2091202ce1a24ea77c77f2f6c3c57, type: 3}
+      propertyPath: ammoAmount
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -22638,6 +22642,10 @@ PrefabInstance:
       propertyPath: HUDCanvas
       value: 
       objectReference: {fileID: 86291767}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: starterAmmo
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: currentLevel
       value: 6

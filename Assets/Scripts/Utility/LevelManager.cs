@@ -55,7 +55,7 @@ public class LevelManager : MonoBehaviour
                 weaponController.SetStarterAmmo(starterAmmo);
                 if (startWithGun)
                 {
-                    weaponController.ChangeGunByName(gunName);
+                    weaponController.ChangeGunByName(gunName, starterAmmo);
                 }
                 else
                 {
