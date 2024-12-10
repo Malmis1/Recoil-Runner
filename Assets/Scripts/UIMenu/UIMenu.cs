@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
 public class UIMenu : MonoBehaviour
 {
+    [Tooltip("The main UI page to hide when the TutorialQuestionPage is opened. Only needed if OnPlayButtonPressed() is called. ")]
+    public GameObject MainPage;
+
+    [Tooltip("The UI page shown when the play button is pressed. Only needed if OnPlayButtonPressed() is called.")]
+    public GameObject TutorialQuestionPage;
+
     public void LoadLevel(string levelToLoad)
     {
         if (!PlayerPrefs.HasKey("IntroCompleted"))
@@ -21,6 +26,22 @@ public class UIMenu : MonoBehaviour
         }
     }
 
+    public void LoadNextLevel()
+    {
+        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
+
+        string nextLevelScene = GetLevelName(levelsUnlocked);
+
+        if (Application.CanStreamedLevelBeLoaded(nextLevelScene))
+        {
+            SceneManager.LoadScene(nextLevelScene);
+        }
+        else
+        {
+            Debug.LogError($"Scene '{nextLevelScene}' does not exist in Build Settings.");
+        }
+    }
+
     public void SkipIntro()
     {
         string nextScene = PlayerPrefs.GetString("NextSceneAfterIntro", "Tutorial");
@@ -30,5 +51,39 @@ public class UIMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void OnPlayButtonPressed()
+    {
+        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 0);
+        if (levelsUnlocked > 0)
+        {
+            LoadNextLevel();
+        }
+        else
+        {
+            if (TutorialQuestionPage != null && MainPage != null)
+            {
+                TutorialQuestionPage.SetActive(true);
+                MainPage.SetActive(false);
+            }
+            else
+            {
+                Debug.LogWarning("TutorialQuestionPage or MainPage is not assigned in the inspector.");
+            }
+        }
+    }
+
+    private string GetLevelName(int levelNumber)
+    {
+        if (levelNumber <= 10)
+        {
+            return $"CityLevel{levelNumber}";
+        }
+        else
+        {
+            int forestLevel = levelNumber - 10;
+            return $"ForestLevel{forestLevel}";
+        }
     }
 }

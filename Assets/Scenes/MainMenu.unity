@@ -3271,6 +3271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPage: {fileID: 0}
+  TutorialQuestionPage: {fileID: 0}
 --- !u!1 &370302066
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,6 +6922,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPage: {fileID: 0}
+  TutorialQuestionPage: {fileID: 0}
 --- !u!1 &737752082
 GameObject:
   m_ObjectHideFlags: 0
@@ -12221,6 +12225,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPage: {fileID: 296694851}
+  TutorialQuestionPage: {fileID: 704705489}
 --- !u!224 &1313397094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14469,6 +14475,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPage: {fileID: 0}
+  TutorialQuestionPage: {fileID: 0}
 --- !u!1 &1625843926
 GameObject:
   m_ObjectHideFlags: 0
@@ -18033,6 +18041,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4f461d79dcee41658343ef9be591259, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MainPage: {fileID: 0}
+  TutorialQuestionPage: {fileID: 0}
 --- !u!1 &1973877433
 GameObject:
   m_ObjectHideFlags: 0
@@ -18935,22 +18945,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 296694851}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 704705489}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1313397093}
+        m_TargetAssemblyTypeName: UIMenu, Assembly-CSharp
+        m_MethodName: OnPlayButtonPressed
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

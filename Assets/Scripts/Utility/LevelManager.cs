@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
 
     public void UnlockNextLevel()
     {
-        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
+        int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 0);
 
         if (currentLevel >= levelsUnlocked)
         {
