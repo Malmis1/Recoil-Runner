@@ -109,7 +109,9 @@ MonoBehaviour:
   player: {fileID: 0}
   hoverHeight: 5
   speed: 3
-  stoppingDistance: 0.1
+  stoppingDistance: 0.5
+  hoverTimeToFire: 0.2
+  hoverWidth: 4
   laser: {fileID: 9084663235044226210}
 --- !u!50 &845463210492768681
 Rigidbody2D:
@@ -210,6 +212,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   deathSound: {fileID: 8300000, guid: bd6a68c7adff3f149bfb457bde4cb9f6, type: 3}
+  detectPlayerSound: {fileID: 0}
   playerTransform: {fileID: 0}
   state: 0
   OnLandEvent:
@@ -229,6 +232,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2605107525471360553}
   health: 1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
 --- !u!95 &1092697488427984374
 Animator:
   serializedVersion: 5
@@ -465,7 +470,7 @@ LineRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1493351987
-  m_SortingLayer: -3
+  m_SortingLayer: -4
   m_SortingOrder: -1
   m_Positions:
   - {x: 0, y: 0, z: 0}
