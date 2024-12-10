@@ -1703,7 +1703,7 @@ PrefabInstance:
       objectReference: {fileID: 1047126622}
     - target: {fileID: 3562070757373062862, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ForestLevel5
+      value: ForestLevel7
       objectReference: {fileID: 0}
     - target: {fileID: 5982209544911350297, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_Name
@@ -1759,7 +1759,7 @@ PrefabInstance:
       objectReference: {fileID: 1047126622}
     - target: {fileID: 8698268200022435400, guid: f384d87e01fd59906926025b8f29a0a5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: ForestLevel5
+      value: ForestLevel7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
