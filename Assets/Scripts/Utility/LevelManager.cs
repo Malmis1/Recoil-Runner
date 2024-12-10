@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     [Header("Level Settings")]
     [Tooltip("The current level number.")]
     public int currentLevel = 1;
+    public float maxTimeForStars = 20f;
 
     [Header("Player Settings")]
     [SerializeField] public bool startWithGun;

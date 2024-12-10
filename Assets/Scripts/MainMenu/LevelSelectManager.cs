@@ -61,5 +61,33 @@ public class LevelButtonManager : MonoBehaviour
         button.colors = cb;
 
         button.interactable = !isLocked;
+
+        UpdateStars(button, level, isLocked);
+    }
+
+    void UpdateStars(Button button, int level, bool isLocked)
+    {
+        for (int starIndex = 1; starIndex <= 3; starIndex++)
+        {
+            Transform starTransform = button.transform.Find($"Star {starIndex}");
+            if (starTransform != null)
+            {
+                Image starImage = starTransform.GetComponent<Image>();
+                if (starImage != null)
+                {
+                    if (isLocked)
+                    {
+                        // Hide stars if the level is locked
+                        starImage.color = Color.clear;
+                    }
+                    else
+                    {
+                        // Show stars based on earned stars
+                        int starsEarned = PlayerPrefs.GetInt($"LevelStars_{level}", 0);
+                        starImage.color = (starIndex <= starsEarned) ? Color.white : Color.gray;
+                    }
+                }
+            }
+        }
     }
 }
