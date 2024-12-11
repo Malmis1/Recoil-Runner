@@ -14,12 +14,14 @@ public class PauseScript : MonoBehaviour {
 
     void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (Time.timeScale != 0) { // This is for making sure that it is not possible to pause if the game is won or game over.
+            if (Time.timeScale != 0) { // This is for making sure that it is not possible to pause if the game is won or game
                 if (!isPaused) {
                     PauseGame();
                 } else {
                     UnPauseGame();
                 }
+            } else if(isPaused) {
+                UnPauseGame();
             }
         }
     }
