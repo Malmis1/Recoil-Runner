@@ -38,6 +38,12 @@ public class UIMenu : MonoBehaviour
     {
         int levelsUnlocked = PlayerPrefs.GetInt("LevelsUnlocked", 1);
 
+        if (levelsUnlocked == 21)
+        {
+            SceneManager.LoadScene("CityLevel1");
+            return;
+        }
+
         string nextLevelScene = GetLevelName(levelsUnlocked);
 
         if (Application.CanStreamedLevelBeLoaded(nextLevelScene))
