@@ -8,21 +8,20 @@ public class MusicPlayer : MonoBehaviour
     private bool isInMainMenu = true;
 
     [SerializeField] private AudioClip gameplayMusicClip;
-    [SerializeField] private AudioClip cutsceneMusicClip; // Reference to cutscene music
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-        
+
         // Get the existing AudioSource for menu music
         mainMenuAudio = GetComponent<AudioSource>();
-        
+
         // Create and setup gameplay audio source
         gameplayAudio = gameObject.AddComponent<AudioSource>();
         gameplayAudio.loop = true;
         gameplayAudio.playOnAwake = false;
         gameplayAudio.clip = gameplayMusicClip;
-        
+
         // Check for duplicate music players
         if (FindObjectsOfType<MusicPlayer>().Length > 1)
         {
@@ -39,10 +38,7 @@ public class MusicPlayer : MonoBehaviour
         {
             Debug.LogWarning("Gameplay music clip not assigned in MusicPlayer!");
         }
-        if (cutsceneMusicClip == null)
-        {
-            Debug.LogWarning("Cutscene music clip not assigned in MusicPlayer!");
-        }
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -70,7 +66,7 @@ public class MusicPlayer : MonoBehaviour
             {
                 // Leaving main menu
                 mainMenuAudio.Stop();
-                if (gameplayMusicClip != null)  
+                if (gameplayMusicClip != null)
                 {
                     gameplayAudio.Play();
                 }
