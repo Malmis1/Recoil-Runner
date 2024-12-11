@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3666473384565131699}
   - component: {fileID: 5303310125219160334}
   - component: {fileID: 5875535900445268266}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: FlowerProjectile
   m_TagString: Damage
   m_Icon: {fileID: 0}
