@@ -15355,11 +15355,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1313397094}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -861, y: -460}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -876, y: -475}
   m_SizeDelta: {x: 130, y: 130}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!114 &1101320017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29741,6 +29741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayMusicClip: {fileID: 8300000, guid: 47a29390007e2a7e2ba91913256eb713, type: 3}
+  cutsceneMusicClip: {fileID: 0}
 --- !u!1 &2140400830
 GameObject:
   m_ObjectHideFlags: 0

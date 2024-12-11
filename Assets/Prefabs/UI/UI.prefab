@@ -1351,11 +1351,11 @@ RectTransform:
   - {fileID: 8471639034425017885}
   m_Father: {fileID: 2146905549634509875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -845, y: -502}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 65, y: -12}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0}
 --- !u!1 &1614801622705023931
 GameObject:
   m_ObjectHideFlags: 0
@@ -1488,7 +1488,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: CityLevel3
+          m_StringArgument: CityLevel1
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1728000204415734961
@@ -2547,7 +2547,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: CityLevel3
+          m_StringArgument: CityLevel1
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &3784609188264060269
@@ -3292,11 +3292,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2146905549634509875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 688.9, y: -294}
-  m_SizeDelta: {x: 537.8, y: 89.0051}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -2.1998901, y: -789.49744}
+  m_SizeDelta: {x: 537.80005, y: 89.00513}
+  m_Pivot: {x: 1, y: 1}
 --- !u!222 &4237157228334697160
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4560,11 +4560,11 @@ RectTransform:
   - {fileID: 8947956655947512543}
   m_Father: {fileID: 2146905549634509875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -840, y: 493}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 70, y: 3}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &4350249053140431956
 GameObject:
   m_ObjectHideFlags: 0
@@ -6465,7 +6465,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: CityLevel4
+          m_StringArgument: CityLevel2
           m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1409676277242179628
@@ -8089,7 +8089,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.5, y: 4.4}
+  m_AnchoredPosition: {x: 39.5, y: 4.399994}
   m_SizeDelta: {x: 300, y: 62.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7029552796668398398
@@ -8164,7 +8164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 39.5, y: 4.4}
+  m_AnchoredPosition: {x: 39.5, y: 4.399994}
   m_SizeDelta: {x: 300, y: 62.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4440059031588253435
