@@ -13,7 +13,7 @@ public class PauseScript : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
             if (Time.timeScale != 0) { // This is for making sure that it is not possible to pause if the game is won or game
                 if (!isPaused) {
                     PauseGame();
