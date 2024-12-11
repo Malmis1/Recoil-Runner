@@ -240,6 +240,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1246724940260000773}
   health: 1
+  damageColor: {r: 1, g: 0, b: 0, a: 1}
+  flashDuration: 0.2
 --- !u!114 &1246724940260000773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -424,7 +426,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.405
   m_Pitch: 1
   Loop: 0
   Mute: 0
