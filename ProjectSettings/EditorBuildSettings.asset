@@ -28,13 +28,13 @@ EditorBuildSettings:
     guid: 98fbf41482f5862158331b99ee2ea914
   - enabled: 1
     path: Assets/Scenes/Levels/CityLevels/CityLevel5.unity
-    guid: c85a03a238d577a4188500651fb17fbd
-  - enabled: 1
-    path: Assets/Scenes/Levels/CityLevels/CityLevel6.unity
     guid: e88347a404822ef428c2d9d4396bde7b
   - enabled: 1
-    path: Assets/Scenes/Levels/CityLevels/CityLevel7.unity
+    path: Assets/Scenes/Levels/CityLevels/CityLevel6.unity
     guid: 091752adae3fc334eb3277a5a4433d68
+  - enabled: 1
+    path: Assets/Scenes/Levels/CityLevels/CityLevel7.unity
+    guid: c85a03a238d577a4188500651fb17fbd
   - enabled: 1
     path: Assets/Scenes/Levels/CityLevels/CityLevel8.unity
     guid: 8f5c04b7938f167f9817d12974932f9b
