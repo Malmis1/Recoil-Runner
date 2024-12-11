@@ -7,10 +7,10 @@ public class TypewriterEffect : MonoBehaviour
     public Text targetText;
     public float typingSpeed = 0.05f;
 
-    public IEnumerator StartTypingAndWait(string newText, float absoluteStartTime, float fadeOutStartTime)
+    public IEnumerator StartTypingAndWait(string newText, float absoluteStartTime, float fadeOutStartTime, float sceneStartTime)
     {
-        // Wait until it's time for this message to start
-        float currentTime = Time.timeSinceLevelLoad;
+        // Calculate delay based on scene start time
+        float currentTime = Time.timeSinceLevelLoad - sceneStartTime;
         float delay = Mathf.Max(0, absoluteStartTime - currentTime);
         yield return new WaitForSeconds(delay);
 
@@ -18,15 +18,14 @@ public class TypewriterEffect : MonoBehaviour
         targetText.text = "";
         targetText.color = new Color(targetText.color.r, targetText.color.g, targetText.color.b, 1f);
 
-        // Type the text character by character
         foreach (char c in newText)
         {
             targetText.text += c;
             yield return new WaitForSeconds(typingSpeed);
         }
 
-        // Wait until it's time to start fading out
-        currentTime = Time.timeSinceLevelLoad;
+        // Use the same relative timing for fade out
+        currentTime = Time.timeSinceLevelLoad - sceneStartTime;
         float timeUntilFadeOut = fadeOutStartTime - currentTime;
         if (timeUntilFadeOut > 0)
         {
@@ -34,8 +33,9 @@ public class TypewriterEffect : MonoBehaviour
         }
 
         // Start fading out
-        yield return StartCoroutine(FadeOut(1f)); // Fade out over 1 second
+        yield return StartCoroutine(FadeOut(1f));
     }
+
 
 
     private IEnumerator FadeOut(float duration)

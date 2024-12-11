@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class UIMenu : MonoBehaviour
 {
     [Tooltip("The main UI page to hide when the TutorialQuestionPage is opened. Only needed if OnPlayButtonPressed() is called. ")]
@@ -10,11 +11,18 @@ public class UIMenu : MonoBehaviour
     [Tooltip("The UI page shown when the play button is pressed. Only needed if OnPlayButtonPressed() is called.")]
     public GameObject TutorialQuestionPage;
 
+    [Tooltip("The button to load the intro. This will be enabled or disabled based on the IntroCompleted state. Only needed if theres is a loadintro button.")]
+    public GameObject LoadIntroButton;
+
+    private void Start()
+    {
+        UpdateLoadIntroButtonState();
+    }
+
     public void LoadLevel(string levelToLoad)
     {
         if (!PlayerPrefs.HasKey("IntroCompleted"))
         {
-            PlayerPrefs.SetInt("IntroCompleted", 1);
             PlayerPrefs.SetString("NextSceneAfterIntro", levelToLoad);
             PlayerPrefs.Save();
 
@@ -44,6 +52,15 @@ public class UIMenu : MonoBehaviour
 
     public void SkipIntro()
     {
+        if (PlayerPrefs.HasKey("IntroCompleted") && PlayerPrefs.GetInt("IntroCompleted") == 1)
+        {
+            SceneManager.LoadScene("MainMenu");
+            return;
+        }
+
+        PlayerPrefs.SetInt("IntroCompleted", 1);
+        PlayerPrefs.Save();
+
         string nextScene = PlayerPrefs.GetString("NextSceneAfterIntro", "Tutorial");
         SceneManager.LoadScene(nextScene);
     }
@@ -85,5 +102,19 @@ public class UIMenu : MonoBehaviour
             int forestLevel = levelNumber - 10;
             return $"ForestLevel{forestLevel}";
         }
+    }
+
+    private void UpdateLoadIntroButtonState()
+    {
+        if (LoadIntroButton != null)
+        {
+            bool isIntroCompleted = PlayerPrefs.HasKey("IntroCompleted") && PlayerPrefs.GetInt("IntroCompleted") == 1;
+            LoadIntroButton.SetActive(isIntroCompleted);
+        }
+    }
+
+    public void OnLoadIntroButtonPressed()
+    {
+        SceneManager.LoadScene("Intro");
     }
 }
