@@ -33,9 +33,13 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The audioclip for the enemy detecting player")]
     public AudioClip detectPlayerSound;
+    [Tooltip("The sound cooldown for the enemy detecting player")]
+    private float minSoundCooldown = 0.5f;
+    private float maxSoundCooldown = 3f;
+    private float nextSoundTime = 0f;
 
     private AudioSource audioSource;
-    
+
     private const float groundedRadius = .2f;
     private bool isGrounded;
     private Rigidbody2D rb;
@@ -50,7 +54,8 @@ public class EnemyController : MonoBehaviour
 
     public Vector2? playerDirection;
 
-    private void Awake() {
+    private void Awake()
+    {
         rb = GetComponent<Rigidbody2D>();
         OnLandEvent ??= new UnityEvent();
         audioSource = GetComponent<AudioSource>();
@@ -58,19 +63,23 @@ public class EnemyController : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    private void FixedUpdate() {
-        if (state != EnemyState.Dead) {
+    private void FixedUpdate()
+    {
+        if (state != EnemyState.Dead)
+        {
             CheckIfGrounded();
             RotateTowardsWalkingDirection();
             DetermineState();
         }
     }
 
-    private void CheckIfGrounded() {
+    private void CheckIfGrounded()
+    {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundedRadius, whatIsGround);
     }
 
-    public void Move(float move, bool jump) {
+    public void Move(float move, bool jump)
+    {
         if (state == EnemyState.Dead) return;
 
         // Run
@@ -78,62 +87,82 @@ public class EnemyController : MonoBehaviour
         rb.velocity = targetVelocity;
 
         // Jump
-        if (isGrounded && jump) {
+        if (isGrounded && jump)
+        {
             isGrounded = false;
-            isJumping = true; 
+            isJumping = true;
             rb.AddForce(new Vector2(0f, jumpForce));
         }
     }
 
-    private void Flip() {
+    private void Flip()
+    {
         // Flip the character
         facingRight = !facingRight;
         spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
-    public float AdjustBulletSpeed(float originalShootSpeed) {
-        if (!facingRight) {
+    public float AdjustBulletSpeed(float originalShootSpeed)
+    {
+        if (!facingRight)
+        {
             originalShootSpeed = originalShootSpeed * (-1);
         }
 
         return originalShootSpeed;
     }
 
-    private void RotateTowardsWalkingDirection() {
+    private void RotateTowardsWalkingDirection()
+    {
         float xVel = rb.velocity.x;
 
-        if (xVel < -0.001 && facingRight) {
+        if (xVel < -0.001 && facingRight)
+        {
             Flip();
-        } else if (xVel > 0 && !facingRight) {
+        }
+        else if (xVel > 0 && !facingRight)
+        {
             Flip();
         }
     }
 
-    public bool IsMoving() {
+    public bool IsMoving()
+    {
         float xVel = rb.velocity.x;
         bool isMoving = false;
 
-        if (Mathf.Abs(xVel) > 0.01f) {
+        if (Mathf.Abs(xVel) > 0.01f)
+        {
             isMoving = true;
         }
 
         return isMoving;
     }
 
-    public void DetectPlayer() {
+    public void DetectPlayer()
+    {
         GameObject player = GameObject.FindWithTag("Player");
-        if (player != null) {
+        if (player != null)
+        {
             Vector2 directionToPlayer = player.transform.position - transform.position;
 
-            if (Mathf.Abs(directionToPlayer.x) <= horizontalDetectionRange && Mathf.Abs(directionToPlayer.y) <= verticalDetectionRange) {
+            if (Mathf.Abs(directionToPlayer.x) <= horizontalDetectionRange && Mathf.Abs(directionToPlayer.y) <= verticalDetectionRange)
+            {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, directionToPlayer.normalized, horizontalDetectionRange, obstacleLayer | playerLayer);
 
-                if (hit.collider != null && hit.collider.CompareTag("Player")) {
+                if (hit.collider != null && hit.collider.CompareTag("Player"))
+                {
                     playerTransform = player.transform;
                     playerDirection = directionToPlayer.normalized;
 
-                    if (detectPlayerSound != null) {
-                        audioSource.PlayOneShot(detectPlayerSound);
+                    if (Time.time >= nextSoundTime)
+                    {
+                        if (detectPlayerSound != null)
+                        {
+                            audioSource.PlayOneShot(detectPlayerSound);
+                        }
+
+                        nextSoundTime = Time.time + Random.Range(minSoundCooldown, maxSoundCooldown);
                     }
 
                     return;
@@ -144,13 +173,15 @@ public class EnemyController : MonoBehaviour
         playerDirection = null;
     }
 
-    private void OnDrawGizmosSelected() { // Test method for visualizing the detection zone
+    private void OnDrawGizmosSelected()
+    { // Test method for visualizing the detection zone
         Gizmos.color = Color.red;
         Vector3 boxSize = new Vector3(horizontalDetectionRange * 2, verticalDetectionRange * 2, 0);
         Gizmos.DrawWireCube(transform.position, boxSize);
     }
 
-    public Transform getPlayerTransform() {
+    public Transform getPlayerTransform()
+    {
         return playerTransform;
     }
 
@@ -164,27 +195,31 @@ public class EnemyController : MonoBehaviour
         Attack,
     }
 
-    public void EnemyDie() {
+    public void EnemyDie()
+    {
         SetState(EnemyState.Dead);
 
         rb.velocity = Vector2.zero;
-        rb.isKinematic = true; 
+        rb.isKinematic = true;
 
         audioSource.PlayOneShot(deathSound);
 
         StartCoroutine(PlayDeathAnimationAndDestroy(0.5f));
     }
 
-    public void EnemyAttack() {
+    public void EnemyAttack()
+    {
         SetState(EnemyState.Attack);
     }
 
-    private IEnumerator PlayDeathAnimationAndDestroy(float duration) {
+    private IEnumerator PlayDeathAnimationAndDestroy(float duration)
+    {
         yield return new WaitForSeconds(duration);
         Destroy(gameObject);
     }
 
-    public void SetState(EnemyState newState) {
+    public void SetState(EnemyState newState)
+    {
         state = newState;
     }
 
@@ -207,7 +242,7 @@ public class EnemyController : MonoBehaviour
             {
                 if (rb.velocity.y <= 0)
                 {
-                    isJumping = false; 
+                    isJumping = false;
                     SetState(EnemyState.Fall);
                 }
                 else
