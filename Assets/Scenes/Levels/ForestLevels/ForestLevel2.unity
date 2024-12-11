@@ -183,6 +183,10 @@ PrefabInstance:
       propertyPath: gunName
       value: Sniper
       objectReference: {fileID: 0}
+    - target: {fileID: 3229510118310239171, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
+      propertyPath: ammoAmount
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7248015862986076923, guid: 447eaeba7d6040246a61c05dc8131762, type: 3}
       propertyPath: m_Name
       value: SimpleWeaponPickup
@@ -500,6 +504,10 @@ PrefabInstance:
     - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
       propertyPath: startWithGun
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6493307031614394902, guid: c114d7b483683c54e96dde0a82d8a3e7, type: 3}
+      propertyPath: maxTimeForStars
+      value: 23
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1658,10 +1666,6 @@ PrefabInstance:
     - target: {fileID: 4196849482230700335, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: m_BackGroundColor.r
       value: 0.21176471
-      objectReference: {fileID: 0}
-    - target: {fileID: 4243565302050763436, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
-      propertyPath: hitLayers.m_Bits
-      value: 247
       objectReference: {fileID: 0}
     - target: {fileID: 7267632251826496226, guid: 91d9f35889ead60419073c883fbad03e, type: 3}
       propertyPath: noAmmoText
