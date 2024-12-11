@@ -975,6 +975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
+  LoadIntroButton: {fileID: 0}
 --- !u!1 &1266557114649427505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4032,10 +4033,7 @@ MonoBehaviour:
 
     - fire
 
-    - switch weapons)
-
-    -
-    retry level'
+    - retry level'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29fbebd47b7c37e43800a2335aa658da, type: 2}
   m_sharedMaterial: {fileID: 6171342535216485859, guid: 29fbebd47b7c37e43800a2335aa658da, type: 2}
@@ -4529,6 +4527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
+  LoadIntroButton: {fileID: 0}
 --- !u!1 &4022681909119153159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5582,8 +5581,6 @@ MonoBehaviour:
 
     Left click
 
-    (1/2
-
     R'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 29fbebd47b7c37e43800a2335aa658da, type: 2}
@@ -5706,6 +5703,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
+  LoadIntroButton: {fileID: 0}
 --- !u!1 &4932745294559616334
 GameObject:
   m_ObjectHideFlags: 0
