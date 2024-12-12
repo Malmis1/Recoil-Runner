@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class InfiniteScrollBackground : MonoBehaviour
 {
-    public float scrollSpeed = 0.02f; 
-    private Material[] materials; 
+    public float scrollSpeed = 0.02f;
+    private Material[] materials;
     private float[] backSpeeds;
 
     private void Start()
     {
+        Time.timeScale = 1f;
         int childCount = transform.childCount;
         materials = new Material[childCount];
         backSpeeds = new float[childCount];
@@ -18,7 +19,7 @@ public class InfiniteScrollBackground : MonoBehaviour
             materials[i] = renderer.material;
 
             float zPosition = transform.GetChild(i).position.z;
-            backSpeeds[i] = 1 - (zPosition / 10f); 
+            backSpeeds[i] = 1 - (zPosition / 10f);
         }
     }
 
@@ -26,8 +27,8 @@ public class InfiniteScrollBackground : MonoBehaviour
     {
         for (int i = 0; i < materials.Length; i++)
         {
-            float offsetX = Time.time * scrollSpeed * backSpeeds[i]; 
-            materials[i].SetTextureOffset("_MainTex", new Vector2(offsetX, 0)); 
+            float offsetX = Time.time * scrollSpeed * backSpeeds[i];
+            materials[i].SetTextureOffset("_MainTex", new Vector2(offsetX, 0));
         }
     }
 }
