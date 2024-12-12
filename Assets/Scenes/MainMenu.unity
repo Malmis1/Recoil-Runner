@@ -5304,6 +5304,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &370302066
 GameObject:
   m_ObjectHideFlags: 0
@@ -10655,6 +10656,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &737752082
 GameObject:
   m_ObjectHideFlags: 0
@@ -18056,6 +18058,7 @@ MonoBehaviour:
   MainPage: {fileID: 296694851}
   TutorialQuestionPage: {fileID: 704705489}
   LoadIntroButton: {fileID: 1101320015}
+  QuitButton: {fileID: 207730575}
 --- !u!224 &1313397094
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21258,6 +21261,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &1625843926
 GameObject:
   m_ObjectHideFlags: 0
@@ -26872,6 +26876,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &1973877433
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,10 +13,13 @@ public class UIMenu : MonoBehaviour
 
     [Tooltip("The button to load the intro. This will be enabled or disabled based on the IntroCompleted state. Only needed if theres is a loadintro button.")]
     public GameObject LoadIntroButton;
+    [Tooltip("The quit button to deactivate in WebGL builds. Only needed if there is a quit button.")]
+    public GameObject QuitButton;
 
     private void Start()
     {
         UpdateLoadIntroButtonState();
+        DisableQuitButtonForWebGL();
     }
 
     public void LoadLevel(string levelToLoad)
@@ -80,8 +83,7 @@ public class UIMenu : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
 #elif (UNITY_STANDALONE)
                             Application.Quit();
-#elif (UNITY_WEBGL)
-                            Application.OpenURL("https://simonkrh.itch.io/recoil-runner");
+
 #endif
     }
 
@@ -126,6 +128,16 @@ public class UIMenu : MonoBehaviour
             bool isIntroCompleted = PlayerPrefs.HasKey("IntroCompleted") && PlayerPrefs.GetInt("IntroCompleted") == 1;
             LoadIntroButton.SetActive(isIntroCompleted);
         }
+    }
+
+    private void DisableQuitButtonForWebGL()
+    {
+#if (UNITY_WEBGL)
+        if (QuitButton != null)
+        {
+            QuitButton.SetActive(false);
+        }
+#endif
     }
 
     public void OnLoadIntroButtonPressed()

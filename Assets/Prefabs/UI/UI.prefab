@@ -976,6 +976,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 4794442322763734725}
 --- !u!1 &1266557114649427505
 GameObject:
   m_ObjectHideFlags: 0
@@ -4528,6 +4529,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &4022681909119153159
 GameObject:
   m_ObjectHideFlags: 0
@@ -5704,6 +5706,7 @@ MonoBehaviour:
   MainPage: {fileID: 0}
   TutorialQuestionPage: {fileID: 0}
   LoadIntroButton: {fileID: 0}
+  QuitButton: {fileID: 0}
 --- !u!1 &4932745294559616334
 GameObject:
   m_ObjectHideFlags: 0
